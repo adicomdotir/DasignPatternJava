@@ -4,6 +4,7 @@ public class RSATM {
 	public static void main(String[] args) {  
 		MyClass myOne = new MyClass();
 		myOne.m();
+		new Demo().implement();
 	}  
 }
 
@@ -44,4 +45,41 @@ interface MyTwo {
 }
 
 class MyClass implements MyOne, MyTwo {
+}
+
+interface HasBody {
+   default void first() {
+      System.out.println("This is first default method in HasBody interface.");
+   }
+
+   default void second() {
+      System.out.println("This is second default method in HasBody interface.");
+   }
+
+   void third();
+   }
+
+class Demo implements HasBody {
+
+   @Override
+   public void second() {
+      System.out.println("Overriding default method in child class.");
+   }
+
+   @Override
+   public void third() {
+      System.out.println("This is implemented abstract method of an interface.");
+   }
+
+   public void implement() {
+      HasBody ref = new Demo();
+      // Calling first() default method declared in HasBody interface.
+      ref.first();
+
+      // Calling Overridden default method of HasBody interface.
+      ref.second();
+
+      // Calling implemented method of HasBody interface.
+      ref.third();
+   }
 }
