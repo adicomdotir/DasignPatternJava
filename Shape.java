@@ -4,6 +4,6 @@ public abstract class Shape {
 	
 	@Override
 	public String toString() {
-		return "Area is " + getArea() + " Perimeter is " + getPerimeter();
+		return this.getClass().getSimpleName() + " Area is " + getArea() + " Perimeter is " + getPerimeter();
 	}
 }
