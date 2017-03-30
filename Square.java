@@ -5,6 +5,9 @@ public class Square extends Shape {
 		this.side = s;
 	}
 	
+	public void setSide(float s) { this.side = s; }
+	public float getSide() { return side; }
+	
 	@Override
 	public float getArea() {
 		return side * side;
