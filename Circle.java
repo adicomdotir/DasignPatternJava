@@ -15,7 +15,7 @@ public class Circle extends Shape {
 	
 	@Override
 	public float getPerimeter() {
-		return 0.0f;
+		return (float) (Math.PI * raduis * 2);
 	}
 }
 	
