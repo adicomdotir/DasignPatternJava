@@ -1,6 +1,10 @@
 public class Square extends Shape {
 	private float side;
 	
+	public Square() {
+		this(1);
+	}
+	
 	public Square(float s) {
 		this.side = s;
 	}

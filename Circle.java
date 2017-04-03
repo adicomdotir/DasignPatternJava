@@ -1,6 +1,10 @@
 public class Circle extends Shape {
 	private float raduis;
 	
+	public Circle() {
+		this(1);
+	}
+	
 	public Circle(float r) {
 		this.raduis = r;
 	}

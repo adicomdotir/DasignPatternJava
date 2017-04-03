@@ -19,7 +19,7 @@ public class Triangle extends Shape {
 	
 	@Override
 	public float getArea() {
-		return (height* base) / 2;
+		return (height * base) / 2;
 	}
 	
 	@Override

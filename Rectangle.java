@@ -4,6 +4,7 @@ public class Rectangle extends Shape {
 	private float width;
 	
 	public Rectangle() {
+		this(1,1);
 	}
 	
 	public Rectangle(float l, float w) {
