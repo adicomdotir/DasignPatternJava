@@ -13,11 +13,11 @@ public class RSATM {
 			System.out.println("" + s);
 		}
 		
-		TreeMap<String, String> hm = new TreeMap<String, String>();
+		TreeMap<Integer, String> hm = new TreeMap<Integer, String>();
         //add key-value pair to TreeMap
-        hm.put("first", "FIRST INSERTED");
-        hm.put("second", "SECOND INSERTED");
-        hm.put("third","THIRD INSERTED");
+        hm.put(2, "FIRST INSERTED");
+        hm.put(5, "SECOND INSERTED");
+        hm.put(1,"THIRD INSERTED");
         System.out.println("My TreeMap content:");
         System.out.println(hm);
         System.out.println("Clearing TreeMap:");
