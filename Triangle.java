@@ -4,7 +4,10 @@ public class Triangle extends Shape {
 	private float side1;
 	private float side2;
 	
-	public Triangle() {}
+	public Triangle() {
+		this(1, 1, 1, 1);
+	}
+	
 	public Triangle(float b, float h, float s1, float s2) {
 		this.base = b;
 		this.height = h;

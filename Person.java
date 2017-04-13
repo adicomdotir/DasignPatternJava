@@ -1,5 +1,13 @@
 public class Person {
+	private String name;
+	private int age;
+	
 	public Person() {
-		System.out.println("This is Person Class");
+		this("NoName", 0);
+	}
+	
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
 	}
 }
