@@ -24,7 +24,23 @@ public class RSATM {
         hm.clear();
         System.out.println("Content After clear:");
         System.out.println(hm);
+		
+		TestGeneric<Integer> test = new TestGeneric<>();
+		Float[] f = new Float[] {
+			new Float(5.6),
+			new Float(5.9),
+			new Float(5.1)
+		};
+		test.method(f, new Integer(5));
 	}  
+}
+
+class TestGeneric<T> {
+    public <E> void method(E[] p1, T t) {
+		for(E e: p1) {
+			System.out.println(e.toString());
+		}
+    }
 }
 
 class FlyingDragon extends Entity {
@@ -45,6 +61,11 @@ class FlyingDragon extends Entity {
 		super.setType("Flying Dragon");
 	}
 }
+
+/**
+ * Created by Yashar.P on 4/17/2017.
+ */
+
 
 abstract class Entity { 
 	private int x; // x coordinate in the room
