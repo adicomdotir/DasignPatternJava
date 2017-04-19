@@ -9,4 +9,14 @@ public class Student extends Person {
 	public void setGrade(double grade) {
 		this.grade = grade;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Student)) {
+            return false;
+        }
+        Student st = (Student) o;
+        return age == st.age && name.equals(st.name) && grade == st.grade;
+    }
 }
