@@ -21,4 +21,14 @@ public class Square extends Shape {
 	public float getPerimeter() {
 		return side * 4;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Square)) {
+            return false;
+        }
+        Square s = (Square) o;
+        return side == s.side;
+    }
 }

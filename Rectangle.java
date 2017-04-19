@@ -27,4 +27,13 @@ public class Rectangle extends Shape {
 		return (length + width) * 2;
 	}
 	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Rectangle)) {
+            return false;
+        }
+        Rectangle r = (Rectangle) o;
+        return length == r.length && width == r.width;
+    }
 }
