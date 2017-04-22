@@ -29,4 +29,14 @@ public class Triangle extends Shape {
 	public float getPerimeter() {
 		return base + side1 + side2;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Triangle)) {
+            return false;
+        }
+        Triangle t = (Triangle) o;
+        return base == t.base && height == t.height && side1 == t.side1 && side2 == t.side2;
+    }
 }

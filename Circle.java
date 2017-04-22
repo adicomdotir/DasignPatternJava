@@ -21,5 +21,15 @@ public class Circle extends Shape {
 	public float getPerimeter() {
 		return (float) (Math.PI * raduis * 2);
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Circle)) {
+            return false;
+        }
+        Circle c = (Circle) o;
+        return raduis == c.raduis;
+    }
 }
 	
