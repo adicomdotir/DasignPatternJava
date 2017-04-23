@@ -17,6 +17,10 @@ public class Triangle extends Shape {
 	
 	public void setBase(float b) { this.base = b; }
 	public float getBase() { return base; }
+	public void setSide1(float s) { this.side1 = s; }
+	public float getSide1() { return side1; }
+	public void setSide2(float s) { this.side2 = s; }
+	public float getSide2() { return side2; }
 	public void setHeight(float h) { this.height = h; }
 	public float getHeight() { return height; }
 	

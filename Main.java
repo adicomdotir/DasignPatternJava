@@ -5,6 +5,12 @@ public class Main {
 		Student p2 = new Student();
 		p2.setGrade(15.2);
 		System.out.println(p1.equals(p2));
+
+		Circle c1 = new Circle(2);
+		Circle c2 = c1;
+		System.out.println(c1.equals(c2));
+		c2 = new Circle(2);
+		System.out.println(c1.equals(c2));
 		
 		Computer pc = ComputerFactory.getComputer("pc","2 GB","500 GB","2.4 GHz");
 		Computer server = ComputerFactory.getComputer("server","16 GB","1 TB","2.9 GHz");
