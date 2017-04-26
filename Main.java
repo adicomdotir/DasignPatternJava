@@ -1,3 +1,5 @@
+import java.util.stream.*;
+
 public class Main {
 	public static void main(String[] args) {
 		// THIS EDIT BY VIM
@@ -16,5 +18,16 @@ public class Main {
 		Computer server = ComputerFactory.getComputer("server","16 GB","1 TB","2.9 GHz");
 		System.out.println("Factory PC Config::" + pc);
 		System.out.println("Factory Server Config::" + server);
+
+		myStream();
+	}
+
+	public static void myStream() {
+		Stream<String> fruitStream = Stream.of("tomato", "apple",
+			"banana", "kiwi", "orange");
+		fruitStream.filter(s -> s.contains("a"))
+		.map(String::toUpperCase)
+				.sorted()
+				.forEach(System.out::println);
 	}
 }
