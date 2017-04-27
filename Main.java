@@ -1,4 +1,5 @@
 import java.util.stream.*;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -23,6 +24,8 @@ public class Main {
 
 		MathOperation division = (int a, int b) -> a / b;
 		System.out.println("" + division.operation(8,2));
+
+		methodReferencesExample();
 	}
 
 	public static void myStream() {
@@ -36,5 +39,16 @@ public class Main {
 
 	interface MathOperation {
 		int operation(int a, int b);
+	}
+
+	public static void methodReferencesExample() {
+		System.out.println("/////////////////////////");
+		System.out.println("Method References Example");
+		System.out.println("/////////////////////////");
+		List names = new ArrayList();
+		names.add("Sajjad");
+		names.add("Saeed");
+		names.add("Farzad");
+		names.forEach(System.out::println);
 	}
 }
