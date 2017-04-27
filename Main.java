@@ -20,6 +20,9 @@ public class Main {
 		System.out.println("Factory Server Config::" + server);
 
 		myStream();
+
+		MathOperation division = (int a, int b) -> a / b;
+		System.out.println("" + division.operation(8,2));
 	}
 
 	public static void myStream() {
@@ -29,5 +32,9 @@ public class Main {
 		.map(String::toUpperCase)
 				.sorted()
 				.forEach(System.out::println);
+	}
+
+	interface MathOperation {
+		int operation(int a, int b);
 	}
 }
