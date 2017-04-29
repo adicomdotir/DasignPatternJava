@@ -26,6 +26,9 @@ public class Main {
 		System.out.println("" + division.operation(8,2));
 
 		methodReferencesExample();
+
+		List<Integer> list = Arrays.asList(1, 2, 3, 5, 4);
+		list.forEach(x -> System.out.println(x));
 	}
 
 	public static void myStream() {
@@ -49,6 +52,7 @@ public class Main {
 		names.add("Sajjad");
 		names.add("Saeed");
 		names.add("Farzad");
-		names.forEach(System.out::println);
+		names.forEach(x -> System.out.println(x));
+		// names.forEach(System.out::println);
 	}
 }
