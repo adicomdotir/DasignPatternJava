@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
+
 		// THIS EDIT BY VIM
 		Student p1 = new Student();
 		Student p2 = new Student();
@@ -29,6 +30,10 @@ public class Main {
 
 		List<Integer> list = Arrays.asList(1, 2, 3, 5, 4);
 		list.forEach(x -> System.out.println(x));
+
+		String value = "hassan";
+		String str = Optional.ofNullable(value).map(x -> x.toUpperCase()).orElse("NONE");
+		System.out.println(str);
 	}
 
 	public static void myStream() {
