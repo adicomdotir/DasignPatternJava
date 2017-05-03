@@ -35,13 +35,21 @@ public class Main {
 		String str = Optional.ofNullable(value).map(x -> x.toUpperCase()).orElse("NONE");
 		System.out.println(str);
 
-		new Thread(new CountAndPrint("Instance " + 1)).start();
+		Thread t = new Thread(new CountAndPrint("Instance " + 1));
+		t.start();
+		try {
+			t.join();
+		} 
+		catch(Exception e) {
+			e.getMessage();
+		}
 		new Thread(new CountAndPrint("Instance " + 2)).start();
 		new Thread(new CountAndPrint("Instance " + 3)).start();
 		new Thread(new CountAndPrint("Instance " + 4)).start();
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Main " + ": " + i);
 		}
+		new MyThread().start();
 	}
 
 	public static void myStream() {
@@ -82,4 +90,11 @@ class CountAndPrint implements Runnable {
 			System.out.println(this.name + ": " + i);
 		}
 	}
+}
+
+class MyThread extends Thread {
+	@Override
+	public void run() {  
+   		System.out.println("My thread is in running state.");  
+  	}   
 }
