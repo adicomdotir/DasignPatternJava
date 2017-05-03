@@ -2,6 +2,7 @@ import java.util.stream.*;
 import java.util.*;
 
 public class Main {
+	public static Integer threadCounter = new Integer(0);
 	public static void main(String[] args) {
 
 		// THIS EDIT BY VIM
@@ -35,21 +36,19 @@ public class Main {
 		String str = Optional.ofNullable(value).map(x -> x.toUpperCase()).orElse("NONE");
 		System.out.println(str);
 
-		Thread t = new Thread(new CountAndPrint("Instance " + 1));
-		t.start();
-		try {
-			t.join();
-		} 
-		catch(Exception e) {
-			e.getMessage();
+		for (int i=0; i<5; i++) {
+			Thread t = new Thread(new CountAndPrint("Instance " + i));
+			t.start();
+			try {
+				t.join();
+			} 
+			catch(Exception e) {
+				e.getMessage();
+			}
 		}
-		new Thread(new CountAndPrint("Instance " + 2)).start();
-		new Thread(new CountAndPrint("Instance " + 3)).start();
-		new Thread(new CountAndPrint("Instance " + 4)).start();
-		for (int i = 0; i < 10; i++) {
-			System.out.println("Main " + ": " + i);
-		}
-		new MyThread().start();
+		
+		System.out.println("");
+		System.out.println("Thread Counter: " + threadCounter);
 	}
 
 	public static void myStream() {
@@ -87,6 +86,7 @@ class CountAndPrint implements Runnable {
 	@Override
 	public void run() {
 		for (int i = 0; i < 10; i++) {
+			Main.threadCounter++;
 			System.out.println(this.name + ": " + i);
 		}
 	}
