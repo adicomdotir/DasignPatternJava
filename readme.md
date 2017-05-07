@@ -1,3 +1,5 @@
-* [Adicom.ir](http://www.adicom.ir)
-master, other
-commit for rebase!!
+Design Patterns for Java
+-------------
+This repository is for design patterns with **Java**
+**[adicom.ir][1]**
+[1]: http://www.adicom.ir/
