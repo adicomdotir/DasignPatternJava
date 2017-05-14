@@ -1,5 +1,5 @@
 public class SportsCar extends CarDecorator {
-	public LuxuryCar(Car c) {
+	public SportsCar(Car c) {
 		super(c);
 	}
 	@Override
