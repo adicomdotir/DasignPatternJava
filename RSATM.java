@@ -65,8 +65,6 @@ class FlyingDragon extends Entity {
 /**
  * Created by Yashar.P on 4/17/2017.
  */
-
-
 abstract class Entity { 
 	private int x; // x coordinate in the room
 	private int y; // y coordinate in the room
