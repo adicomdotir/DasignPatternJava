@@ -32,7 +32,13 @@ public class RSATM {
 			new Float(5.1)
 		};
 		test.method(f, new Integer(5));
-	}  
+		
+		main("Hello");
+	}
+	
+	public static void main(String args) {
+		System.out.println(args);
+	}
 }
 
 class TestGeneric<T> {
