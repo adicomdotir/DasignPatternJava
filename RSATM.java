@@ -34,6 +34,7 @@ public class RSATM {
 		test.method(f, new Integer(5));
 		
 		main("Hello");
+		Test t1 = new Test();
 	}
 	
 	public static void main(String args) {
@@ -81,5 +82,17 @@ abstract class Entity {
 	}
 	
 	public void setType(String type) {
+	}
+}
+
+class Test {
+	static {
+		System.out.println("Static");
+	}
+	{
+		System.out.println("Instance");
+	}
+	public Test() {
+		System.out.println("Constructor");
 	}
 }
