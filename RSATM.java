@@ -35,6 +35,8 @@ public class RSATM {
 		
 		main("Hello");
 		Test t1 = new Test();
+		
+		int @new = 5;
 	}
 	
 	public static void main(String args) {
