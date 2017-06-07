@@ -33,3 +33,5 @@ This repository is for design patterns with **Java**
 [Chain Of Responsibility Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Chain%20Of%20Responsibility%20Design%20Pattern)
 
 [Observer Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Observer%20Design%20Pattern)
+
+[Strategy Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Strategy%20Design%20Pattern)
