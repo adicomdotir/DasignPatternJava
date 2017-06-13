@@ -35,3 +35,5 @@ This repository is for design patterns with **Java**
 [Observer Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Observer%20Design%20Pattern)
 
 [Strategy Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Strategy%20Design%20Pattern)
+
+[Command Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Command%20Design%20Pattern)
