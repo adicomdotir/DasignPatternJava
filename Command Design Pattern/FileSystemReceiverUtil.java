@@ -5,7 +5,7 @@ public class FileSystemReceiverUtil {
 		if(osName.contains("Windows")){
 			return new WindowsFileSystemReceiver();
 		} else{
-			return new UnixFileSystemReceiver();
+		return new UnixFileSystemReceiver();
 		}
 	}
 }

@@ -1,3 +1,10 @@
+/**
+* The HelloWorld program implements an application that
+*
+* @author  Adicom
+* @version 1.0
+* @since   2017 
+*/
 public class Computer {
 	//required parameters
 	private String HDD;
