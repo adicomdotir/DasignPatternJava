@@ -2,6 +2,11 @@ import java.util.stream.*;
 import java.util.*;
 
 public class Main {
+	@Override
+	public void finalize(){
+		System.out.println("object is garbage collected");
+	}   
+	
 	public static Integer threadCounter = new Integer(0);
 	public static void main(String[] args) {
 
@@ -49,6 +54,10 @@ public class Main {
 		
 		System.out.println("");
 		System.out.println("Thread Counter: " + threadCounter);
+		
+		Main m = new Main();
+		m = null;
+		System.gc();
 	}
 
 	public static void myStream() {
