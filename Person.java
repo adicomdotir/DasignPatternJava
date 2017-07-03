@@ -12,12 +12,12 @@ public class Person {
 	}
 	
 	@Override
-    public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Person)) {
-            return false;
-        }
-        Person person = (Person) o;
-        return age == person.age && name.equals(person.name);
-    }
+    	public boolean equals(Object o) {
+        	if (o == this) return true;
+        	if (!(o instanceof Person)) {
+            		return false;
+        	}
+        	Person person = (Person) o;
+        	return age == person.age && name.equals(person.name);
+	}
 }

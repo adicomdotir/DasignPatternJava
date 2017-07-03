@@ -84,6 +84,41 @@ public class Main {
 		names.forEach(x -> System.out.println(x));
 		// names.forEach(System.out::println);
 	}
+	
+	/*
+	Given an array of ints, compute recursively the number of times that the 
+	value 11 appears in the array. We'll use the convention of considering 
+	only the part of the array that begins at the given index. In this way, 
+	a recursive call can pass index+1 to move down the array. The initial 
+	call will pass in index as 0.
+
+	array11([1, 2, 11], 0) → 1
+	array11([11, 11], 0) → 2
+	array11([1, 2, 3, 4], 0) → 0
+	*/
+	public int array11(int[] nums, int index) {
+		if(nums.length == 0) return 0;
+		if(nums[index] == 11) return 1 + array11(nums, index+1);
+		else return array11(nums, index + 1);
+	}
+
+	/*
+	Given an array of ints, compute recursively if the array contains somewhere a
+	value followed in the array by that value times 10. We'll use the convention 
+	of considering only the part of the array that begins at the given index. 
+	In this way, a recursive call can pass index+1 to move down the array. 
+	The initial call will pass in index as 0.
+
+	array220([1, 2, 20], 0) → true
+	array220([3, 30], 0) → true
+	array220([3], 0) → false
+	*/
+	public boolean array220(int[] nums, int index) {
+		if(index == nums.length-1) return false;
+		if(nums.length == 1) return false;
+		if(nums[index]*10 == nums[index+1]) return true;
+		else array220(nums, index+1);
+	}
 }
 
 class CountAndPrint implements Runnable {
