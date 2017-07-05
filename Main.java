@@ -117,7 +117,7 @@ public class Main {
 		if(index == nums.length-1) return false;
 		if(nums.length == 1) return false;
 		if(nums[index]*10 == nums[index+1]) return true;
-		else array220(nums, index+1);
+		else return array220(nums, index+1);
 	}
 
 	/*
@@ -174,7 +174,7 @@ public class Main {
 	countAbc("abaxxaba") → 2
 	*/
 	public int countAbc(String str) {
-		if(str.length() < 3) return str;
+		if(str.length() < 3) return 0;
 		if(str.charAt(0) == 'a' && str.charAt(1) == 'b' && str.charAt(2) == 'c') return 1 + countAbc(str.substring(3));
 		if(str.charAt(0) == 'a' && str.charAt(1) == 'b' && str.charAt(2) == 'a') return 1 + countAbc(str.substring(3));
 		return countAbc(str.substring(1));
