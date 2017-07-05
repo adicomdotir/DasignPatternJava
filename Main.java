@@ -5,8 +5,8 @@ public class Main {
 	@Override
 	public void finalize(){
 		System.out.println("object is garbage collected");
-	}   
-	
+	}
+
 	public static Integer threadCounter = new Integer(0);
 	public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class Main {
 		System.out.println(c1.equals(c2));
 		c2 = new Circle(2);
 		System.out.println(c1.equals(c2));
-		
+
 		Computer pc = ComputerFactory.getComputer("pc","2 GB","500 GB","2.4 GHz");
 		Computer server = ComputerFactory.getComputer("server","16 GB","1 TB","2.9 GHz");
 		System.out.println("Factory PC Config::" + pc);
@@ -46,15 +46,15 @@ public class Main {
 			t.start();
 			try {
 				t.join();
-			} 
+			}
 			catch(Exception e) {
 				e.getMessage();
 			}
 		}
-		
+
 		System.out.println("");
 		System.out.println("Thread Counter: " + threadCounter);
-		
+
 		Main m = new Main();
 		m = null;
 		System.gc();
@@ -84,12 +84,12 @@ public class Main {
 		names.forEach(x -> System.out.println(x));
 		// names.forEach(System.out::println);
 	}
-	
+
 	/*
-	Given an array of ints, compute recursively the number of times that the 
-	value 11 appears in the array. We'll use the convention of considering 
-	only the part of the array that begins at the given index. In this way, 
-	a recursive call can pass index+1 to move down the array. The initial 
+	Given an array of ints, compute recursively the number of times that the
+	value 11 appears in the array. We'll use the convention of considering
+	only the part of the array that begins at the given index. In this way,
+	a recursive call can pass index+1 to move down the array. The initial
 	call will pass in index as 0.
 
 	array11([1, 2, 11], 0) → 1
@@ -104,9 +104,9 @@ public class Main {
 
 	/*
 	Given an array of ints, compute recursively if the array contains somewhere a
-	value followed in the array by that value times 10. We'll use the convention 
-	of considering only the part of the array that begins at the given index. 
-	In this way, a recursive call can pass index+1 to move down the array. 
+	value followed in the array by that value times 10. We'll use the convention
+	of considering only the part of the array that begins at the given index.
+	In this way, a recursive call can pass index+1 to move down the array.
 	The initial call will pass in index as 0.
 
 	array220([1, 2, 20], 0) → true
@@ -119,9 +119,9 @@ public class Main {
 		if(nums[index]*10 == nums[index+1]) return true;
 		else array220(nums, index+1);
 	}
-	
+
 	/*
-	Given a string, compute recursively a new string where identical chars that 
+	Given a string, compute recursively a new string where identical chars that
 	are adjacent in the original string are separated from each other by a "*".
 
 	pairStar("hello") → "hel*lo"
@@ -133,9 +133,9 @@ public class Main {
 		if(str.charAt(0) == str.charAt(1)) return str.charAt(0) + "*" + pairStar(str.substring(1));
 		else return str.substring(0, 1) + pairStar(str.substring(1));
 	}
-	
+
 	/*
-	Given a string, compute recursively a new string where all the lowercase 'x' 
+	Given a string, compute recursively a new string where all the lowercase 'x'
 	chars have been moved to the end of the string.
 
 	endX("xxre") → "rexx"
@@ -147,11 +147,11 @@ public class Main {
 		if(str.charAt(0) == 'x') return endX(str.substring(1)) + 'x';
 		else return str.substring(0,1) + endX(str.substring(1));
 	}
-	
+
 	/*
-	We'll say that a "pair" in a string is two instances of a char separated 
-	by a char. So "AxA" the A's make a pair. Pair's can overlap, so "AxAxA" 
-	contains 3 pairs -- 2 for A and 1 for x. Recursively compute the number 
+	We'll say that a "pair" in a string is two instances of a char separated
+	by a char. So "AxA" the A's make a pair. Pair's can overlap, so "AxAxA"
+	contains 3 pairs -- 2 for A and 1 for x. Recursively compute the number
 	of pairs in the given string.
 
 	countPairs("axa") → 1
@@ -163,6 +163,21 @@ public class Main {
 		if (str.charAt(0) == str.charAt(2))
 			return 1 + countPairs(str.substring(1));
 		return countPairs(str.substring(1));
+	}
+
+	/*
+	Count recursively the total number of "abc" and "aba" substrings that
+	appear in the given string.
+
+	countAbc("abc") → 1
+	countAbc("abcxxabc") → 2
+	countAbc("abaxxaba") → 2
+	*/
+	public int countAbc(String str) {
+		if(str.length() < 3) return str;
+		if(str.charAt(0) == 'a' && str.charAt(1) == 'b' && str.charAt(2) == 'c') return 1 + countAbc(str.substring(3));
+		if(str.charAt(0) == 'a' && str.charAt(1) == 'b' && str.charAt(2) == 'a') return 1 + countAbc(str.substring(3));
+		return countAbc(str.substring(1));
 	}
 
 }
@@ -184,7 +199,7 @@ class CountAndPrint implements Runnable {
 
 class MyThread extends Thread {
 	@Override
-	public void run() {  
-   		System.out.println("My thread is in running state.");  
-  	}   
+	public void run() {
+   		System.out.println("My thread is in running state.");
+  	}
 }
