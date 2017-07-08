@@ -285,7 +285,32 @@ public class Main {
 	strCopies("catcowcat", "cow", 1) → true
 	*/
 	public boolean strCopies(String str, String sub, int n) {
-		  
+		int len = sub.length();
+		if(str.length() < len) {
+			if(n == 0) return true;
+			else return false;
+		}
+		if(str.substring(0,len).equals(sub)) return strCopies(str.substring(1), sub, n-1);
+		else return strCopies(str.substring(1), sub, n);
+	}
+
+	/*
+	Given a string and a non-empty substring sub, compute recursively 
+	the largest substring which starts and ends with sub and return 
+	its length.
+
+	strDist("catcowcat", "cat") → 9
+	strDist("catcowcat", "cow") → 3
+	strDist("cccatcowcatxx", "cat") → 9
+	*/
+	public int strDist(String str, String sub) {
+  		int len = sub.length();
+  		if(str.length() < len) return 0;
+  		if(str.substring(0,len).equals(sub) && str.substring(str.length() - len).equals(sub))
+  			return str.length();
+  		if(!str.substring(0,len).equals(sub)) 
+  			return strDist(str.substring(1), sub);
+  		return strDist(str.substring(0, str.length() - 1), sub);
 	}
 }
 
