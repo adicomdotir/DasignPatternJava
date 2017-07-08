@@ -241,6 +241,23 @@ public class Main {
 		if(str.charAt(0) == '(' && str.charAt(len-1) != ')') return parenBit(str.substring(0,len-1));
 		else return parenBit(str.substring(1));
 	}
+
+	/*
+	Given a string, return true if it is a nesting of zero or more pairs
+	of parenthesis, like "(())" or "((()))". Suggestion: check the first
+	and last chars, and then recur on what's inside them.
+
+	nestParen("(())") → true
+	nestParen("((()))") → true
+	nestParen("(((x))") → false
+	*/
+	public boolean nestParen(String str) {
+		int len = str.length();
+    	if(len==0) return true;
+		if(len==1) return false;
+		if(str.charAt(0)=='(' && str.charAt(len-1)==')') return nestParen(str.substring(1,len-1));
+		else return false;
+	}
 	
 	/*
 	Given a string and a non-empty substring sub, compute recursively 
@@ -256,8 +273,7 @@ public class Main {
 		if(str.length() < len) return 0;
 		if(str.substring(0,len).equals(sub)) return 1 + strCount(str.substring(len), sub);
 		else return strCount(str.substring(1), sub);
-	}	
-
+	}
 }
 
 class CountAndPrint implements Runnable {
