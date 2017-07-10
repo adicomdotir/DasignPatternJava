@@ -239,7 +239,6 @@ public class Main {
 		if(len < 2) return "";
 		if(str.charAt(0) == '(' && str.charAt(len-1) == ')') return str;
 		if(str.charAt(0) == '(' && str.charAt(len-1) != ')') return parenBit(str.substring(0,len-1));
-		else return parenBit(str.substring(1));
 	}
 
 	/*
@@ -420,7 +419,20 @@ public class Main {
 	wordAppend(["a", "", "a"]) → "a"
 	*/
 	public String wordAppend(String[] strings) {
-		
+		Map<String, Integer> map = new HashMap<>();
+		String result = "";
+		for(int i=0; i<strings.length; i++) {
+			String key = strings[i];
+			if(map.containsKey(key)) {
+				int value = map.get(key);
+				value++;
+				if(value%2 == 0) {
+					result += key;
+				}
+				map.put(key, value);
+			} else	map.put(key, 1);
+		}
+		return result;
 	}
 }
 
