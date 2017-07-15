@@ -538,6 +538,83 @@ public class Main {
 		.filter(s -> s.length()<4)
 		.collect(Collectors.toList());
 	}
+	
+	/*
+	Given a list of strings, return a list of the strings, 
+	omitting any string that contains a "z". 
+	(Note: the str.contains(x) method returns a boolean)
+
+	noZ(["aaa", "bbb", "aza"]) → ["aaa", "bbb"]
+	noZ(["hziz", "hzello", "hi"]) → ["hi"]
+	noZ(["hello", "howz", "are", "youz"]) → ["hello", "are"]
+	 */
+	 public List<String> noZ(List<String> strings) {
+  		return strings.stream()
+		.filter(s -> !s.contains("z"))
+		.collect(Collectors.toList());
+	}
+
+	/*
+	Given a list of strings, return a list of the strings, 
+	omitting any string length 3 or 4.
+
+	no34(["a", "bb", "ccc"]) → ["a", "bb"]
+	no34(["a", "bb", "ccc", "dddd"]) → ["a", "bb"]
+	no34(["ccc", "dddd", "apple"]) → ["apple"]
+	*/
+	public List<String> no34(List<String> strings) {
+  		return strings.stream()
+		.filter(s -> s.length()!=3 && s.length()!=4)
+		.collect(Collectors.toList());
+	}
+
+	/*
+	Given a list of strings, return a list where each string 
+	has "y" added at its end, omitting any resulting strings 
+	that contain "yy" as a substring anywhere.
+
+	noYY(["a", "b", "c"]) → ["ay", "by", "cy"]
+	noYY(["a", "b", "cy"]) → ["ay", "by"]
+	noYY(["xx", "ya", "zz"]) → ["xxy", "yay", "zzy"]
+	*/
+	public List<String> noYY(List<String> strings) {
+  		return strings.stream()
+		.map(s -> s += "y")
+		.filter(s -> !s.contains("yy"))
+		.collect(Collectors.toList());
+	}
+
+	/*
+	Given a list of non-negative integers, return a list of 
+	those numbers multiplied by 2, omitting any of the 
+	resulting numbers that end in 2.
+
+	two2([1, 2, 3]) → [4, 6]
+	two2([2, 6, 11]) → [4]
+	two2([0]) → [0]
+	*/
+	public List<Integer> two2(List<Integer> nums) {
+		return nums.stream()
+		.map(n -> n*2)
+		.filter(n -> n%10!=2)
+		.collect(Collectors.toList());
+	}
+
+	/*
+	Given a list of integers, return a list of those numbers 
+	squared and the product added to 10, omitting any of the 
+	resulting numbers that end in 5 or 6.
+
+	square56([3, 1, 4]) → [19, 11]
+	square56([1]) → [11]
+	square56([2]) → [14]
+	*/
+	public List<Integer> square56(List<Integer> nums) {
+  		return nums.stream()
+		.map(n -> n*n + 10)
+		.filter(n -> n%10!=5 && n%10!=6)
+		.collect(Collectors.toList());
+	}
 
 }
 
