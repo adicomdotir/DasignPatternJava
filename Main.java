@@ -179,9 +179,9 @@ public class Main {
 		if(str.charAt(0) == 'a' && str.charAt(1) == 'b' && str.charAt(2) == 'a') return 1 + countAbc(str.substring(3));
 		return countAbc(str.substring(1));
 	}
-	
+
 	/*
-	Given a string, compute recursively (no loops) the number of "11" 
+	Given a string, compute recursively (no loops) the number of "11"
 	substrings in the string. The "11" substrings should not overlap.
 
 	count11("11abc11") → 2
@@ -193,25 +193,25 @@ public class Main {
 		if(str.charAt(0)=='1' && str.charAt(1)=='1') return 1 + count11(str.substring(2));
 		else return count11(str.substring(1));
 	}
-	
+
 	/*
 	Given a string, return recursively a "cleaned" string where adjacent
-	chars that are the same have been reduced to a single char. 
+	chars that are the same have been reduced to a single char.
 	So "yyzzza" yields "yza".
 
 	stringClean("yyzzza") → "yza"
 	stringClean("abbbcdd") → "abcd"
-	stringClean("Hello") → "Helo" 
+	stringClean("Hello") → "Helo"
 	*/
 	public String stringClean(String str) {
 		if(str.length() < 2) return str;
 		if(str.charAt(0)==str.charAt(1)) return stringClean(str.substring(1));
 		else return str.substring(0,1) + stringClean(str.substring(1));
 	}
-	
+
 	/*
-	Given a string, compute recursively the number of times lowercase 
-	"hi" appears in the string, however do not count "hi" that have 
+	Given a string, compute recursively the number of times lowercase
+	"hi" appears in the string, however do not count "hi" that have
 	an 'x' immedately before them.
 
 	countHi2("ahixhi") → 1
@@ -224,7 +224,7 @@ public class Main {
 		if(str.charAt(0) == 'x' && str.charAt(1) == 'h' && str.charAt(2) == 'i') return countHi2(str.substring(2));
 		else return countHi2(str.substring(1));
 	}
-	
+
 	/*
 	Given a string that contains a single pair of parenthesis, compute
 	recursively a new string made of only of the parenthesis and their
@@ -257,10 +257,10 @@ public class Main {
 		if(str.charAt(0)=='(' && str.charAt(len-1)==')') return nestParen(str.substring(1,len-1));
 		else return false;
 	}
-	
+
 	/*
-	Given a string and a non-empty substring sub, compute recursively 
-	the number of times that sub appears in the string, without the 
+	Given a string and a non-empty substring sub, compute recursively
+	the number of times that sub appears in the string, without the
 	sub strings overlapping.
 
 	strCount("catcowcat", "cat") → 2
@@ -275,8 +275,8 @@ public class Main {
 	}
 
 	/*
-	Given a string and a non-empty substring sub, compute recursively 
-	if at least n copies of sub appear in the string somewhere, 
+	Given a string and a non-empty substring sub, compute recursively
+	if at least n copies of sub appear in the string somewhere,
 	possibly with overlapping. N will be non-negative.
 
 	strCopies("catcowcat", "cat", 2) → true
@@ -294,8 +294,8 @@ public class Main {
 	}
 
 	/*
-	Given a string and a non-empty substring sub, compute recursively 
-	the largest substring which starts and ends with sub and return 
+	Given a string and a non-empty substring sub, compute recursively
+	the largest substring which starts and ends with sub and return
 	its length.
 
 	strDist("catcowcat", "cat") → 9
@@ -307,15 +307,15 @@ public class Main {
   		if(str.length() < len) return 0;
   		if(str.substring(0,len).equals(sub) && str.substring(str.length() - len).equals(sub))
   			return str.length();
-  		if(!str.substring(0,len).equals(sub)) 
+  		if(!str.substring(0,len).equals(sub))
   			return strDist(str.substring(1), sub);
   		return strDist(str.substring(0, str.length() - 1), sub);
 	}
-	
+
 	/*
 	Given an array of strings, return a Map<String, Integer> containing
-	a key for every different string in the array, always with the value 0. 
-	For example the string "hello" makes the pair "hello":0. We'll do more 
+	a key for every different string in the array, always with the value 0.
+	For example the string "hello" makes the pair "hello":0. We'll do more
 	complicated counting later, but for this problem the value is simply 0.
 
 	word0(["a", "b", "a", "b"]) → {"a": 0, "b": 0}
@@ -329,10 +329,10 @@ public class Main {
 		}
 		return map;
 	}
-	
+
 	/*
 	Given an array of strings, return a Map<String, Integer> containing
-	a key for every different string in the array, and the value is 
+	a key for every different string in the array, and the value is
 	that string's length.
 
 	wordLen(["a", "bb", "a", "bb"]) → {"bb": 2, "a": 1}
@@ -346,10 +346,10 @@ public class Main {
 		}
 		return map;
 	}
-	
+
 	/*
-	Given an array of non-empty strings, create and return a 
-	Map<String, String> as follows: for each string add its first 
+	Given an array of non-empty strings, create and return a
+	Map<String, String> as follows: for each string add its first
 	character as a key with its last character as the value.
 
 	pairs(["code", "bug"]) → {"b": "g", "c": "e"}
@@ -363,10 +363,10 @@ public class Main {
 		}
 		return map;
 	}
-	
+
 	/*
-	The classic word-count algorithm: given an array of strings, 
-	return a Map<String, Integer> with a key for each different 
+	The classic word-count algorithm: given an array of strings,
+	return a Map<String, Integer> with a key for each different
 	string, with the value the number of times that string appears
 	in the array.
 
@@ -385,15 +385,17 @@ public class Main {
 		}
 		return map;
 	}
-	
+
 	/*
 	Given an array of non-empty strings, return a Map<String, String>
-	with a key for every different first character seen, with the 
-	value of all the strings starting with that character appended 
+	with a key for every different first character seen, with the
+	value of all the strings starting with that character appended
 	together in the order they appear in the array.
 
-	firstChar(["salt", "tea", "soda", "toast"]) → {"s": "saltsoda", "t": "teatoast"}
-	firstChar(["aa", "bb", "cc", "aAA", "cCC", "d"]) → {"a": "aaaAA", "b": "bb", "c": "cccCC", "d": "d"}
+	firstChar(["salt", "tea", "soda", "toast"]) →
+	{"s": "saltsoda", "t": "teatoast"}
+	firstChar(["aa", "bb", "cc", "aAA", "cCC", "d"]) →
+	{"a": "aaaAA", "b": "bb", "c": "cccCC", "d": "d"}
 	firstChar([]) → {}
 	*/
 	public Map<String, String> firstChar(String[] strings) {
@@ -409,9 +411,9 @@ public class Main {
 	}
 
 	/*
-	Loop over the given array of strings to build a result string 
-	like this: when a string appears the 2nd, 4th, 6th, etc. time 
-	in the array, append the string to the result. Return the 
+	Loop over the given array of strings to build a result string
+	like this: when a string appears the 2nd, 4th, 6th, etc. time
+	in the array, append the string to the result. Return the
 	empty string if no string appears a 2nd time.
 
 	wordAppend(["a", "b", "a"]) → "a"
@@ -434,13 +436,14 @@ public class Main {
 		}
 		return result;
 	}
-	
+
 	/*
-	Given an array of strings, return a Map<String, Boolean> 
-	where each different string is a key and its value is 
+	Given an array of strings, return a Map<String, Boolean>
+	where each different string is a key and its value is
 	true if that string appears 2 or more times in the array.
 
-	wordMultiple(["a", "b", "a", "c", "b"]) → {"a": true, "b": true, "c": false}
+	wordMultiple(["a", "b", "a", "c", "b"]) →
+	{"a": true, "b": true, "c": false}
 	wordMultiple(["c", "b", "a"]) → {"a": false, "b": false, "c": false}
 	wordMultiple(["c", "c", "c", "c"]) → {"c": true}
 	*/
@@ -454,26 +457,26 @@ public class Main {
 		}
 		return map;
 	}
-	
+
 	/*
-	list.replaceAll(lambda) -- calls the lambda once for each item in the 
-	list, storing the result back into the list (or other type of collection). 
+	list.replaceAll(lambda) -- calls the lambda once for each item in the
+	list, storing the result back into the list (or other type of collection).
 	e.g. nums.replaceAll(n -> n * 2);
 
-	list.removeIf(lambda) -- calls the lambda once for each item in the 
-	collection, removing each item where the lambda returns true. 
+	list.removeIf(lambda) -- calls the lambda once for each item in the
+	collection, removing each item where the lambda returns true.
 	e.g. nums.removeIf(n -> n < 0);
 
-	Simple Lambda Examples -- the data types are inferred from the context 
-	and from the type of the expression following the "->": 
-	n -> n * 2 -- takes Integer, returns Integer 
-	n -> n < 0 && n >= -10 -- takes Integer, returns boolean 
-	s -> s.length()  -- takes String, returns Integer 
+	Simple Lambda Examples -- the data types are inferred from the context
+	and from the type of the expression following the "->":
+	n -> n * 2 -- takes Integer, returns Integer
+	n -> n < 0 && n >= -10 -- takes Integer, returns boolean
+	s -> s.length()  -- takes String, returns Integer
 	s -> s.startsWith("hi") -- takes String, returns boolean
 
-	The Java stream system provides more complicated lambda features. 
-	The stream calls do not modify the original list, returning a new data 
-	structure of the results. Note that the boolean logic of filter() is 
+	The Java stream system provides more complicated lambda features.
+	The stream calls do not modify the original list, returning a new data
+	structure of the results. Note that the boolean logic of filter() is
 	the opposite of removeIf().
 
 	  List<Integer> nums = -something-;
@@ -482,9 +485,9 @@ public class Main {
 		.filter(n -> n >= 0)
 		.collect(Collectors.toList());
 	*/
-	
+
 	/*
-	Given a list of integers, return a list of the integers, omitting any 
+	Given a list of integers, return a list of the integers, omitting any
 	that are less than 0.
 
 	noNeg([1, -2]) → [1]
@@ -496,9 +499,9 @@ public class Main {
 		.filter(n -> n>=0)
 		.collect(Collectors.toList());
 	}
-	
+
 	/*
-	Given a list of non-negative integers, return a list of those numbers 
+	Given a list of non-negative integers, return a list of those numbers
 	except omitting any that end with 9. (Note: % by 10)
 
 	no9([1, 2, 19]) → [1, 2]
@@ -510,9 +513,9 @@ public class Main {
 		.filter(n -> n%10!=9)
 		.collect(Collectors.toList());
 	}
-	
-	/*	
-	Given a list of integers, return a list of those numbers, omitting 
+
+	/*
+	Given a list of integers, return a list of those numbers, omitting
 	any that are between 13 and 19 inclusive.
 
 	noTeen([12, 13, 19, 20]) → [12, 20]
@@ -524,9 +527,9 @@ public class Main {
 		.filter(n -> n<13 || n>19)
 		.collect(Collectors.toList());
 	}
-	
+
 	/*
-	Given a list of strings, return a list of the strings, omitting 
+	Given a list of strings, return a list of the strings, omitting
 	any string length 4 or more.
 
 	noLong(["this", "not", "too", "long"]) → ["not", "too"]
@@ -538,10 +541,10 @@ public class Main {
 		.filter(s -> s.length()<4)
 		.collect(Collectors.toList());
 	}
-	
+
 	/*
-	Given a list of strings, return a list of the strings, 
-	omitting any string that contains a "z". 
+	Given a list of strings, return a list of the strings,
+	omitting any string that contains a "z".
 	(Note: the str.contains(x) method returns a boolean)
 
 	noZ(["aaa", "bbb", "aza"]) → ["aaa", "bbb"]
@@ -555,7 +558,7 @@ public class Main {
 	}
 
 	/*
-	Given a list of strings, return a list of the strings, 
+	Given a list of strings, return a list of the strings,
 	omitting any string length 3 or 4.
 
 	no34(["a", "bb", "ccc"]) → ["a", "bb"]
@@ -569,8 +572,8 @@ public class Main {
 	}
 
 	/*
-	Given a list of strings, return a list where each string 
-	has "y" added at its end, omitting any resulting strings 
+	Given a list of strings, return a list where each string
+	has "y" added at its end, omitting any resulting strings
 	that contain "yy" as a substring anywhere.
 
 	noYY(["a", "b", "c"]) → ["ay", "by", "cy"]
@@ -585,8 +588,8 @@ public class Main {
 	}
 
 	/*
-	Given a list of non-negative integers, return a list of 
-	those numbers multiplied by 2, omitting any of the 
+	Given a list of non-negative integers, return a list of
+	those numbers multiplied by 2, omitting any of the
 	resulting numbers that end in 2.
 
 	two2([1, 2, 3]) → [4, 6]
@@ -601,8 +604,8 @@ public class Main {
 	}
 
 	/*
-	Given a list of integers, return a list of those numbers 
-	squared and the product added to 10, omitting any of the 
+	Given a list of integers, return a list of those numbers
+	squared and the product added to 10, omitting any of the
 	resulting numbers that end in 5 or 6.
 
 	square56([3, 1, 4]) → [19, 11]
@@ -615,19 +618,21 @@ public class Main {
 		.filter(n -> n%10!=5 && n%10!=6)
 		.collect(Collectors.toList());
 	}
-	
+
 	/*
-	We'll say that 2 strings "match" if they are non-empty and 
-	their first chars are the same. Loop over and then return 
-	the given array of non-empty strings as follows: if a string 
-	matches an earlier string in the array, swap the 2 strings 
-	in the array. When a position in the array has been swapped, 
-	it no longer matches anything. Using a map, this can be solved 
+	We'll say that 2 strings "match" if they are non-empty and
+	their first chars are the same. Loop over and then return
+	the given array of non-empty strings as follows: if a string
+	matches an earlier string in the array, swap the 2 strings
+	in the array. When a position in the array has been swapped,
+	it no longer matches anything. Using a map, this can be solved
 	making just one pass over the array. More difficult than it looks.
 
 	allSwap(["ab", "ac"]) → ["ac", "ab"]
-	allSwap(["ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"]) → ["ay", "by", "cy", "cx", "bx", "ax", "azz", "aaa"]
-	allSwap(["ax", "bx", "ay", "by", "ai", "aj", "bx", "by"]) → ["ay", "by", "ax", "bx", "aj", "ai", "by", "bx"]
+	allSwap(["ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"]) →
+	["ay", "by", "cy", "cx", "bx", "ax", "azz", "aaa"]
+	allSwap(["ax", "bx", "ay", "by", "ai", "aj", "bx", "by"]) →
+	["ay", "by", "ax", "bx", "aj", "ai", "by", "bx"]
 	 */
 	public String[] allSwap(String[] strings) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -645,7 +650,42 @@ public class Main {
 		}
 		return strings;
 	}
-}
+
+	/*
+	We'll say that 2 strings "match" if they are non-empty and their first
+	chars are the same. Loop over and then return the given array of non-empty
+	strings as follows: if a string matches an earlier string in the array,
+	swap the 2 strings in the array. A particular first char can only cause 1
+	swap, so once a char has caused a swap, its later swaps are disabled.
+	Using a map, this can be solved making just one pass over the array.
+	More difficult than it looks.
+
+	firstSwap(["ab", "ac"]) → ["ac", "ab"]
+	firstSwap(["ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"]) →
+	["ay", "by", "cy", "cx", "bx", "ax", "aaa", "azz"]
+	firstSwap(["ax", "bx", "ay", "by", "ai", "aj", "bx", "by"]) →
+	["ay", "by", "ax", "bx", "ai", "aj", "bx", "by"]
+	*/
+	public String[] firstSwap(String[] strings) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		for (int i = 0; i < strings.length; i++) {
+			String key = String.valueOf(strings[i].charAt(0));
+			if (map.containsKey(key)) {
+				int val = map.get(key);
+				if (val == -1) {
+					continue;
+				}
+				int    pos   = map.get(key);
+				String tmp   = strings[pos];
+				strings[pos] = strings[i];
+				strings[i]   = tmp ;
+				map.put(key, -1);
+			} else {
+				map.put(key, i);
+			}
+		}
+		return strings;
+	}
 
 class CountAndPrint implements Runnable {
 	private final String name;
