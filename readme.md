@@ -39,3 +39,11 @@ This repository is for design patterns with **Java**
 [Command Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Command%20Design%20Pattern)
 
 [State Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/State%20Design%20Pattern)
+
+[Visitor Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/VisitorDesignPattern)
+
+[Interpreter Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/InterpreterDesignPattern)
+
+[Iterator Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/IteratorDesignPattern)
+
+[Memento Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/MementoDesignPattern)
