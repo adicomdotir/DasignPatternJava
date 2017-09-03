@@ -9,11 +9,18 @@ public class Array3 {
 	squareUp(4) ? [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
 	*/
 	public int[] squareUp(int n) {
-		int[] newArr = new int[n*n];
-		for (int i=n-1; i<newArr.length; i+=n) {
-			for (int j=i; j<i-i/n; j--) {
-				
+		int[] result = new int[n * n];
+		int x = n-1, pass = 1, index = 0;
+		if(n == 0) { return result; }
+		for(int i = n-1; i < result.length; i+=n) {
+			index = i;
+			for(int k = 1; k <= pass; k++) {
+				if(k == 0) { break; }
+				result[index] = k;
+				index--;
 			}
+			pass++;
 		}
+		return result;
 	}
 }
