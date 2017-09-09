@@ -62,9 +62,9 @@ public class Array3 {
 				if (nums[i + count] == nums[j]) {
 					count++;
 				} else {
-					if (count > max) max = count;
 					count = 0;
 				}
+				if (count > max) max = count;
 			}
 		}
 		return max;
