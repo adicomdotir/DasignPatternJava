@@ -97,6 +97,29 @@ public class Recursion2 {
 	groupSumClump(0, [2, 4, 4, 8], 14) → false
 	*/
 	public boolean groupSumClump(int start, int[] nums, int target) {
-		
+		return false;
+	}
+
+	/*
+	Given an array of ints, is it possible to divide the ints into two groups, 
+	so that the sums of the two groups are the same. Every int must be in one 
+	group or the other. Write a recursive helper method that takes whatever 
+	arguments you like, and make the initial call to your recursive helper 
+	from splitArray(). (No loops needed.)
+
+	splitArray([2, 2]) → true
+	splitArray([2, 3]) → false
+	splitArray([5, 2, 3]) → true
+	*/
+	public boolean splitArray(int[] nums) {	
+		return sidesAreEqual(nums, 0, 0);
+	}
+	// recursive helper method
+	public boolean sidesAreEqual(int[] nums, int i, int balance) {
+		if(i == nums.length)
+			return (balance == 0);
+		if(sidesAreEqual(nums, i + 1, balance + nums[i]))
+			return true;
+		return sidesAreEqual(nums, i + 1, balance - nums[i]);
 	}
 }
