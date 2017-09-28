@@ -65,7 +65,10 @@ for (var i = 1; i < size; i++) {
 			teamsInfo[teams[size - j - 1]].gf += gB;
 			teamsInfo[teams[size - j - 1]].ga += gA;
 		}
-		str += teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name + ',';
+		str = teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name;
+        var div = document.createElement("div");
+        div.appendChild(document.createTextNode(str));
+        document.getElementById('figure').appendChild(div);
 	}
 	// console.log(str);
     swap();
