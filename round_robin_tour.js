@@ -30,6 +30,9 @@ function swap() {
 
 for (var i = 1; i < size; i++) {
 	var str = '';
+  var header = document.createElement("h3");
+        header.appendChild(document.createTextNode("Week" + i));
+  document.getElementById('figure').appendChild(header);
 	for (var j = 0; j < size / 2; j++) {
 		var gA = Math.floor((Math.random() * 5));
 		var gB = Math.floor((Math.random() * 5));
@@ -70,6 +73,7 @@ for (var i = 1; i < size; i++) {
         div.appendChild(document.createTextNode(str));
         document.getElementById('figure').appendChild(div);
 	}
+    
 	// console.log(str);
     swap();
 }
