@@ -56,14 +56,23 @@ function swap() {
 }
 
 for (var i = 1; i < size * 2 - 1; i++) {
+	var col = 0;
 	var str = '';
   	var header = document.createElement("b");
     header.appendChild(document.createTextNode("Week" + i));
-	document.getElementById('figure').appendChild(header);
+	if (col === 0) {
+		document.getElementById('figure4').appendChild(header);
+	} else if (col === 1) {
+		document.getElementById('figure3').appendChild(header);
+	} else if (col === 2) {
+		document.getElementById('figure2').appendChild(header);
+	} else if (col === 3) {
+		document.getElementById('figure').appendChild(header);
+	}
 	for (var j = 0; j < size / 2; j++) {
 		var gA = Math.floor(((Math.random() * 5) + (teamsInfo[teams[j]].overall / 20)) / 2);
 		var gB = Math.floor(((Math.random() * 5) + (teamsInfo[teams[size - j - 1]].overall / 20)) / 2);
-		console.log(gA);
+		// console.log(gA);
 		if (gA === gB) {
 			teamsInfo[teams[j]].game++;
 			teamsInfo[teams[j]].draw++;
@@ -99,9 +108,20 @@ for (var i = 1; i < size * 2 - 1; i++) {
 		str = teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name;
         var div = document.createElement("div");
         div.appendChild(document.createTextNode(str));
-        document.getElementById('figure').appendChild(div);
+		if (col === 0) {
+			document.getElementById('figure4').appendChild(div);
+		} else if (col === 1) {
+			document.getElementById('figure3').appendChild(div);
+		} else if (col === 2) {
+			document.getElementById('figure2').appendChild(div);
+		} else if (col === 3) {
+			document.getElementById('figure').appendChild(div);
+		}
 	}
-
+	col++;
+	if (col === 4) {
+		col = 0;
+	}
 	// console.log(str);
     swap();
 }
