@@ -11,7 +11,7 @@ function Team(name, overall) {
 	this.overall = overall;
 }
 
-var size = 18;
+var size = 4;
 var teams = [];
 for (var i = 0; i < size; i++) {
 	teams[i] = i;
@@ -21,23 +21,7 @@ var t1 = new Team('SL Benfica', 79);
 var t2 = new Team('FC Porto', 79);
 var t3 = new Team('SC Braga', 75);
 var t4 = new Team('Sporting CP', 78);
-var t5 = new Team('V. Guimarães', 74);
-var t6 = new Team('V. Setúbal', 72);
-var t7 = new Team('Arouca', 71);
-var t8 = new Team('Ave	Rio Ave', 72);
-var t9 = new Team('Chaves', 71);
-var t10 = new Team('Paços Ferreira', 71);
-var t11 = new Team('Boavista', 71);
-var t12 = new Team('Marítimo', 71);
-var t13 = new Team('Belenenses', 70);
-var t14 = new Team('Estoril Praia', 69);
-var t15 = new Team('Moreirense', 69);
-var t16 = new Team('F. Santa Maria', 69);
-var t17 = new Team('Nacional', 69);
-var t18 = new Team('Tondela', 68);
-teamsInfo.push(t1, t2, t3, t4, t5, t6,
-				t7, t8, t9, t10, t11, t12,
-				t13, t14, t15, t16, t17, t18);
+teamsInfo.push(t1, t2, t3, t4);
 // var teamsInfo = [];
 // var barca = new Team('Barcelona', 85);
 // var rm = new Team('RealMadrid', 86);
@@ -55,11 +39,11 @@ function swap() {
 	teams[1] = temp;
 }
 
+var col = 0;
 for (var i = 1; i < size * 2 - 1; i++) {
-	var col = 0;
 	var str = '';
-  	var header = document.createElement("b");
-    header.appendChild(document.createTextNode("Week" + i));
+  	var header = document.createElement("div");
+    header.appendChild(document.createTextNode("Week " + i));
 	if (col === 0) {
 		document.getElementById('figure4').appendChild(header);
 	} else if (col === 1) {
@@ -70,8 +54,8 @@ for (var i = 1; i < size * 2 - 1; i++) {
 		document.getElementById('figure').appendChild(header);
 	}
 	for (var j = 0; j < size / 2; j++) {
-		var gA = Math.floor(((Math.random() * 5) + (teamsInfo[teams[j]].overall / 20)) / 2);
-		var gB = Math.floor(((Math.random() * 5) + (teamsInfo[teams[size - j - 1]].overall / 20)) / 2);
+		var gA = Math.floor((Math.random() * teamsInfo[teams[j]].overall / 20));
+		var gB = Math.floor((Math.random() * teamsInfo[teams[size - j - 1]].overall / 20));
 		// console.log(gA);
 		if (gA === gB) {
 			teamsInfo[teams[j]].game++;
@@ -105,24 +89,44 @@ for (var i = 1; i < size * 2 - 1; i++) {
 			teamsInfo[teams[size - j - 1]].gf += gB;
 			teamsInfo[teams[size - j - 1]].ga += gA;
 		}
-		str = teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name;
-        var div = document.createElement("div");
-        div.appendChild(document.createTextNode(str));
+		/*
+		<div class="col-md-5">Barcelona</div>
+        <div class="col-md-2">2-2</div>
+        <div class="col-md-5">RealMadrid</div>
+		*/
+		// str = teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name;
+        var div1 = document.createElement("div");
+		div1.setAttribute('class', 'col-md-5');
+        div1.appendChild(document.createTextNode(teamsInfo[teams[j]].name));
+		var div2 = document.createElement("div");
+		div2.setAttribute('class', 'col-md-2');
+        div2.appendChild(document.createTextNode(gA + '-' + gB));
+		var div3 = document.createElement("div");
+		div3.setAttribute('class', 'col-md-5');
+        div3.appendChild(document.createTextNode(teamsInfo[teams[size - j - 1]].name));
 		if (col === 0) {
-			document.getElementById('figure4').appendChild(div);
+			document.getElementById('figure4').appendChild(div1);
+			document.getElementById('figure4').appendChild(div2);
+			document.getElementById('figure4').appendChild(div3);
 		} else if (col === 1) {
-			document.getElementById('figure3').appendChild(div);
+			document.getElementById('figure3').appendChild(div1);
+			document.getElementById('figure3').appendChild(div2);
+			document.getElementById('figure3').appendChild(div3);
 		} else if (col === 2) {
-			document.getElementById('figure2').appendChild(div);
+			document.getElementById('figure2').appendChild(div1);
+			document.getElementById('figure2').appendChild(div2);
+			document.getElementById('figure2').appendChild(div3);
 		} else if (col === 3) {
-			document.getElementById('figure').appendChild(div);
+			document.getElementById('figure').appendChild(div1);
+			document.getElementById('figure').appendChild(div2);
+			document.getElementById('figure').appendChild(div3);
 		}
 	}
+	console.log(col);
 	col++;
 	if (col === 4) {
 		col = 0;
 	}
-	// console.log(str);
     swap();
 }
 sort();
@@ -155,9 +159,9 @@ function sort() {
 	for (var i = 0; i < size; i++) {
 		for (var j = i + 1; j < size; j++) {
 			if (teamsInfo[j].points === teamsInfo[i].points) {
-				console.log(teamsInfo[j].points + '===' + teamsInfo[i].points);
+				// console.log(teamsInfo[j].points + '===' + teamsInfo[i].points);
 				if (teamsInfo[j].gd > teamsInfo[i].gd) {
-					console.log(teamsInfo[j].gd + '>' + teamsInfo[i].gd);
+					// console.log(teamsInfo[j].gd + '>' + teamsInfo[i].gd);
 					var temp = teamsInfo[j];
 					teamsInfo[j] = teamsInfo[i];
 					teamsInfo[i] = temp;
@@ -168,11 +172,11 @@ function sort() {
 	for (var i = 0; i < size; i++) {
 		for (var j = i + 1; j < size; j++) {
 			if (teamsInfo[j].points === teamsInfo[i].points) {
-				console.log(teamsInfo[j].points + '===' + teamsInfo[i].points);
+				// console.log(teamsInfo[j].points + '===' + teamsInfo[i].points);
 				if (teamsInfo[j].gd === teamsInfo[i].gd) {
-					console.log(teamsInfo[j].gd + '===' + teamsInfo[i].gd);
+					// console.log(teamsInfo[j].gd + '===' + teamsInfo[i].gd);
 					if (teamsInfo[j].gf > teamsInfo[i].gf) {
-						console.log(teamsInfo[j].gf + '>' + teamsInfo[i].gf);
+						// console.log(teamsInfo[j].gf + '>' + teamsInfo[i].gf);
 						var temp = teamsInfo[j];
 						teamsInfo[j] = teamsInfo[i];
 						teamsInfo[i] = temp;
