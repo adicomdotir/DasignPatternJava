@@ -11,25 +11,25 @@ function Team(name, overall) {
 	this.overall = overall;
 }
 
-var size = 4;
+var teamsInfo = [];
+var barca = new Team('Barcelona', 85);
+var rm = new Team('RealMadrid', 86);
+var psg = new Team('PSG', 83);
+var chelsea = new Team('Chelsea', 83);
+var inter = new Team('Inter', 81);
+var milan = new Team('Milan', 79);
+teamsInfo.push(barca, rm, psg, chelsea, inter, milan);
+// var teamsInfo = [];
+// var t1 = new Team('SL Benfica', 79);
+// var t2 = new Team('FC Porto', 79);
+// var t3 = new Team('SC Braga', 75);
+// var t4 = new Team('Sporting CP', 78);
+// teamsInfo.push(t1, t2, t3, t4);
+var size = teamsInfo.length;
 var teams = [];
 for (var i = 0; i < size; i++) {
 	teams[i] = i;
 }
-var teamsInfo = [];
-var t1 = new Team('SL Benfica', 79);
-var t2 = new Team('FC Porto', 79);
-var t3 = new Team('SC Braga', 75);
-var t4 = new Team('Sporting CP', 78);
-teamsInfo.push(t1, t2, t3, t4);
-// var teamsInfo = [];
-// var barca = new Team('Barcelona', 85);
-// var rm = new Team('RealMadrid', 86);
-// var psg = new Team('PSG', 83);
-// var chelsea = new Team('Chelsea', 83);
-// var inter = new Team('Inter', 81);
-// var milan = new Team('Milan', 79);
-// teamsInfo.push(barca, rm, psg, chelsea, inter, milan);
 
 function swap() {
 	var temp = teams[size - 1];
@@ -54,8 +54,20 @@ for (var i = 1; i < size * 2 - 1; i++) {
 		document.getElementById('figure').appendChild(header);
 	}
 	for (var j = 0; j < size / 2; j++) {
-		var gA = Math.floor((Math.random() * teamsInfo[teams[j]].overall / 20));
-		var gB = Math.floor((Math.random() * teamsInfo[teams[size - j - 1]].overall / 20));
+		var diff = teamsInfo[teams[j]].overall - teamsInfo[teams[size - j - 1]].overall;
+		var mulA = 0, mulB = 0;
+		if (diff > 0) {
+			mulA = diff / 2;
+			mulB = diff / 4;
+		} else if (diff < 0) {
+			mulA = diff / 4;
+			mulB = diff / 2;
+		}
+		mulA = Math.floor(Math.abs(mulA));
+		mulB = Math.floor(Math.abs(mulB));
+		var gA = Math.floor(Math.random() * (mulA + 1));
+		var gB = Math.floor(Math.random() * (mulB + 1));
+		console.log(mulA + '[' + gA + ':' + gB + ']' + mulB);
 		// console.log(gA);
 		if (gA === gB) {
 			teamsInfo[teams[j]].game++;
@@ -89,12 +101,6 @@ for (var i = 1; i < size * 2 - 1; i++) {
 			teamsInfo[teams[size - j - 1]].gf += gB;
 			teamsInfo[teams[size - j - 1]].ga += gA;
 		}
-		/*
-		<div class="col-md-5">Barcelona</div>
-        <div class="col-md-2">2-2</div>
-        <div class="col-md-5">RealMadrid</div>
-		*/
-		// str = teamsInfo[teams[j]].name + ' ' + gA + '-' + gB + ' ' + teamsInfo[teams[size - j - 1]].name;
         var div1 = document.createElement("div");
 		div1.setAttribute('class', 'col-md-5');
         div1.appendChild(document.createTextNode(teamsInfo[teams[j]].name));
@@ -122,7 +128,7 @@ for (var i = 1; i < size * 2 - 1; i++) {
 			document.getElementById('figure').appendChild(div3);
 		}
 	}
-	console.log(col);
+	// console.log(col);
 	col++;
 	if (col === 4) {
 		col = 0;
