@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var groupCount = 8;
 var groupTeamCount = 4;
@@ -38,7 +38,10 @@ function Team(name, overall, group) {
 
 function createTableHtml() {
 	var container = document.getElementById('container');
+	var div = document.createElement('div');
+	div.setAttribute('class', 'col-md-3');
 	var select = document.createElement('select');
+	select.setAttribute('class', 'form-control');
 	select.setAttribute('onchange', 'selectGroup()');
 	var table = document.createElement('table');
 	for (var i = 0; i < groupCount; i++) {
@@ -49,7 +52,8 @@ function createTableHtml() {
 	}
 	createTableHeader(table);
 	createGroupTeam(table, 0);
-	container.appendChild(select);
+	div.appendChild(select);
+	container.appendChild(div);
 	container.appendChild(table);
 }
 
@@ -138,4 +142,78 @@ function selectGroup() {
 		table[0].removeChild(tr);
 	}
 	createGroupTeam(table[0], event.target.value);
+}
+
+function result() {
+	for (var gId = 0; gId < groupCount; gId++) {
+		var teamsId = [];
+		var teamId = gId * 4;
+		for (var i = 0; i < 4; i++, teamId++) {
+			teamsId[i] = teamId;
+		}
+		for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+			console.log(i);
+			for (var j = 0; j < groupTeamCount / 2; j++) {
+				console.log(teams[teamsId[j]]);
+				console.log(teams[teamsId[groupTeamCount - j - 1]]);
+				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
+				var mulA = 0,
+					mulB = 0;
+				if (diff > 0) {
+					mulA = diff / 2;
+					mulB = diff / 4;
+				} else if (diff < 0) {
+					mulA = diff / 4;
+					mulB = diff / 2;
+				}
+				mulA = Math.floor(Math.abs(mulA));
+				mulB = Math.floor(Math.abs(mulB));
+				var gA = Math.floor(Math.random() * (mulA + 1));
+				var gB = Math.floor(Math.random() * (mulB + 1));
+				if (gA === gB) {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.draw++;
+					teams[teamsId[j]].table.points++;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.draw++;
+					teams[teamsId[groupTeamCount - j - 1]].table.points++;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				} else if (gA > gB) {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.win++;
+					teams[teamsId[j]].table.points += 3;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.lose++;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				} else {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.lose++;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.win++;
+					teams[teamsId[groupTeamCount - j - 1]].table.points += 3;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				}
+			}
+			////////////////
+			// Swap Block //
+			var temp = teamsId[3];
+			for (var k = groupTeamCount - 1; k > 0; k--) {
+				teamsId[k] = teamsId[k - 1];
+			}
+			teamsId[1] = temp;
+			// End Block //
+			///////////////
+		}
+	}
+	var elem = document.getElementById('divBtn');
+	elem.setAttribute('hidden', 'true');
 }
