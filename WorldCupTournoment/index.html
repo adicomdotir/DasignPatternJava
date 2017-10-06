@@ -13,11 +13,16 @@
 </head>
 
 <body>
-	<div class="container">
-		<h2>WorldCup 2014</h2>
-		<button>Start</button>
+	<div class="container" id="container">
+		<div id="begin">
+			<h2>WorldCup 2014</h2>
+			<button class="btn" onclick="init()" id="btn">Start</button>
+		</div>
 	</div>
-	<script src="js.js"></script>
+	<div id="divBtn" hidden="true">
+		<button>Result</button>
+	</div>
+	<script src="jsFile.js"></script>
 </body>
 
 </html>
