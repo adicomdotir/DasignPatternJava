@@ -222,3 +222,77 @@ function result() {
 	var elem = document.getElementById('divBtn');
 	elem.setAttribute('hidden', 'true');
 }
+
+function result() {
+	for (var gId = 0; gId < groupCount; gId++) {
+		var teamsId = [];
+		var teamId = gId * 4;
+		for (var i = 0; i < 4; i++, teamId++) {
+			teamsId[i] = teamId;
+		}
+		for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+			console.log(i);
+			for (var j = 0; j < groupTeamCount / 2; j++) {
+				console.log(teams[teamsId[j]]);
+				console.log(teams[teamsId[groupTeamCount - j - 1]]);
+				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
+				var mulA = 0,
+					mulB = 0;
+				if (diff > 0) {
+					mulA = diff / 2;
+					mulB = diff / 4;
+				} else if (diff < 0) {
+					mulA = diff / 4;
+					mulB = diff / 2;
+				}
+				mulA = Math.floor(Math.abs(mulA));
+				mulB = Math.floor(Math.abs(mulB));
+				var gA = Math.floor(Math.random() * (mulA + 1));
+				var gB = Math.floor(Math.random() * (mulB + 1));
+				if (gA === gB) {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.draw++;
+					teams[teamsId[j]].table.points++;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.draw++;
+					teams[teamsId[groupTeamCount - j - 1]].table.points++;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				} else if (gA > gB) {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.win++;
+					teams[teamsId[j]].table.points += 3;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.lose++;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				} else {
+					teams[teamsId[j]].table.game++;
+					teams[teamsId[j]].table.lose++;
+					teams[teamsId[j]].table.gf += gA;
+					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.game++;
+					teams[teamsId[groupTeamCount - j - 1]].table.win++;
+					teams[teamsId[groupTeamCount - j - 1]].table.points += 3;
+					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
+					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+				}
+			}
+			////////////////
+			// Swap Block //
+			var temp = teamsId[3];
+			for (var k = groupTeamCount - 1; k > 0; k--) {
+				teamsId[k] = teamsId[k - 1];
+			}
+			teamsId[1] = temp;
+			// End Block //
+			///////////////
+		}
+	}
+	var elem = document.getElementById('divBtn');
+	elem.setAttribute('hidden', 'true');
+}
