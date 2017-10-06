@@ -18,13 +18,12 @@ var psg = new Team('PSG', 83);
 var chelsea = new Team('Chelsea', 83);
 var inter = new Team('Inter', 81);
 var milan = new Team('Milan', 79);
-teamsInfo.push(barca, rm, psg, chelsea, inter, milan);
-// var teamsInfo = [];
-// var t1 = new Team('SL Benfica', 79);
-// var t2 = new Team('FC Porto', 79);
-// var t3 = new Team('SC Braga', 75);
-// var t4 = new Team('Sporting CP', 78);
-// teamsInfo.push(t1, t2, t3, t4);
+var t1 = new Team('SL Benfica', 79);
+var t2 = new Team('FC Porto', 79);
+var t3 = new Team('SC Braga', 75);
+var t4 = new Team('Sporting CP', 78);
+teamsInfo.push(barca, rm, psg, chelsea, inter, milan, t1, t2, t3, t4);
+
 var size = teamsInfo.length;
 var teams = [];
 for (var i = 0; i < size; i++) {
@@ -104,12 +103,14 @@ for (var i = 1; i < size * 2 - 1; i++) {
         }
         var div1 = document.createElement("div");
         div1.setAttribute('class', 'col-md-4');
+		addAttributeColor(gA, gB, div1);
         div1.appendChild(document.createTextNode(teamsInfo[teams[j]].name));
         var div2 = document.createElement("div");
-        div2.setAttribute('class', 'col-md-4');
+		div2.setAttribute('class', 'col-md-4');
         div2.appendChild(document.createTextNode(gA + '-' + gB));
         var div3 = document.createElement("div");
         div3.setAttribute('class', 'col-md-4');
+		addAttributeColor(gB, gA, div3);
         div3.appendChild(document.createTextNode(teamsInfo[teams[size - j - 1]].name));
         if (col === 0) {
             document.getElementById('figure3').appendChild(div1);
@@ -191,6 +192,11 @@ function sort() {
 }
 
 function numberToText(num) {
+	if (num > 20) {
+		var n1 = num % 10;
+		var n2 = Math.floor(num / 10) * 10;
+		return numberToText(n2) + numberToText(n1);
+	}
 	switch (num) {
 		case 1:
 			return 'One';
@@ -212,18 +218,41 @@ function numberToText(num) {
 			return 'Nine';
 		case 10:
 			return 'Ten';
+		case 11:
+			return 'Eleven';
+		case 12:
+			return 'Twelve';
+		case 13:
+			return 'Thirteen';
+		case 14:
+			return 'Fourteen';
+		case 15:
+			return 'Fifteen';
+		case 16:
+		    return 'Sixteen';
+		case 17:
+		    return 'Seventeen';
+		case 18:
+		    return 'Eightteen';
+		case 19:
+		    return 'Nineteen';
+		case 20:
+		    return 'Twenty';
+		case 30:
+		    return 'Thirty';
+		case 40:
+		    return 'Fourty';
+		case 50:
+		    return 'Fifty';
 	}
 }
 
-function counter() {
-	var count = 0;
-	return function() {
-		return count++;
+function addAttributeColor(gObj, gOther, obj) {
+	if (gObj > gOther) {
+		obj.setAttribute('style', 'color: #2CC990;');
+	} else if (gObj < gOther) {
+		obj.setAttribute('style', 'color: #E3000E;');
+	}  else {
+		obj.setAttribute('style', 'color: #FEC606;');
 	}
 }
-var add = counter();
-console.log(add());
-console.log(add());
-console.log(add());
-console.log(add());
-console.log(add());
