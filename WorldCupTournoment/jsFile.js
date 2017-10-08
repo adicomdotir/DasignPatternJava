@@ -43,58 +43,17 @@ function createTableHtml() {
 	var select = document.getElementsByTagName('select')[0];
 	var divTable = document.createElement('div');
 	divTable.setAttribute('class', 'col-md-12');
-	var table = document.createElement('table');
-	table.setAttribute('class', 'table table-bordered table-striped');
+	var table = document.getElementsByTagName('table')[0];
 	for (var i = 0; i < groupCount; i++) {
 		var option = document.createElement('option');
 		option.setAttribute('value', i);
 		option.appendChild(document.createTextNode('Group ' + (i + 1)));
 		select.appendChild(option);
 	}
-	createTableHeader(table);
-	var tbody = document.createElement('tbody');
-	table.appendChild(tbody);
+	var tbody = document.getElementsByTagName('tbody')[0];
 	insertGroupToTable(tbody, 0);
-	divTable.appendChild(table);
 	container.appendChild(div);
 	container.appendChild(divTable);
-}
-
-function createTableHeader(table) {
-	var thead = document.createElement('thead');
-	var tr = document.createElement('tr');
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('#'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Name'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Game'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Win'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Draw'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Lose'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('GF'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('GA'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('GD'));
-	tr.appendChild(th);
-	var th = document.createElement('th');
-	th.appendChild(document.createTextNode('Points'));
-	tr.appendChild(th);
-	thead.appendChild(tr);
-	table.appendChild(thead);
 }
 
 function insertGroupToTable(tbody, index) {
@@ -156,7 +115,20 @@ function result() {
 		for (var i = 0; i < 4; i++, teamId++) {
 			teamsId[i] = teamId;
 		}
+		var col = 0;
 		for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+			var str = '';
+			var header = document.createElement("div");
+			var bold = document.createElement("b");
+			bold.appendChild(document.createTextNode("Week " + i));
+			header.appendChild(bold);
+			if (col === 0) {
+				document.getElementById('figure03').appendChild(header);
+			} else if (col === 1) {
+				document.getElementById('figure02').appendChild(header);
+			} else if (col === 2) {
+				document.getElementById('figure01').appendChild(header);
+			}
 			for (var j = 0; j < groupTeamCount / 2; j++) {
 				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
 				var mulA = 0,
@@ -189,21 +161,53 @@ function result() {
 					teams[teamsId[j]].table.points += 3;
 					teams[teamsId[j]].table.gf += gA;
 					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[j]].table.gd = teams[teamsId[j]].table.gf - teams[teamsId[j]].table.ga;
 					teams[teamsId[groupTeamCount - j - 1]].table.game++;
 					teams[teamsId[groupTeamCount - j - 1]].table.lose++;
 					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
 					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+					teams[teamsId[groupTeamCount - j - 1]].table.gd = teams[teamsId[groupTeamCount - j - 1]].table.gf - teams[teamsId[groupTeamCount - j - 1]].table.ga;
 				} else {
 					teams[teamsId[j]].table.game++;
 					teams[teamsId[j]].table.lose++;
 					teams[teamsId[j]].table.gf += gA;
 					teams[teamsId[j]].table.ga += gB;
+					teams[teamsId[j]].table.gd = teams[teamsId[j]].table.gf - teams[teamsId[j]].table.ga;
 					teams[teamsId[groupTeamCount - j - 1]].table.game++;
 					teams[teamsId[groupTeamCount - j - 1]].table.win++;
 					teams[teamsId[groupTeamCount - j - 1]].table.points += 3;
 					teams[teamsId[groupTeamCount - j - 1]].table.gf += gB;
 					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
+					teams[teamsId[groupTeamCount - j - 1]].table.gd = teams[teamsId[groupTeamCount - j - 1]].table.gf - teams[teamsId[groupTeamCount - j - 1]].table.ga;
 				}
+				var div1 = document.createElement("div");
+				div1.setAttribute('class', 'col-md-4');
+				addAttributeColor(gA, gB, div1);
+				div1.appendChild(document.createTextNode(teams[teamsId[j]].name));
+				var div2 = document.createElement("div");
+				div2.setAttribute('class', 'col-md-4');
+				div2.appendChild(document.createTextNode(gA + '-' + gB));
+				var div3 = document.createElement("div");
+				div3.setAttribute('class', 'col-md-4');
+				addAttributeColor(gB, gA, div3);
+				div3.appendChild(document.createTextNode(teams[teamsId[groupTeamCount - j - 1]].name));
+				if (col === 0) {
+					document.getElementById('figure03').appendChild(div1);
+					document.getElementById('figure03').appendChild(div2);
+					document.getElementById('figure03').appendChild(div3);
+				} else if (col === 1) {
+					document.getElementById('figure02').appendChild(div1);
+					document.getElementById('figure02').appendChild(div2);
+					document.getElementById('figure02').appendChild(div3);
+				} else if (col === 2) {
+					document.getElementById('figure01').appendChild(div1);
+					document.getElementById('figure01').appendChild(div2);
+					document.getElementById('figure01').appendChild(div3);
+				}
+			}
+			col++;
+			if (col === 3) {
+				col = 0;
 			}
 			////////////////
 			// Swap Block //
@@ -218,4 +222,14 @@ function result() {
 	}
 	var elem = document.getElementById('divBtn');
 	elem.setAttribute('hidden', 'true');
+}
+
+function addAttributeColor(gObj, gOther, obj) {
+	if (gObj > gOther) {
+		obj.setAttribute('style', 'color: #2CC990;');
+	} else if (gObj < gOther) {
+		obj.setAttribute('style', 'color: #E3000E;');
+	} else {
+		obj.setAttribute('style', 'color: #FEC606;');
+	}
 }
