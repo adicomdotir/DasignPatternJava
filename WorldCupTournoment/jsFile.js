@@ -3,7 +3,10 @@
 var groupCount = 8;
 var groupTeamCount = 4;
 var teams = [];
-var treeTeams = [];
+var treeTeams16 = [];
+var treeTeams8 = [];
+var treeTeams4 = [];
+var treeTeams2 = [];
 
 function init() {
 	var obj;
@@ -323,12 +326,11 @@ function sort() {
 function treeView() {
 	for (var gId = 0; gId < groupCount; gId++) {
 		var teamId = gId * 4;
-		treeTeams.push(teams[teamId], teams[teamId + 1]);
+		treeTeams16.push(teams[teamId], teams[teamId + 1]);
 	}
-	var temp = [];
-	for (let i = 0; i < treeTeams.length / 2; i++) {
+	for (let i = 0; i < treeTeams16.length / 2; i++) {
 		var elem = document.getElementById('tree-16');
-		var diff = treeTeams[i].overall - treeTeams[treeTeams.length - i - 1].overall;
+		var diff = treeTeams16[i].overall - treeTeams16[treeTeams16.length - i - 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (diff > 0) {
@@ -348,21 +350,18 @@ function treeView() {
 		}
 		var div = document.createElement('div');
 		div.appendChild(
-			document.createTextNode(treeTeams[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams[treeTeams.length - i - 1].name)
+			document.createTextNode(treeTeams16[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams16[treeTeams16.length - i - 1].name)
 		);
 		elem.appendChild(div);
 		if (gA > gB) {
-			temp.push(i);
+			treeTeams8.push(treeTeams16[i]);
 		} else {
-			temp.push(treeTeams.length - i - 1);
+			treeTeams8.push(treeTeams16[treeTeams16.length - i - 1]);
 		}
 	}
-	console.log(temp);
-	treeTeams = Object.assign({}, temp);
-	temp = [];
-	for (let i = 0; i < treeTeams.length / 2; i++) {
+	for (let i = 0; i < treeTeams8.length / 2; i++) {
 		var elem = document.getElementById('tree-8');
-		var diff = treeTeams[i].overall - treeTeams[treeTeams.length - i - 1].overall;
+		var diff = treeTeams8[i].overall - treeTeams8[treeTeams8.length - i - 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (diff > 0) {
@@ -382,15 +381,70 @@ function treeView() {
 		}
 		var div = document.createElement('div');
 		div.appendChild(
-			document.createTextNode(treeTeams[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams[treeTeams.length - i - 1].name)
+			document.createTextNode(treeTeams8[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams8[treeTeams8.length - i - 1].name)
 		);
 		elem.appendChild(div);
 		if (gA > gB) {
-			temp.push(i);
+			treeTeams4.push(treeTeams8[i]);
 		} else {
-			temp.push(treeTeams.length - i - 1);
+			treeTeams4.push(treeTeams8[treeTeams8.length - i - 1]);
 		}
 	}
-	treeTeams = Object.assign({}, temp);
-	temp = [];
+	for (let i = 0; i < treeTeams4.length / 2; i++) {
+		var elem = document.getElementById('tree-4');
+		var diff = treeTeams4[i].overall - treeTeams4[treeTeams4.length - i - 1].overall;
+		var mulA = 0,
+			mulB = 0;
+		if (diff > 0) {
+			mulA = diff / 2;
+			mulB = diff / 4;
+		} else if (diff < 0) {
+			mulA = diff / 4;
+			mulB = diff / 2;
+		}
+		mulA = Math.floor(Math.abs(mulA));
+		mulB = Math.floor(Math.abs(mulB));
+		var gA = Math.floor(Math.random() * (mulA + 1));
+		var gB = Math.floor(Math.random() * (mulB + 1));
+		while (gA == gB) {
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
+		}
+		var div = document.createElement('div');
+		div.appendChild(
+			document.createTextNode(treeTeams4[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams4[treeTeams4.length - i - 1].name)
+		);
+		elem.appendChild(div);
+		if (gA > gB) {
+			treeTeams2.push(treeTeams4[i]);
+		} else {
+			treeTeams2.push(treeTeams4[treeTeams4.length - i - 1]);
+		}
+	}
+	for (let i = 0; i < treeTeams2.length / 2; i++) {
+		var elem = document.getElementById('tree-2');
+		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2.length - i - 1].overall;
+		var mulA = 0,
+			mulB = 0;
+		if (diff > 0) {
+			mulA = diff / 2;
+			mulB = diff / 4;
+		} else if (diff < 0) {
+			mulA = diff / 4;
+			mulB = diff / 2;
+		}
+		mulA = Math.floor(Math.abs(mulA));
+		mulB = Math.floor(Math.abs(mulB));
+		var gA = Math.floor(Math.random() * (mulA + 1));
+		var gB = Math.floor(Math.random() * (mulB + 1));
+		while (gA == gB) {
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
+		}
+		var div = document.createElement('div');
+		div.appendChild(
+			document.createTextNode(treeTeams2[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams2[treeTeams2.length - i - 1].name)
+		);
+		elem.appendChild(div);
+	}
 }
