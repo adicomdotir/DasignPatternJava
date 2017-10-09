@@ -3,6 +3,7 @@
 var groupCount = 8;
 var groupTeamCount = 4;
 var teams = [];
+var treeTeams = [];
 
 function init() {
 	var obj;
@@ -195,6 +196,7 @@ function result() {
 	elem.setAttribute('hidden', 'true');
 	sort();
 	selectGroupFire(0);
+	treeView();
 }
 
 function addAttributeColor(gObj, gOther, obj) {
@@ -282,7 +284,6 @@ function sort() {
 		// This loop for sort points
 		for (var i = 0; i < groupTeamCount; i++) {
 			for (var j = i + 1; j < groupTeamCount; j++) {
-				console.log(teams[teamsId[j]].table.points + ',' + teams[teamsId[i]].table.points);
 				if (teams[teamsId[j]].table.points > teams[teamsId[i]].table.points) {
 					var temp = teams[teamsId[j]];
 					teams[teamsId[j]] = teams[teamsId[i]];
@@ -317,4 +318,79 @@ function sort() {
 			}
 		}
 	}
+}
+
+function treeView() {
+	for (var gId = 0; gId < groupCount; gId++) {
+		var teamId = gId * 4;
+		treeTeams.push(teams[teamId], teams[teamId + 1]);
+	}
+	var temp = [];
+	for (let i = 0; i < treeTeams.length / 2; i++) {
+		var elem = document.getElementById('tree-16');
+		var diff = treeTeams[i].overall - treeTeams[treeTeams.length - i - 1].overall;
+		var mulA = 0,
+			mulB = 0;
+		if (diff > 0) {
+			mulA = diff / 2;
+			mulB = diff / 4;
+		} else if (diff < 0) {
+			mulA = diff / 4;
+			mulB = diff / 2;
+		}
+		mulA = Math.floor(Math.abs(mulA));
+		mulB = Math.floor(Math.abs(mulB));
+		var gA = Math.floor(Math.random() * (mulA + 1));
+		var gB = Math.floor(Math.random() * (mulB + 1));
+		while (gA == gB) {
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
+		}
+		var div = document.createElement('div');
+		div.appendChild(
+			document.createTextNode(treeTeams[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams[treeTeams.length - i - 1].name)
+		);
+		elem.appendChild(div);
+		if (gA > gB) {
+			temp.push(i);
+		} else {
+			temp.push(treeTeams.length - i - 1);
+		}
+	}
+	console.log(temp);
+	treeTeams = Object.assign({}, temp);
+	temp = [];
+	for (let i = 0; i < treeTeams.length / 2; i++) {
+		var elem = document.getElementById('tree-8');
+		var diff = treeTeams[i].overall - treeTeams[treeTeams.length - i - 1].overall;
+		var mulA = 0,
+			mulB = 0;
+		if (diff > 0) {
+			mulA = diff / 2;
+			mulB = diff / 4;
+		} else if (diff < 0) {
+			mulA = diff / 4;
+			mulB = diff / 2;
+		}
+		mulA = Math.floor(Math.abs(mulA));
+		mulB = Math.floor(Math.abs(mulB));
+		var gA = Math.floor(Math.random() * (mulA + 1));
+		var gB = Math.floor(Math.random() * (mulB + 1));
+		while (gA == gB) {
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
+		}
+		var div = document.createElement('div');
+		div.appendChild(
+			document.createTextNode(treeTeams[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams[treeTeams.length - i - 1].name)
+		);
+		elem.appendChild(div);
+		if (gA > gB) {
+			temp.push(i);
+		} else {
+			temp.push(treeTeams.length - i - 1);
+		}
+	}
+	treeTeams = Object.assign({}, temp);
+	temp = [];
 }
