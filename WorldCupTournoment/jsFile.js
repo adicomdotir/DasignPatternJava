@@ -99,14 +99,18 @@ function insertTeamToTable(tbody, groupId, index) {
 }
 
 function selectGroup() {
+	selectGroupFire(event.target.value);
+}
+
+function selectGroupFire(index) {
 	var tbody = document.getElementsByTagName('tbody');
 	var rows = document.getElementsByTagName('tr');
 	for (var i = 0; i < 4; i++) {
 		var tr = rows[1];
 		tbody[0].removeChild(tr);
 	}
-	insertGroupToTable(tbody[0], event.target.value);
-	fixture(event.target.value);
+	insertGroupToTable(tbody[0], index);
+	fixture(index);
 }
 
 function result() {
@@ -189,6 +193,8 @@ function result() {
 	}
 	var elem = document.getElementById('divBtn');
 	elem.setAttribute('hidden', 'true');
+	sort();
+	selectGroupFire(0);
 }
 
 function addAttributeColor(gObj, gOther, obj) {
@@ -262,6 +268,53 @@ function fixture(groupId) {
 		col++;
 		if (col === 3) {
 			col = 0;
+		}
+	}
+}
+
+function sort() {
+	for (var gId = 0; gId < groupCount; gId++) {
+		var teamsId = [];
+		var teamId = gId * 4;
+		for (var i = 0; i < 4; i++, teamId++) {
+			teamsId[i] = teamId;
+		}
+		// This loop for sort points
+		for (var i = 0; i < groupTeamCount; i++) {
+			for (var j = i + 1; j < groupTeamCount; j++) {
+				console.log(teams[teamsId[j]].table.points + ',' + teams[teamsId[i]].table.points);
+				if (teams[teamsId[j]].table.points > teams[teamsId[i]].table.points) {
+					var temp = teams[teamsId[j]];
+					teams[teamsId[j]] = teams[teamsId[i]];
+					teams[teamsId[i]] = temp;
+				}
+			}
+		}
+		// This loop for sort GD
+		for (var i = 0; i < groupTeamCount; i++) {
+			for (var j = i + 1; j < groupTeamCount; j++) {
+				if (teams[teamsId[j]].table.points === teams[teamsId[i]].table.points) {
+					if (teams[teamsId[j]].table.gd > teams[teamsId[i]].table.gd) {
+						var temp = teams[teamsId[j]];
+						teams[teamsId[j]] = teams[teamsId[i]];
+						teams[teamsId[i]] = temp;
+					}
+				}
+			}
+		}
+		// This loop for sort GF
+		for (var i = 0; i < groupTeamCount; i++) {
+			for (var j = i + 1; j < groupTeamCount; j++) {
+				if (teams[teamsId[j]].table.points === teams[teamsId[i]].table.points) {
+					if (teams[teamsId[j]].table.gd === teams[teamsId[i]].table.gd) {
+						if (teams[teamsId[j]].table.gf > teams[teamsId[i]].table.gf) {
+							var temp = teams[teamsId[j]];
+							teams[teamsId[j]] = teams[teamsId[i]];
+							teams[teamsId[i]] = temp;
+						}
+					}
+				}
+			}
 		}
 	}
 }
