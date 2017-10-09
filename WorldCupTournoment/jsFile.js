@@ -69,7 +69,7 @@ function insertTeamToTable(tbody, groupId, index) {
 	td.appendChild(document.createTextNode('' + (index + 1)));
 	tr.appendChild(td);
 	var td = document.createElement('td');
-	td.appendChild(document.createTextNode(teams[teamId].name));
+	td.appendChild(document.createTextNode(teams[teamId].name + '[' + teams[teamId].overall + ']'));
 	tr.appendChild(td);
 	var td = document.createElement('td');
 	td.appendChild(document.createTextNode(teams[teamId].table['game']));
@@ -106,6 +106,7 @@ function selectGroup() {
 		tbody[0].removeChild(tr);
 	}
 	insertGroupToTable(tbody[0], event.target.value);
+	fixture(event.target.value);
 }
 
 function result() {
@@ -117,18 +118,6 @@ function result() {
 		}
 		var col = 0;
 		for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
-			var str = '';
-			var header = document.createElement("div");
-			var bold = document.createElement("b");
-			bold.appendChild(document.createTextNode("Week " + i));
-			header.appendChild(bold);
-			if (col === 0) {
-				document.getElementById('figure03').appendChild(header);
-			} else if (col === 1) {
-				document.getElementById('figure02').appendChild(header);
-			} else if (col === 2) {
-				document.getElementById('figure01').appendChild(header);
-			}
 			for (var j = 0; j < groupTeamCount / 2; j++) {
 				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
 				var mulA = 0,
@@ -180,34 +169,12 @@ function result() {
 					teams[teamsId[groupTeamCount - j - 1]].table.ga += gA;
 					teams[teamsId[groupTeamCount - j - 1]].table.gd = teams[teamsId[groupTeamCount - j - 1]].table.gf - teams[teamsId[groupTeamCount - j - 1]].table.ga;
 				}
-				var div1 = document.createElement("div");
-				div1.setAttribute('class', 'col-md-4');
-				addAttributeColor(gA, gB, div1);
-				div1.appendChild(document.createTextNode(teams[teamsId[j]].name));
-				var div2 = document.createElement("div");
-				div2.setAttribute('class', 'col-md-4');
-				div2.appendChild(document.createTextNode(gA + '-' + gB));
-				var div3 = document.createElement("div");
-				div3.setAttribute('class', 'col-md-4');
-				addAttributeColor(gB, gA, div3);
-				div3.appendChild(document.createTextNode(teams[teamsId[groupTeamCount - j - 1]].name));
-				if (col === 0) {
-					document.getElementById('figure03').appendChild(div1);
-					document.getElementById('figure03').appendChild(div2);
-					document.getElementById('figure03').appendChild(div3);
-				} else if (col === 1) {
-					document.getElementById('figure02').appendChild(div1);
-					document.getElementById('figure02').appendChild(div2);
-					document.getElementById('figure02').appendChild(div3);
-				} else if (col === 2) {
-					document.getElementById('figure01').appendChild(div1);
-					document.getElementById('figure01').appendChild(div2);
-					document.getElementById('figure01').appendChild(div3);
-				}
-			}
-			col++;
-			if (col === 3) {
-				col = 0;
+				let obj = {};
+				obj.A = teams[teamsId[j]].name;
+				obj.GA = gA;
+				obj.GB = gB;
+				obj.B = teams[teamsId[groupTeamCount - j - 1]].name;
+				localStorage.setItem(gId * 12 + (i * 2) + j, JSON.stringify(obj));
 			}
 			////////////////
 			// Swap Block //
@@ -231,5 +198,70 @@ function addAttributeColor(gObj, gOther, obj) {
 		obj.setAttribute('style', 'color: #E3000E;');
 	} else {
 		obj.setAttribute('style', 'color: #FEC606;');
+	}
+}
+
+function fixture(groupId) {
+	var col = 0;
+	var list = document.getElementById('figure01');
+	while (list.hasChildNodes()) {
+		list.removeChild(list.childNodes[0]);
+	}
+	list = document.getElementById('figure02');
+	while (list.hasChildNodes()) {
+		list.removeChild(list.childNodes[0]);
+	}
+	list = document.getElementById('figure03');
+	while (list.hasChildNodes()) {
+		list.removeChild(list.childNodes[0]);
+	}
+	for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+		var str = '';
+		var header = document.createElement("div");
+		var bold = document.createElement("b");
+		bold.appendChild(document.createTextNode("Week " + i));
+		header.appendChild(bold);
+		if (col === 0) {
+			document.getElementById('figure03').appendChild(header);
+		} else if (col === 1) {
+			document.getElementById('figure02').appendChild(header);
+		} else if (col === 2) {
+			document.getElementById('figure01').appendChild(header);
+		}
+
+		for (let j = 0; j < groupTeamCount / 2; j++) {
+			var id = groupId * 12 + (i * 2) + j;
+			var obj = JSON.parse(localStorage.getItem('' + id));
+			// console.log(id);
+			var div1 = document.createElement("div");
+			div1.setAttribute('class', 'col-md-4');
+			addAttributeColor(obj.GA, obj.GB, div1);
+			div1.appendChild(document.createTextNode(obj.A));
+			var div2 = document.createElement("div");
+			div2.setAttribute('class', 'col-md-4');
+			div2.appendChild(document.createTextNode(obj.GA + '-' + obj.GB));
+			var div3 = document.createElement("div");
+			div3.setAttribute('class', 'col-md-4');
+			addAttributeColor(obj.GB, obj.GA, div3);
+			div3.appendChild(document.createTextNode(obj.B));
+			if (col === 0) {
+				document.getElementById('figure03').appendChild(div1);
+				document.getElementById('figure03').appendChild(div2);
+				document.getElementById('figure03').appendChild(div3);
+			} else if (col === 1) {
+				document.getElementById('figure02').appendChild(div1);
+				document.getElementById('figure02').appendChild(div2);
+				document.getElementById('figure02').appendChild(div3);
+			} else if (col === 2) {
+				document.getElementById('figure01').appendChild(div1);
+				document.getElementById('figure01').appendChild(div2);
+				document.getElementById('figure01').appendChild(div3);
+			}
+		}
+
+		col++;
+		if (col === 3) {
+			col = 0;
+		}
 	}
 }
