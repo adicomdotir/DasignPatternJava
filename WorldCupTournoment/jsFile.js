@@ -10,13 +10,61 @@ var treeTeams2 = [];
 
 function init() {
 	var obj;
-	for (var i = 0; i < groupCount; i++) {
-		for (var j = 0; j < groupTeamCount; j++) {
-			var overal = Math.round(Math.random() * 10) + 50;
-			var team = new Team('Team' + ((i * 4) + j), overal, i);
-			teams.push(team);
-		}
-	}
+	// for (var i = 0; i < groupCount; i++) {
+	// 	for (var j = 0; j < groupTeamCount; j++) {
+	// 		var overal = Math.round(Math.random() * 10) + 50;
+	// 		var team = new Team('Team' + ((i * 4) + j), overal, i);
+	// 		teams.push(team);
+	// 	}
+	// }
+	let team01 = new Team('Brazil', 84, 0);
+	let team02 = new Team('Croatia', 70, 0);
+	let team03 = new Team('Mexico', 78, 0);
+	let team04 = new Team('Cameroon', 70, 0);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Australia', 70, 1);
+	team02 = new Team('Netherlands', 81, 1);
+	team03 = new Team('Spain', 85, 1);
+	team04 = new Team('Chile', 78, 1);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Japan', 70, 2);
+	team02 = new Team('Colombia', 79, 2);
+	team03 = new Team('Greece', 77, 2);
+	team04 = new Team('IvoryCoast', 77, 2);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Italy', 83, 3);
+	team02 = new Team('Uruguay', 80, 3);
+	team03 = new Team('CostaRica', 70, 3);
+	team04 = new Team('England', 84, 3);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Honduras', 70, 4);
+	team02 = new Team('Switzerland', 78, 4);
+	team03 = new Team('Ecuador', 73, 4);
+	team04 = new Team('France', 84, 4);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Nigeria', 70, 5);
+	team02 = new Team('Argentina', 82, 5);
+	team03 = new Team('Bosnia', 78, 5);
+	team04 = new Team('Iran', 70, 5);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Germany', 85, 6);
+	team02 = new Team('Portugal', 82, 6);
+	team03 = new Team('Ghana', 70, 6);
+	team04 = new Team('USA', 76, 6);
+	teams.push(team01, team02, team03, team04);
+
+	team01 = new Team('Belgium', 84, 7);
+	team02 = new Team('Algeria', 70, 7);
+	team03 = new Team('Russia', 76, 7);
+	team04 = new Team('SouthKorea', 70, 7);
+	teams.push(team01, team02, team03, team04);
+
 	var elem = document.getElementById('begin');
 	elem.parentElement.removeChild(elem);
 	createTableHtml();
