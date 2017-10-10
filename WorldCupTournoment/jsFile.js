@@ -350,6 +350,7 @@ function treeView() {
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
+		addAttributeColor(gA, gB, div01);
 		div01.appendChild(document.createTextNode(treeTeams16[i].name));
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
@@ -358,6 +359,7 @@ function treeView() {
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
+		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
 		elem.appendChild(div01);
 		if (gA > gB) {
@@ -388,7 +390,8 @@ function treeView() {
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		addAttributeColor(gA, gB, div01);
+		div01.appendChild(document.createTextNode(treeTeams8[i].name));
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -396,7 +399,8 @@ function treeView() {
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		addAttributeColor(gB, gA, div01);
+		div01.appendChild(document.createTextNode(treeTeams8[treeTeams8.length - i - 1].name));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams4.push(treeTeams8[i]);
@@ -426,7 +430,8 @@ function treeView() {
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		addAttributeColor(gA, gB, div01);
+		div01.appendChild(document.createTextNode(treeTeams4[i].name));
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -434,7 +439,8 @@ function treeView() {
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		addAttributeColor(gB, gA, div01);
+		div01.appendChild(document.createTextNode(treeTeams4[treeTeams4.length - i - 1].name));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams2.push(treeTeams4[i]);
@@ -464,7 +470,8 @@ function treeView() {
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		addAttributeColor(gA, gB, div01);
+		div01.appendChild(document.createTextNode(treeTeams2[i].name));
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -472,7 +479,8 @@ function treeView() {
 		elem.appendChild(div01);
 		div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		addAttributeColor(gB, gA, div01);
+		div01.appendChild(document.createTextNode(treeTeams2[treeTeams2.length - i - 1].name));
 		elem.appendChild(div01);
 	}
 }
