@@ -109,7 +109,7 @@ function selectGroup() {
 function selectGroupFire(index) {
 	var tbody = document.getElementsByTagName('tbody');
 	var rows = document.getElementsByTagName('tr');
-	for (var i = 0; i < 4; i++) {
+	for (var i = 0; i < groupTeamCount; i++) {
 		var tr = rows[1];
 		tbody[0].removeChild(tr);
 	}
@@ -125,7 +125,7 @@ function result() {
 			teamsId[i] = teamId;
 		}
 		var col = 0;
-		for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+		for (var i = 1; i < groupTeamCount; i++) {
 			for (var j = 0; j < groupTeamCount / 2; j++) {
 				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
 				var mulA = 0,
@@ -226,7 +226,7 @@ function fixture(groupId) {
 	while (list.hasChildNodes()) {
 		list.removeChild(list.childNodes[0]);
 	}
-	for (var i = 1; i < groupTeamCount * 2 - 1; i++) {
+	for (var i = 1; i < groupTeamCount; i++) {
 		var str = '';
 		var header = document.createElement("div");
 		var bold = document.createElement("b");
@@ -348,11 +348,18 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div = document.createElement('div');
-		div.appendChild(
-			document.createTextNode(treeTeams16[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams16[treeTeams16.length - i - 1].name)
-		);
-		elem.appendChild(div);
+		var div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams8.push(treeTeams16[i]);
 		} else {
@@ -379,11 +386,18 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div = document.createElement('div');
-		div.appendChild(
-			document.createTextNode(treeTeams8[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams8[treeTeams8.length - i - 1].name)
-		);
-		elem.appendChild(div);
+		var div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams4.push(treeTeams8[i]);
 		} else {
@@ -410,11 +424,18 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div = document.createElement('div');
-		div.appendChild(
-			document.createTextNode(treeTeams4[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams4[treeTeams4.length - i - 1].name)
-		);
-		elem.appendChild(div);
+		var div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams2.push(treeTeams4[i]);
 		} else {
@@ -441,10 +462,17 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div = document.createElement('div');
-		div.appendChild(
-			document.createTextNode(treeTeams2[i].name + ' ' + gA + '-' + gB + ' ' + treeTeams2[treeTeams2.length - i - 1].name)
-		);
-		elem.appendChild(div);
+		var div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		elem.appendChild(div01);
+		div01 = document.createElement('div');
+		div01.setAttribute('class', 'col-md-4');
+		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		elem.appendChild(div01);
 	}
 }
