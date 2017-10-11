@@ -24,21 +24,20 @@
 			<h2>WorldCup 2014</h2>
 			<button class="btn" onclick="init()" id="btn">Start</button>
 		</div>
-		<div class="col-md-12" id="hidden" hidden>
+		<div id="hidden" hidden>
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6" style="padding: 0px">
 					<select class="form-control" onchange="selectGroup()">
 					</select>
 				</div>
-				<div class="col-md-3"></div>
-				<div class="col-md-6 pull-right">
+				<div class="col-md-6" style="padding: 0px">
 					<div class="pull-right" id="divBtn">
 						<button class="btn" onclick="result()">Result</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="hidden02" hidden>
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
