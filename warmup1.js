@@ -5,4 +5,8 @@ nearHundred = function(n) {
 var diff21 = function(n) { 
 	if (n < 21) return 21 - n;
   	else return (n - 21) * 2;
-} 
+}
+
+missingChar = function(str, n) { 
+	return str.substring(0, n) + str.substring(n + 1);
+}
