@@ -10,3 +10,7 @@ var diff21 = function(n) {
 missingChar = function(str, n) { 
 	return str.substring(0, n) + str.substring(n + 1);
 }
+
+var backAround = function(str) { 
+	return str.substring(str.length - 1) + str + str.substring(str.length - 1);
+}
