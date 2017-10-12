@@ -22,3 +22,7 @@ var startHi = function(str) {
 var hasTeen = function(a, b, c) {
     return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
 }
+
+var mixStart = function(str) { 
+	return str.substring(1, 3) == 'ix';
+}
