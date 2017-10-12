@@ -18,3 +18,7 @@ var backAround = function(str) {
 var startHi = function(str) { 
 	return str.substring(0, 2) === 'hi';
 }
+
+var hasTeen = function(a, b, c) {
+    return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
+}
