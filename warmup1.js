@@ -14,3 +14,7 @@ missingChar = function(str, n) {
 var backAround = function(str) { 
 	return str.substring(str.length - 1) + str + str.substring(str.length - 1);
 }
+
+var startHi = function(str) { 
+	return str.substring(0, 2) === 'hi';
+}
