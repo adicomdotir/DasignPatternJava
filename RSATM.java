@@ -7,14 +7,14 @@ public class RSATM {
 			new Rectangle(),
 			new Square(),
 			new Circle(),
-			new Triangle(2,3,4,5)
+			new Triangle(2, 3, 4, 5)
 		};
 		for(Shape s : shapes) {
 			System.out.println("" + s);
 		}
 		
 		TreeMap<Integer, String> hm = new TreeMap<Integer, String>();
-        //add key-value pair to TreeMap
+        // add key-value pair to TreeMap
         hm.put(2, "FIRST INSERTED");
         hm.put(5, "SECOND INSERTED");
         hm.put(1,"THIRD INSERTED");
@@ -35,12 +35,11 @@ public class RSATM {
 		
 		main("Hello");
 		Test t1 = new Test();
-		
-		int @new = 5;
 	}
 	
 	public static void main(String args) {
 		System.out.println(args);
+		ParentClass pc = new ChildClass();
 	}
 }
 
