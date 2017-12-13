@@ -33,11 +33,56 @@ public class Main {
 	    	System.out.print(str + ",");
 	    }
 
+		// Converter<String, Integer> converter = Integer::valueOf;
+		// Integer converted = converter.convert("123");
+		// System.out.println(converted);   // 123
+
+		Something something = new Something();
+
+		// Method Refrence
+		// Converter<String, String> converter = something::startsWith;
+		// With Return
+		// Converter<String, String> converter = (String form) -> { return something.startsWith(form); };
+		Converter<String, String> converter = form -> something.startsWith(form);
+		String converted = converter.convert("Java");
+		System.out.println(converted);    // "J"
+
+		// FactoryPerson<Person> factoryPerson = Person::new;
+		FactoryPerson<Person> factoryPerson = (fn, ln) -> new Person(fn, ln);
+		Person person = factoryPerson.create("Ali", "Panahi");
+		System.out.println(person.firstName + " " + person.lastName);
 	}
 
 	public static void sum(OnClickListener onClickListener) {
 		onClickListener.click(50);
 	}
+}
+
+class Person {
+    String firstName;
+    String lastName;
+
+    Person() {}
+
+    Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+interface FactoryPerson<p extends Person> {
+	p create(String firstName, String lastName);
+}
+
+class Something {
+    String startsWith(String s) {
+        return String.valueOf(s.charAt(0));
+    }
+}
+
+// @FunctionalInterface
+interface Converter<F, T> {
+    T convert(F from);
 }
 
 interface Formula {
