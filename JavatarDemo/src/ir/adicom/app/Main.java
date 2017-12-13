@@ -9,6 +9,14 @@ public class Main {
 
 		System.out.println(predicate.test("123"));              // true
 		System.out.println(predicate.negate().test("123"));     // false
+
+		Supplier<Person> personSupplier = Person::new;
+		Person p = personSupplier.get();   // new Person
+		System.out.println(p);
     }
+}
+
+class Person {
+
 }
 
