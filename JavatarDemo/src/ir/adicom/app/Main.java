@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-    	java8StreamExample();
+    	java8OtherExample();
     }
 
     public static void java8OtherExample() {
@@ -15,7 +15,8 @@ public class Main {
 		System.out.println(predicate.test("123"));              // true
 		System.out.println(predicate.negate().test("123"));     // false
 
-		Supplier<Person> personSupplier = Person::new;
+		// Supplier<Person> personSupplier = Person::new;
+		Supplier<Person> personSupplier = () -> new Person();
 		Person p = personSupplier.get();   // new Person
 		System.out.println(p);
 
@@ -98,3 +99,40 @@ class Person {
 	}
 }
 
+
+interface MyJava8Interface {
+
+    void doSomething();
+
+    default void doSomethingElse() {
+        System.out.println("doSomethingElse");
+    }
+
+    static void somethingStatic() {
+        System.out.println("somethingStatic");
+    }
+}
+
+class Thread1 extends Thread
+{
+    @Override
+    public void run()
+    {
+        for(int i = 0; i <= 1000; i++)
+        {
+            System.out.println(i);
+        }
+    }
+}
+ 
+class Thread2 extends Thread
+{
+    @Override
+    public void run()
+    {
+        for(int i = 1001; i<= 2000; i++)
+        {
+            System.out.println(i);
+        }
+    }
+}
