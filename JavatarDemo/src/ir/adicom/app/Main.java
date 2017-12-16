@@ -157,14 +157,25 @@ class Thread2 extends Thread
 }
 
 class BankAccunt {
-	private double balance;
+	private Double balance = new Double(0.0);
 
-	public synchronized void deposit(double amount) {
-		balance += amount;
+	// public synchronized void deposit(double amount) {
+	// 	balance += amount;
+	// }
+
+	// public synchronized void withdraw(double amount) {
+	// 	balance -= amount;
+	// }
+	public void deposit(double amount) {
+		synchronized(balance) {
+			balance += amount;
+		}
 	}
 
-	public synchronized void withdraw(double amount) {
-		balance -= amount;
+	public void withdraw(double amount) {
+		synchronized(balance) {
+			balance -= amount;
+		}
 	}
 
 	@Override
