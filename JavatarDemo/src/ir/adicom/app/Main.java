@@ -10,7 +10,7 @@ public class Main {
     }
 
     public static void javaThreadExample() {
-    	BankAccunt ba = new BankAccunt();
+    	BankAccount ba = new BankAccount(new Double(0));
     	MyThread t01 = new MyThread(ba);
     	t01.start();
     	MyThread t02 = new MyThread(ba);
@@ -156,8 +156,12 @@ class Thread2 extends Thread
     }
 }
 
-class BankAccunt {
-	private Double balance = new Double(0.0);
+class BankAccount {
+	private Double balance;
+
+	public BankAccount(Double balance) {
+		this.balance = balance;
+	}
 
 	// public synchronized void deposit(double amount) {
 	// 	balance += amount;
@@ -167,13 +171,13 @@ class BankAccunt {
 	// 	balance -= amount;
 	// }
 	public void deposit(double amount) {
-		synchronized(balance) {
+		synchronized(this) {
 			balance += amount;
 		}
 	}
 
 	public void withdraw(double amount) {
-		synchronized(balance) {
+		synchronized(this) {
 			balance -= amount;
 		}
 	}
@@ -185,9 +189,9 @@ class BankAccunt {
 }
 
 class MyThread extends Thread {
-	private BankAccunt ba;
+	private BankAccount ba;
 
-	public MyThread(BankAccunt ba) {
+	public MyThread(BankAccount ba) {
 		this.ba = ba;
 	}
 
