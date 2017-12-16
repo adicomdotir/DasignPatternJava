@@ -6,7 +6,26 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-    	java8OtherExample();
+    	javaThreadExample();
+    }
+
+    public static void javaThreadExample() {
+    	BankAccunt ba = new BankAccunt();
+    	MyThread t01 = new MyThread(ba);
+    	t01.start();
+    	MyThread t02 = new MyThread(ba);
+    	t02.start();
+    	MyThread t03 = new MyThread(ba);
+    	t03.start();
+    	MyThread t04 = new MyThread(ba);
+    	t04.start();
+    	try {
+	    	t01.join();
+	    	t02.join();
+	    	t03.join();
+	    	t04.join();
+    	} catch(Exception e) {}
+    	System.out.println(ba);
     }
 
     public static void java8OtherExample() {
@@ -135,4 +154,36 @@ class Thread2 extends Thread
             System.out.println(i);
         }
     }
+}
+
+class BankAccunt {
+	private double balance;
+
+	public synchronized void deposit(double amount) {
+		balance += amount;
+	}
+
+	public synchronized void withdraw(double amount) {
+		balance -= amount;
+	}
+
+	@Override
+	public String toString() {
+		return "Balance: " + this.balance;
+	}
+}
+
+class MyThread extends Thread {
+	private BankAccunt ba;
+
+	public MyThread(BankAccunt ba) {
+		this.ba = ba;
+	}
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 10000; i++) {
+			ba.deposit(1);
+		}
+	}
 }
