@@ -43,6 +43,17 @@ public class Main {
                 }
             }
         });
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    pc.produce();
+                } catch(InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
  
         Thread t2 = new Thread(new Runnable() {
             @Override
@@ -57,9 +68,11 @@ public class Main {
  
         t1.start();
         t2.start();
+        t3.start();
  
         t1.join();
         t2.join();
+        t3.join();
     }
 
     public static void java8OtherExample() {
@@ -166,25 +179,19 @@ interface MyJava8Interface {
     }
 }
 
-class Thread1 extends Thread
-{
+class Thread1 extends Thread {
     @Override
-    public void run()
-    {
-        for(int i = 0; i <= 1000; i++)
-        {
+    public void run() {
+        for(int i = 0; i <= 1000; i++) {
             System.out.println(i);
         }
     }
 }
  
-class Thread2 extends Thread
-{
+class Thread2 extends Thread {
     @Override
-    public void run()
-    {
-        for(int i = 1001; i<= 2000; i++)
-        {
+    public void run() {
+        for(int i = 1001; i<= 2000; i++) {
             System.out.println(i);
         }
     }
@@ -240,10 +247,10 @@ class MyThread extends Thread {
 
 class PC {
 	private LinkedList<Integer> list = new LinkedList<>();
-    private int capacity = 2;
+    private int capacity = 3;
+    private int value = 0;
 
     public void produce() throws InterruptedException {
-    	int value = 0;
     	while (true) {
     		synchronized(this) {
     			while (list.size() == capacity) { 
@@ -270,7 +277,7 @@ class PC {
 
     			int val = list.removeFirst();
 
-    			System.out.println("Consumer consumed-" + val);
+    			System.err.println("Consumer consumed-" + val);
 
     			notify();
 
@@ -279,3 +286,4 @@ class PC {
     	}
     }
 }
+
