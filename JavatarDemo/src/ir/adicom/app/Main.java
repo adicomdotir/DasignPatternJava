@@ -66,24 +66,31 @@ public class Main {
             }
         });
  
-        t1.start();
-        t2.start();
-        t3.start();
+        // t1.start();
+        // t2.start();
+        // t3.start();
  
-        t1.join();
-        t2.join();
-        t3.join();
+        // t1.join();
+        // t2.join();
+        // t3.join();
+
+        Function<Integer, String> function = (t) -> {
+			if (t % 2 == 0) {
+				return t+ " is even number";
+			} else {
+				return t+ " is odd number";
+			}
+		};
+		System.out.println(function.apply(5));
+		System.out.println(function.apply(8));
+
+		Function<Person, String> function1 = (t) -> {
+			return t.firstName + " " + t.lastName;
+		};
+		System.out.println(function1.apply(new Person("Aku", "Daei")));
 
         /*
-        Torment Torment Torment Torment Torment Torment Torment Torment Torment Torment Torment Torment Torment
-        Subside Subside Subside Subside Subside Subside Subside Subside Subside Subside Subside Subside Subside
-        Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor Valor
-        Harsh Harsh Harhs Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh Harsh
-        Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict Depict
-        Untidy Untidy Untidy Untidy
-        Baffle
-        Envy
-        Devour
+
         */
     }
 

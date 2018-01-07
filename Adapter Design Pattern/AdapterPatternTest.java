@@ -1,6 +1,8 @@
 public class AdapterPatternTest {
 	public static void main(String[] args) {
-		testClassAdapter();
+		// testClassAdapter();
+		Captain captain = new Captain(new FishingBoatAdapter());
+		captain.row();
 	}
 
 	private static void testClassAdapter() {
@@ -14,8 +16,7 @@ public class AdapterPatternTest {
 		System.out.println("v120 volts using Class Adapter= " + v120.getVolts());
 	}
 
-	private static Volt getVolt(SocketAdapter socketAdapter,
-		int i) {
+	private static Volt getVolt(SocketAdapter socketAdapter, int i) {
 		switch(i) {
 			case 3: return socketAdapter.get3Volt();
 			case 12: return socketAdapter.get12Volt();
