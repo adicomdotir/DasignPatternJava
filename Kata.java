@@ -28,7 +28,28 @@ public class Kata {
 		return phrase;
 	}
 
+	public int squareDigits(int n) {
+		String temp = "";
+		while(n > 0) {
+			int x = n % 10;
+			x *= x;
+			temp = x + temp;
+			n /= 10;
+		}
+		return Integer.parseInt(temp);
+	}
+
+	public int solution(int number) {
+	    int sum = 0;
+	    for (int i = 1; i < number; i++) {
+	    	if (i % 3 == 0 || i % 5 == 0) {
+	    		sum += i;
+	    	}
+	    }
+	    return sum;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().toJadenCase("most trees are blue"));
+		System.out.println(new Kata().solution(10));
 	}
 }
