@@ -72,6 +72,11 @@ function init() {
 	elem.removeAttribute('hidden');
 	elem = document.getElementById('hidden02');
 	elem.removeAttribute('hidden');
+
+	var arr = [6, 8, 2, 4, 5, 11, 9, -6];
+	console.log(arr);
+	mergeSort(arr, 0, 7);
+	console.log(arr);
 }
 
 function Team(name, overall, group) {
@@ -344,6 +349,7 @@ function sort() {
 				}
 			}
 		}
+
 		// This loop for sort GD
 		for (var i = 0; i < groupTeamCount; i++) {
 			for (var j = i + 1; j < groupTeamCount; j++) {
@@ -371,6 +377,65 @@ function sort() {
 			}
 		}
 	}
+}
+
+function mergeSort(arr, l, r) {
+    if (l < r) {
+        let m = Math.floor(l + (r - l) / 2);
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+ 
+        merge(arr, l, m, r);
+    }
+}
+
+
+function merge(arr, l, m, r) {
+    let i, j, k;
+    let n1 = m - l + 1;
+    let n2 =  r - m;
+ 
+    /* create temp arrays */
+    let L = [];
+    let R = [];
+ 
+    /* Copy data to temp arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        L[i] = teams[teamsId[l + i]].table.points;
+    for (j = 0; j < n2; j++)
+        R[j] = teams[teamsId[m + 1+ j]].table.points;
+ 
+    /* Merge the temp arrays back into arr[l..r]*/
+    i = 0; // Initial index of first subarray
+    j = 0; // Initial index of second subarray
+    k = l; // Initial index of merged subarray
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+ 
+    /* Copy the remaining elements of L[], if there
+       are any */
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+ 
+    /* Copy the remaining elements of R[], if there
+       are any */
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
 function treeView() {
