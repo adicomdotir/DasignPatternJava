@@ -62,6 +62,15 @@ public class Kata {
 		return countX == countO;
 	}
 
+	public String maskify(String str) {
+		String newString = "";
+		if (str.length() < 4) return str;
+		for (int i = 0; i < str.length() - 4; i++) {
+			newString += "#";
+		}
+		return newString + str.substring(str.length() - 4);
+    }
+
 	public static void main(String[] args) {
 		System.out.println(new Kata().solution(10));
 	}
