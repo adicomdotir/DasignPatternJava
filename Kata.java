@@ -17,7 +17,18 @@ public class Kata {
 		return array;
 	}
 
+	public String toJadenCase(String phrase) {
+		if (phrase == null || phrase.length() == 0) return null;
+		phrase = Character.toUpperCase(phrase.charAt(0)) + phrase.substring(1);
+		for (int i = 0; i < phrase.length(); i++) {
+			if (phrase.charAt(i) == ' ') {
+				phrase = phrase.substring(0, i + 1) + Character.toUpperCase(phrase.charAt(i + 1)) + phrase.substring(i + 2);
+			}		
+		}	
+		return phrase;
+	}
+
 	public static void main(String[] args) {
-		System.out.println( Arrays.toString(new Kata().sortArray(new int[] {5, 3, 2 ,8, 1, 4})) );
+		System.out.println(new Kata().toJadenCase("most trees are blue"));
 	}
 }
