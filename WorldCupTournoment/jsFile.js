@@ -17,53 +17,102 @@ function init() {
 	// 		teams.push(team);
 	// 	}
 	// }
-	let team01 = new Team('Brazil', 84, 0);
-	let team02 = new Team('Croatia', 79, 0);
-	let team03 = new Team('Mexico', 79, 0);
-	let team04 = new Team('Cameroon', 69, 0);
+	// let team01 = new Team('Brazil', 84, 0);
+	// let team02 = new Team('Croatia', 79, 0);
+	// let team03 = new Team('Mexico', 79, 0);
+	// let team04 = new Team('Cameroon', 69, 0);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Australia', 73, 1);
+	// team02 = new Team('Netherlands', 81, 1);
+	// team03 = new Team('Spain', 86, 1);
+	// team04 = new Team('Chile', 79, 1);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Japan', 76, 2);
+	// team02 = new Team('Colombia', 79, 2);
+	// team03 = new Team('Greece', 78, 2);
+	// team04 = new Team('IvoryCoast', 75, 2);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Italy', 83, 3);
+	// team02 = new Team('Uruguay', 80, 3);
+	// team03 = new Team('CostaRica', 75, 3);
+	// team04 = new Team('England', 82, 3);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Honduras', 68, 4);
+	// team02 = new Team('Switzerland', 79, 4);
+	// team03 = new Team('Ecuador', 75, 4);
+	// team04 = new Team('France', 83, 4);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Nigeria', 68, 5);
+	// team02 = new Team('Argentina', 83, 5);
+	// team03 = new Team('Bosnia', 78, 5);
+	// team04 = new Team('Iran', 68, 5);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Germany', 85, 6);
+	// team02 = new Team('Portugal', 83, 6);
+	// team03 = new Team('Ghana', 74, 6);
+	// team04 = new Team('USA', 76, 6);
+	// teams.push(team01, team02, team03, team04);
+
+	// team01 = new Team('Belgium', 83, 7);
+	// team02 = new Team('Algeria', 77, 7);
+	// team03 = new Team('Russia', 77, 7);
+	// team04 = new Team('SouthKorea', 73, 7);
+	// teams.push(team01, team02, team03, team04);
+
+	let team01 = new Team('Russia', 76, 0);
+	let team02 = new Team('SaudiArabia', 68, 0);
+	let team03 = new Team('Egypt', 67, 0);
+	let team04 = new Team('Uruguay', 80, 0);
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Australia', 73, 1);
-	team02 = new Team('Netherlands', 81, 1);
-	team03 = new Team('Spain', 86, 1);
-	team04 = new Team('Chile', 79, 1);
+	team01 = new Team('Morocco', 69, 1);
+	team02 = new Team('Iran', 68, 1);
+	team03 = new Team('Portugal', 82, 1);
+	team04 = new Team('Spain', 86, 1);
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Japan', 76, 2);
-	team02 = new Team('Colombia', 79, 2);
-	team03 = new Team('Greece', 78, 2);
-	team04 = new Team('IvoryCoast', 75, 2);
+	team01 = new Team('France', 84, 2);
+	team02 = new Team('Australia', 73, 2);
+	team03 = new Team('Peru', 73, 2);
+	team04 = new Team('Denmark', 78, 2);
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Italy', 83, 3);
-	team02 = new Team('Uruguay', 80, 3);
-	team03 = new Team('CostaRica', 75, 3);
-	team04 = new Team('England', 82, 3);
+	team01 = new Team('Argentina', 83, 3);
+	team02 = new Team('Iceland', 76, 3);
+	team03 = new Team('Croatia', 81, 3);
+	team04 = new Team('Nigeria', 68, 3);
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Honduras', 68, 4);
-	team02 = new Team('Switzerland', 79, 4);
-	team03 = new Team('Ecuador', 75, 4);
-	team04 = new Team('France', 83, 4);
+
+	team01 = new Team('Costa Rica', 75, 4);
+	team02 = new Team('Serbia', 78, 4);
+	team03 = new Team('Brazil', 84, 4);
+	team04 = new Team('Switzerland', 79, 4);
+	teams.push(team01, team02, team03, team04); 
+
+	team01 = new Team('Germany', 85, 5);
+	team02 = new Team('Mexico', 79, 5);
+	team03 = new Team('Sweden', 76, 5);
+	team04 = new Team('South Korea', 73, 5);
+	teams.push(team01, team02, team03, team04);	 
+
+	team01 = new Team('Belgium', 84, 6);
+	team02 = new Team('Panama', 65, 6);
+	team03 = new Team('Tunisia', 67, 6);
+	team04 = new Team('England', 82, 6);
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Nigeria', 68, 5);
-	team02 = new Team('Argentina', 83, 5);
-	team03 = new Team('Bosnia', 78, 5);
-	team04 = new Team('Iran', 68, 5);
-	teams.push(team01, team02, team03, team04);
-
-	team01 = new Team('Germany', 85, 6);
-	team02 = new Team('Portugal', 83, 6);
-	team03 = new Team('Ghana', 74, 6);
-	team04 = new Team('USA', 76, 6);
-	teams.push(team01, team02, team03, team04);
-
-	team01 = new Team('Belgium', 83, 7);
-	team02 = new Team('Algeria', 77, 7);
-	team03 = new Team('Russia', 77, 7);
-	team04 = new Team('SouthKorea', 73, 7);
-	teams.push(team01, team02, team03, team04);
+	team01 = new Team('Colombia', 79, 7);
+	team02 = new Team('Japan', 76, 7);
+	team03 = new Team('Poland', 79, 7);
+	team04 = new Team('Senegal', 70, 7);
+	teams.push(team01, team02, team03, team04); 
 
 	var elem = document.getElementById('begin');
 	elem.parentElement.removeChild(elem);
@@ -185,6 +234,9 @@ function result() {
 				var diff = teams[teamsId[j]].overall - teams[teamsId[groupTeamCount - j - 1]].overall;
 				var mulA = 0,
 					mulB = 0;
+				if (Math.abs(diff) > 10) {
+					diff /= 2;
+				}
 				if (diff > 0) {
 					mulA = diff / 2;
 					mulB = diff / 4;
@@ -194,8 +246,14 @@ function result() {
 				}
 				mulA = Math.floor(Math.abs(mulA));
 				mulB = Math.floor(Math.abs(mulB));
-				var gA = Math.floor(Math.random() * (mulA + 1));
-				var gB = Math.floor(Math.random() * (mulB + 1));
+				if (mulA == 0) {
+					mulA = 1;
+				}
+				if (mulB == 0) {
+					mulB = 1;
+				}
+				var gA = Math.floor(Math.random() * (mulA));
+				var gB = Math.floor(Math.random() * (mulB));
 				if (gA === gB) {
 					teams[teamsId[j]].table.game++;
 					teams[teamsId[j]].table.draw++;
