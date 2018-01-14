@@ -1,5 +1,6 @@
 'use strict';
 
+var round = 1;
 var groupCount = 8;
 var groupTeamCount = 4;
 var teams = [];
@@ -532,5 +533,56 @@ function treeView() {
 		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams2[treeTeams2.length - i - 1].name));
 		elem.appendChild(div01);
+		if (gA > gB) {
+			db(treeTeams2[i].name);
+			window.alert(treeTeams2[i].name);
+		} else {
+			db(treeTeams2[treeTeams2.length - i - 1].name);
+			window.alert(treeTeams2[treeTeams2.length - i - 1].name);
+		}
+	}
+}
+
+function db(champion) {
+	// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+	// Open (or create) the database
+	var open = indexedDB.open("MyDatabase", 1);
+
+	// Create the schema
+	open.onupgradeneeded = function() {
+	    var db = open.result;
+	    var store = db.createObjectStore("MyObjectStore", {keyPath: "round"});
+	    var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
+	};
+
+	open.onsuccess = function() {
+	    // Start a new transaction
+	    var db = open.result;
+	    var tx = db.transaction("MyObjectStore", "readwrite");
+	    var store = tx.objectStore("MyObjectStore");
+	    var index = store.index("NameIndex");
+
+	    // Add some data
+	    store.put({round: 1, champion: 'champion'});
+	    round++;
+	    
+	    // Query the data
+	    // var getJohn = store.get(12345);
+	    // var getBob = index.get(["Smith", "Bob"]);
+
+	    // getJohn.onsuccess = function() {
+	    //     console.log(getJohn.result);  // => "John"
+	    // };
+
+	    // getBob.onsuccess = function() {
+	    //     console.log(getBob.result.name.first);   // => "Bob"
+	    // };
+
+	    // Close the db when the transaction is done
+	    tx.oncomplete = function() {
+	        db.close();
+	    };
 	}
 }
