@@ -101,6 +101,5 @@ public class Kata {
 		System.out.println(new Kata().validPhoneNumber("(1111)555 2345"));
 		System.out.println(new Kata().validPhoneNumber("(123) 456-7890"));
 		System.out.println(new Kata().validPhoneNumber("(098) 123 4567"));
-
 	}
 }
