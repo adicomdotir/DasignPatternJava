@@ -71,7 +71,36 @@ public class Kata {
 		return newString + str.substring(str.length() - 4);
     }
 
+    public int digital_root(int n) {
+    	int temp = 0;
+    	while (n > 0) {
+    		temp += n % 10;
+    		n /= 10;
+    		if (n == 0 && temp > 9) {
+    			n = temp;
+    			temp = 0;
+    		}
+    	}
+    	return temp;
+  	}
+
+	public boolean validPhoneNumber(String phoneNumber) {
+		if (phoneNumber.length() != 14) return false;
+		for (int i = 0; i < phoneNumber.length(); i++) {
+			if (i == 0 && phoneNumber.charAt(i) != '(') return false;
+			else if (i == 4 && phoneNumber.charAt(i) != ')') return false;
+			else if (i == 5 && phoneNumber.charAt(i) != ' ') return false;
+			else if (i == 9 && phoneNumber.charAt(i) != '-') return false;
+			else if (!Character.isDigit(phoneNumber.charAt(i))) return false;
+		}
+		return true;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().solution(10));
+		System.out.println(Character.isDigit('0'));
+		System.out.println(new Kata().validPhoneNumber("(1111)555 2345"));
+		System.out.println(new Kata().validPhoneNumber("(123) 456-7890"));
+		System.out.println(new Kata().validPhoneNumber("(098) 123 4567"));
+
 	}
 }

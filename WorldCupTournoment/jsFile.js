@@ -505,8 +505,10 @@ function treeView() {
 	for (let i = 0; i < treeTeams16.length / 2; i++) {
 		var elem = document.getElementById('tree-16');
 		var diff = treeTeams16[i].overall - treeTeams16[treeTeams16.length - i - 1].overall;
-		var mulA = 0,
-			mulB = 0;
+		var mulA = 0, mulB = 0;
+		if (Math.abs(diff) > 10) {
+			diff /= 2;
+		}
 		if (diff > 0) {
 			mulA = diff / 2;
 			mulB = diff / 4;
@@ -516,8 +518,14 @@ function treeView() {
 		}
 		mulA = Math.floor(Math.abs(mulA));
 		mulB = Math.floor(Math.abs(mulB));
-		var gA = Math.floor(Math.random() * (mulA + 1));
-		var gB = Math.floor(Math.random() * (mulB + 1));
+		if (mulA == 0) {
+			mulA = 1;
+		}
+		if (mulB == 0) {
+			mulB = 1;
+		}
+		var gA = Math.floor(Math.random() * (mulA));
+		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
@@ -545,8 +553,10 @@ function treeView() {
 	for (let i = 0; i < treeTeams8.length / 2; i++) {
 		var elem = document.getElementById('tree-8');
 		var diff = treeTeams8[i].overall - treeTeams8[treeTeams8.length - i - 1].overall;
-		var mulA = 0,
-			mulB = 0;
+		var mulA = 0, mulB = 0;
+		if (Math.abs(diff) > 10) {
+			diff /= 2;
+		}
 		if (diff > 0) {
 			mulA = diff / 2;
 			mulB = diff / 4;
@@ -556,8 +566,14 @@ function treeView() {
 		}
 		mulA = Math.floor(Math.abs(mulA));
 		mulB = Math.floor(Math.abs(mulB));
-		var gA = Math.floor(Math.random() * (mulA + 1));
-		var gB = Math.floor(Math.random() * (mulB + 1));
+		if (mulA == 0) {
+			mulA = 1;
+		}
+		if (mulB == 0) {
+			mulB = 1;
+		}
+		var gA = Math.floor(Math.random() * (mulA));
+		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
@@ -585,8 +601,10 @@ function treeView() {
 	for (let i = 0; i < treeTeams4.length / 2; i++) {
 		var elem = document.getElementById('tree-4');
 		var diff = treeTeams4[i].overall - treeTeams4[treeTeams4.length - i - 1].overall;
-		var mulA = 0,
-			mulB = 0;
+		var mulA = 0, mulB = 0;
+		if (Math.abs(diff) > 10) {
+			diff /= 2;
+		}
 		if (diff > 0) {
 			mulA = diff / 2;
 			mulB = diff / 4;
@@ -596,8 +614,14 @@ function treeView() {
 		}
 		mulA = Math.floor(Math.abs(mulA));
 		mulB = Math.floor(Math.abs(mulB));
-		var gA = Math.floor(Math.random() * (mulA + 1));
-		var gB = Math.floor(Math.random() * (mulB + 1));
+		if (mulA == 0) {
+			mulA = 1;
+		}
+		if (mulB == 0) {
+			mulB = 1;
+		}
+		var gA = Math.floor(Math.random() * (mulA));
+		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
@@ -625,8 +649,10 @@ function treeView() {
 	for (let i = 0; i < treeTeams2.length / 2; i++) {
 		var elem = document.getElementById('tree-2');
 		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2.length - i - 1].overall;
-		var mulA = 0,
-			mulB = 0;
+		var mulA = 0, mulB = 0;
+		if (Math.abs(diff) > 10) {
+			diff /= 2;
+		}
 		if (diff > 0) {
 			mulA = diff / 2;
 			mulB = diff / 4;
@@ -636,8 +662,14 @@ function treeView() {
 		}
 		mulA = Math.floor(Math.abs(mulA));
 		mulB = Math.floor(Math.abs(mulB));
-		var gA = Math.floor(Math.random() * (mulA + 1));
-		var gB = Math.floor(Math.random() * (mulB + 1));
+		if (mulA == 0) {
+			mulA = 1;
+		}
+		if (mulB == 0) {
+			mulB = 1;
+		}
+		var gA = Math.floor(Math.random() * (mulA));
+		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
