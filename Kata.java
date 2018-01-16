@@ -120,20 +120,33 @@ public class Kata {
 	}
 
 	public String dashatize(int num) {
-		String temp = "" + (num % 10);
-		num /= 10;
-		while (num > 9) {
-			int x = num % 10;
-			num /= 10;
-			if (x % 2 == 1) {
-				temp = "-" + x + "-" + temp;
-			} else temp = x + temp;
+		num = num < 0 ? num * -1 : num;
+		if (num < 10) return num + "";
+		int x = num % 10;
+		String temp = "";
+		if (x % 2 == 1) {
+			temp = "-" + x + temp;
 		}
-		temp = num + temp;
-		return temp;
+      	num /= 10;
+  		while (num > 9) {
+  			x = num % 10;
+  			num /= 10;
+  			if (x % 2 == 1) {
+		      	if (temp.charAt(0) == '-') {
+		        	temp = "-" + x + temp;
+	  			} else temp = "-" + x + "-" + temp;
+  			} else temp = x + temp;
+  		}
+  		if (num % 2 == 1) {
+			temp = num + "-" + temp;
+		}
+  		return temp;
     }
 
 	public static void main(String[] args) {
-		System.out.println(new Kata().dashatize(5311));
+		System.out.println(new Kata().dashatize(-1));
+		System.out.println(new Kata().dashatize(-28369));
+		System.out.println(new Kata().dashatize(86320));
+		System.out.println(new Kata().dashatize(974302));
 	}
 }
