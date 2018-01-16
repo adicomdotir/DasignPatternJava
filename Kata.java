@@ -96,10 +96,21 @@ public class Kata {
 		return true;
 	}
 
+	public char findMissingLetter(char[] array) {
+		int len = array.length;
+		char first = array[0];
+		char miss = '\0';
+		for (int i = 1; i < len; i++) {
+			if (first + i != array[i]) { 
+				miss = (char) (first + i);
+				break;
+			}
+		}
+	    return miss;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(Character.isDigit('0'));
-		System.out.println(new Kata().validPhoneNumber("(1111)555 2345"));
-		System.out.println(new Kata().validPhoneNumber("(123) 456-7890"));
-		System.out.println(new Kata().validPhoneNumber("(098) 123 4567"));
+		System.out.println(new Kata().findMissingLetter(new char[] { 'a','b','c','d','f' }));
+		System.out.println(new Kata().findMissingLetter(new char[] { 'O','Q','R','S' }));
 	}
 }
