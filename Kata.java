@@ -109,8 +109,21 @@ public class Kata {
 	    return miss;
 	}
 
+	public String dashatize(int num) {
+		String temp = "" + (num % 10);
+		num /= 10;
+		while (num > 9) {
+			int x = num % 10;
+			num /= 10;
+			if (x % 2 == 1) {
+				temp = "-" + x + "-" + temp;
+			} else temp = x + temp;
+		}
+		temp = num + temp;
+		return temp;
+    }
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().findMissingLetter(new char[] { 'a','b','c','d','f' }));
-		System.out.println(new Kata().findMissingLetter(new char[] { 'O','Q','R','S' }));
+		System.out.println(new Kata().dashatize(5311));
 	}
 }
