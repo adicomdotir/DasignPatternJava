@@ -87,11 +87,21 @@ public class Kata {
 	public boolean validPhoneNumber(String phoneNumber) {
 		if (phoneNumber.length() != 14) return false;
 		for (int i = 0; i < phoneNumber.length(); i++) {
-			if (i == 0 && phoneNumber.charAt(i) != '(') return false;
-			else if (i == 4 && phoneNumber.charAt(i) != ')') return false;
-			else if (i == 5 && phoneNumber.charAt(i) != ' ') return false;
-			else if (i == 9 && phoneNumber.charAt(i) != '-') return false;
-			else if (!Character.isDigit(phoneNumber.charAt(i))) return false;
+			if (i == 0 && phoneNumber.charAt(i) != '(') {
+				return false;
+			}
+			if (i == 4 && phoneNumber.charAt(i) != ')') {
+				return false;
+			}
+			if (i == 5 && phoneNumber.charAt(i) != ' ') {
+				return false;
+			}
+			if (i == 9 && phoneNumber.charAt(i) != '-') {
+				return false;
+			}
+			if (i != 0 && i != 4 && i != 5 && i != 9 && !Character.isDigit(phoneNumber.charAt(i))) {
+				return false;
+			} 
 		}
 		return true;
 	}
