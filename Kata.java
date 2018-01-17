@@ -148,5 +148,31 @@ public class Kata {
 		System.out.println(new Kata().dashatize(-28369));
 		System.out.println(new Kata().dashatize(86320));
 		System.out.println(new Kata().dashatize(974302));
+
+		System.out.println("" + Color.BLUE.getText());
+		System.out.println("" + Level.HIGH);
 	}
+}
+
+enum Color {
+	BLUE(1, "Blue"),
+	GREEN(2, "Green"),
+	RED(3, "Red");
+
+	private final int id;
+	private final String text;
+
+	Color(int id, String text) {
+		this.id = id;
+		this.text = text;
+	}
+
+	public int getId() { return id; }
+	public String getText() { return text; }
+}
+
+enum Level {
+    HIGH,
+    MEDIUM,
+    LOW
 }
