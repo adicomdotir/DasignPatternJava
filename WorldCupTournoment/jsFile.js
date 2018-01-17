@@ -8,6 +8,7 @@ var treeTeams16 = [];
 var treeTeams8 = [];
 var treeTeams4 = [];
 var treeTeams2 = [];
+var globalGroupId = 0;
 
 function init() {
 	var obj;
@@ -95,13 +96,13 @@ function init() {
 	team02 = new Team('Serbia', 78, 4);
 	team03 = new Team('Brazil', 84, 4);
 	team04 = new Team('Switzerland', 79, 4);
-	teams.push(team01, team02, team03, team04); 
+	teams.push(team01, team02, team03, team04);
 
 	team01 = new Team('Germany', 85, 5);
 	team02 = new Team('Mexico', 79, 5);
 	team03 = new Team('Sweden', 76, 5);
 	team04 = new Team('South Korea', 73, 5);
-	teams.push(team01, team02, team03, team04);	 
+	teams.push(team01, team02, team03, team04);
 
 	team01 = new Team('Belgium', 84, 6);
 	team02 = new Team('Panama', 65, 6);
@@ -113,7 +114,7 @@ function init() {
 	team02 = new Team('Japan', 76, 7);
 	team03 = new Team('Poland', 79, 7);
 	team04 = new Team('Senegal', 70, 7);
-	teams.push(team01, team02, team03, team04); 
+	teams.push(team01, team02, team03, team04);
 
 	var elem = document.getElementById('begin');
 	elem.parentElement.removeChild(elem);
@@ -209,6 +210,7 @@ function insertTeamToTable(tbody, groupId, index) {
 
 function selectGroup() {
 	selectGroupFire(event.target.value);
+	globalGroupId = event.target.value;
 }
 
 function selectGroupFire(index) {
@@ -312,17 +314,17 @@ function result() {
 	var elem = document.getElementById('divBtn');
 	elem.setAttribute('hidden', 'true');
 	sort();
-	selectGroupFire(0);
+	selectGroupFire(globalGroupId);
 	treeView();
 }
 
-function addAttributeColor(gObj, gOther, obj) {
-	if (gObj > gOther) {
-		obj.setAttribute('style', 'color: #2CC990;');
-	} else if (gObj < gOther) {
-		obj.setAttribute('style', 'color: #E3000E;');
+function addAttributeColor(gf, ga, element) {
+	if (gf > ga) {
+		element.setAttribute('style', 'color: #2CC990;');
+	} else if (gf < ga) {
+		element.setAttribute('style', 'color: #E3000E;');
 	} else {
-		obj.setAttribute('style', 'color: #FEC606;');
+		element.setAttribute('style', 'color: #FEC606;');
 	}
 }
 
@@ -408,7 +410,6 @@ function sort() {
 				}
 			}
 		}
-
 		// This loop for sort GD
 		for (var i = 0; i < groupTeamCount; i++) {
 			for (var j = i + 1; j < groupTeamCount; j++) {
@@ -439,62 +440,62 @@ function sort() {
 }
 
 function mergeSort(arr, l, r) {
-    if (l < r) {
-        let m = Math.floor(l + (r - l) / 2);
+	if (l < r) {
+		let m = Math.floor(l + (r - l) / 2);
 
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
- 
-        merge(arr, l, m, r);
-    }
+		mergeSort(arr, l, m);
+		mergeSort(arr, m + 1, r);
+
+		merge(arr, l, m, r);
+	}
 }
 
 
 function merge(arr, l, m, r) {
-    let i, j, k;
-    let n1 = m - l + 1;
-    let n2 =  r - m;
- 
-    /* create temp arrays */
-    let L = [];
-    let R = [];
- 
-    /* Copy data to temp arrays L[] and R[] */
-    for (i = 0; i < n1; i++)
-        L[i] = teams[teamsId[l + i]].table.points;
-    for (j = 0; j < n2; j++)
-        R[j] = teams[teamsId[m + 1+ j]].table.points;
- 
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0; // Initial index of first subarray
-    j = 0; // Initial index of second subarray
-    k = l; // Initial index of merged subarray
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        } else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
- 
-    /* Copy the remaining elements of L[], if there
-       are any */
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
- 
-    /* Copy the remaining elements of R[], if there
-       are any */
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
+	let i, j, k;
+	let n1 = m - l + 1;
+	let n2 = r - m;
+
+	/* create temp arrays */
+	let L = [];
+	let R = [];
+
+	/* Copy data to temp arrays L[] and R[] */
+	for (i = 0; i < n1; i++)
+		L[i] = teams[teamsId[l + i]].table.points;
+	for (j = 0; j < n2; j++)
+		R[j] = teams[teamsId[m + 1 + j]].table.points;
+
+	/* Merge the temp arrays back into arr[l..r]*/
+	i = 0; // Initial index of first subarray
+	j = 0; // Initial index of second subarray
+	k = l; // Initial index of merged subarray
+	while (i < n1 && j < n2) {
+		if (L[i] <= R[j]) {
+			arr[k] = L[i];
+			i++;
+		} else {
+			arr[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	/* Copy the remaining elements of L[], if there
+	   are any */
+	while (i < n1) {
+		arr[k] = L[i];
+		i++;
+		k++;
+	}
+
+	/* Copy the remaining elements of R[], if there
+	   are any */
+	while (j < n2) {
+		arr[k] = R[j];
+		j++;
+		k++;
+	}
 }
 
 function treeView() {
@@ -505,7 +506,8 @@ function treeView() {
 	for (let i = 0; i < treeTeams16.length / 2; i++) {
 		var elem = document.getElementById('tree-16');
 		var diff = treeTeams16[i].overall - treeTeams16[treeTeams16.length - i - 1].overall;
-		var mulA = 0, mulB = 0;
+		var mulA = 0,
+			mulB = 0;
 		if (Math.abs(diff) > 10) {
 			diff /= 2;
 		}
@@ -527,8 +529,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 2);
-			gB += Math.floor(Math.random() * 2);
+			gA += Math.floor(Math.random() * 1);
+			gB += Math.floor(Math.random() * 1);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -553,7 +555,8 @@ function treeView() {
 	for (let i = 0; i < treeTeams8.length / 2; i++) {
 		var elem = document.getElementById('tree-8');
 		var diff = treeTeams8[i].overall - treeTeams8[treeTeams8.length - i - 1].overall;
-		var mulA = 0, mulB = 0;
+		var mulA = 0,
+			mulB = 0;
 		if (Math.abs(diff) > 10) {
 			diff /= 2;
 		}
@@ -575,8 +578,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 2);
-			gB += Math.floor(Math.random() * 2);
+			gA += Math.floor(Math.random() * 1);
+			gB += Math.floor(Math.random() * 1);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -601,7 +604,8 @@ function treeView() {
 	for (let i = 0; i < treeTeams4.length / 2; i++) {
 		var elem = document.getElementById('tree-4');
 		var diff = treeTeams4[i].overall - treeTeams4[treeTeams4.length - i - 1].overall;
-		var mulA = 0, mulB = 0;
+		var mulA = 0,
+			mulB = 0;
 		if (Math.abs(diff) > 10) {
 			diff /= 2;
 		}
@@ -623,8 +627,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 2);
-			gB += Math.floor(Math.random() * 2);
+			gA += Math.floor(Math.random() * 1);
+			gB += Math.floor(Math.random() * 1);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -649,7 +653,8 @@ function treeView() {
 	for (let i = 0; i < treeTeams2.length / 2; i++) {
 		var elem = document.getElementById('tree-2');
 		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2.length - i - 1].overall;
-		var mulA = 0, mulB = 0;
+		var mulA = 0,
+			mulB = 0;
 		if (Math.abs(diff) > 10) {
 			diff /= 2;
 		}
@@ -671,8 +676,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 2);
-			gB += Math.floor(Math.random() * 2);
+			gA += Math.floor(Math.random() * 1);
+			gB += Math.floor(Math.random() * 1);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -701,43 +706,40 @@ function treeView() {
 function db(champion) {
 	// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
 	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-
 	// Open (or create) the database
 	var open = indexedDB.open("MyDatabase", 1);
-
 	// Create the schema
-	open.onupgradeneeded = function() {
-	    var db = open.result;
-	    var store = db.createObjectStore("MyObjectStore", {keyPath: "round"});
-	    var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
+	open.onupgradeneeded = function () {
+		var db = open.result;
+		var store = db.createObjectStore("MyObjectStore", {
+			keyPath: "round"
+		});
+		var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
 	};
-
-	open.onsuccess = function() {
-	    // Start a new transaction
-	    var db = open.result;
-	    var tx = db.transaction("MyObjectStore", "readwrite");
-	    var store = tx.objectStore("MyObjectStore");
-	    var index = store.index("NameIndex");
-
-	    // Add some data
-	    store.put({round: 1, champion: 'champion'});
-	    round++;
-	    
-	    // Query the data
-	    // var getJohn = store.get(12345);
-	    // var getBob = index.get(["Smith", "Bob"]);
-
-	    // getJohn.onsuccess = function() {
-	    //     console.log(getJohn.result);  // => "John"
-	    // };
-
-	    // getBob.onsuccess = function() {
-	    //     console.log(getBob.result.name.first);   // => "Bob"
-	    // };
-
-	    // Close the db when the transaction is done
-	    tx.oncomplete = function() {
-	        db.close();
-	    };
+	open.onsuccess = function () {
+		// Start a new transaction
+		var db = open.result;
+		var tx = db.transaction("MyObjectStore", "readwrite");
+		var store = tx.objectStore("MyObjectStore");
+		var index = store.index("NameIndex");
+		// Add some data
+		store.put({
+			round: 1,
+			champion: 'champion'
+		});
+		round++;
+		// Query the data
+		// var getJohn = store.get(12345);
+		// var getBob = index.get(["Smith", "Bob"]);
+		// getJohn.onsuccess = function() {
+		//     console.log(getJohn.result);  // => "John"
+		// };
+		// getBob.onsuccess = function() {
+		//     console.log(getBob.result.name.first);   // => "Bob"
+		// };
+		// Close the db when the transaction is done
+		tx.oncomplete = function () {
+			db.close();
+		};
 	}
 }
