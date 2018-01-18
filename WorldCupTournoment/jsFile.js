@@ -14,7 +14,7 @@ function init() {
 	var obj;
 	// for (var i = 0; i < groupCount; i++) {
 	// 	for (var j = 0; j < groupTeamCount; j++) {
-	// 		var overal = Math.round(Math.random() * 10) + 50;
+	// 		var overal = Math.round(Math.random() * 20) + 50;
 	// 		var team = new Team('Team' + ((i * 4) + j), overal, i);
 	// 		teams.push(team);
 	// 	}
@@ -175,6 +175,7 @@ function insertGroupToTable(tbody, index) {
 function insertTeamToTable(tbody, groupId, index) {
 	var teamId = groupId * 4 + index;
 	var tr = document.createElement('tr');
+	// tr.setAttribute("style", "color: #56AC39");
 	var td = document.createElement('td');
 	td.appendChild(document.createTextNode('' + (index + 1)));
 	tr.appendChild(td);
@@ -346,7 +347,7 @@ function fixture(groupId) {
 		var str = '';
 		var header = document.createElement("div");
 		var bold = document.createElement("b");
-		bold.appendChild(document.createTextNode("Matchday " + i));
+		bold.appendChild(document.createTextNode("MATCHDAY " + i));
 		header.appendChild(bold);
 		if (col === 0) {
 			document.getElementById('figure03').appendChild(header);
@@ -529,8 +530,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 1);
-			gB += Math.floor(Math.random() * 1);
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -578,8 +579,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 1);
-			gB += Math.floor(Math.random() * 1);
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -627,8 +628,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 1);
-			gB += Math.floor(Math.random() * 1);
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -676,8 +677,8 @@ function treeView() {
 		var gA = Math.floor(Math.random() * (mulA));
 		var gB = Math.floor(Math.random() * (mulB));
 		while (gA == gB) {
-			gA += Math.floor(Math.random() * 1);
-			gB += Math.floor(Math.random() * 1);
+			gA += Math.floor(Math.random() * 2);
+			gB += Math.floor(Math.random() * 2);
 		}
 		var div01 = document.createElement('div');
 		div01.setAttribute('class', 'col-md-4');
@@ -704,42 +705,58 @@ function treeView() {
 }
 
 function db(champion) {
-	// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
-	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-	// Open (or create) the database
-	var open = indexedDB.open("MyDatabase", 1);
-	// Create the schema
-	open.onupgradeneeded = function () {
-		var db = open.result;
-		var store = db.createObjectStore("MyObjectStore", {
-			keyPath: "round"
-		});
-		var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
-	};
-	open.onsuccess = function () {
-		// Start a new transaction
-		var db = open.result;
-		var tx = db.transaction("MyObjectStore", "readwrite");
-		var store = tx.objectStore("MyObjectStore");
-		var index = store.index("NameIndex");
-		// Add some data
-		store.put({
-			round: 1,
-			champion: 'champion'
-		});
-		round++;
-		// Query the data
-		// var getJohn = store.get(12345);
-		// var getBob = index.get(["Smith", "Bob"]);
-		// getJohn.onsuccess = function() {
-		//     console.log(getJohn.result);  // => "John"
-		// };
-		// getBob.onsuccess = function() {
-		//     console.log(getBob.result.name.first);   // => "Bob"
-		// };
-		// Close the db when the transaction is done
-		tx.oncomplete = function () {
-			db.close();
-		};
+	//prefixes of implementation that we want to test
+	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+	console.log(indexedDB);
+
+	// prefixes of window.IDB objects
+	// window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+	// window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+
+	if (!indexedDB) {
+		window.alert("Your browser doesn't support a stable version of IndexedDB.")
 	}
+
+	const championData = [
+		{ id: "1", year: "2010", champion: "Spain" },
+		{ id: "2", year: "2014", champion: "Germany" },
+	];
+	
+	var db;
+	var request = indexedDB.open("worldcup", 1);
+
+	request.onerror = function(event) {
+		console.log("error: ");
+	};
+
+	request.onsuccess = function(event) {
+		db = request.result;
+		console.log("success: " + db);
+	};
+
+	request.onupgradeneeded = function(event) {
+		var db = event.target.result;
+        var objectStore = db.createObjectStore("champions", {keyPath: "id"});
+        for (var i in championData) {
+            objectStore.add(championData[i]);      
+        }
+	}
+
+	readAll(db);
 }
+
+function readAll(db) {
+	var objectStore = db.transaction("champions").objectStore("champions");
+
+	objectStore.openCursor().onsuccess = function(event) {
+		var cursor = event.target.result;
+		if (cursor) {
+			alert("Name for id " + cursor.key + " is " + cursor.value.champion + ", year: " + cursor.value.year);
+			cursor.continue();
+		} else {
+			alert("No more entries!");
+		}
+	};     
+}
+

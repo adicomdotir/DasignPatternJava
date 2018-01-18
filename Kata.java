@@ -143,14 +143,30 @@ public class Kata {
   		return temp;
     }
 
-	public static void main(String[] args) {
-		System.out.println(new Kata().dashatize(-1));
-		System.out.println(new Kata().dashatize(-28369));
-		System.out.println(new Kata().dashatize(86320));
-		System.out.println(new Kata().dashatize(974302));
+    public int sequence(int[] arr) {
+	    if (arr.length == 0) return 0;
+	    for (int i = 0; i < arr.length; i++) {
+	      for (int j = i + 1; j < arr.length; j++) {
+	        if (arr[i] < arr[j]) {
+				int t = arr[i];
+				arr[i] = arr[j];
+				arr[j] = t;
+	        }
+	      }
+	    }
+	    int sum = 0;
+	    if (arr[0] >= 0) {
+	        for (int i = 0; i < arr.length - 1; i++) {
+				if (arr[i] == arr[i + 1]) continue;
+				sum += arr[i];
+				if (arr[i] < 0) break;
+		    }
+	    }
+	    return sum;
+	 }
 
-		System.out.println("" + Color.BLUE.getText());
-		System.out.println("" + Level.HIGH);
+	public static void main(String[] args) {
+		System.out.println(new Kata().sequence(new int[]{-2, 10, -13, 4, -11, 2, 1, -51, 44}));
 	}
 }
 

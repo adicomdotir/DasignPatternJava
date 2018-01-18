@@ -8,35 +8,47 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Kavivanar|Macondo" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
+		* {
+			/* font-family: 'Kavivanar', cursive; */
+			font-family: 'Macondo', cursive;
+			font-size: 15px;
+		}
+
 		.row {
 			margin-bottom: 1rem;
 		}
+
 		.table td {
-		   text-align: center;   
+			text-align: center;
 		}
+
 		.table th {
-		   text-align: center;   
+			text-align: center;
 		}
+
 	</style>
 </head>
 
 <body>
 	<div class="container" id="container">
-		<div class="row"></div>
-		<div id="begin">
-			<h2>WorldCup 2018</h2>
-			<button class="btn" onclick="init()" id="btn">Start</button>
+		<div class="row">
+			<div class="col-md-12" id="begin">
+				<h2>WorldCup 2018</h2>
+				<button type="button" class="btn btn-default" onclick="init()" id="btn">Start</button>
+			</div>
 		</div>
+		
 		<div id="hidden" hidden class="row">
-			<div class="col-md-6" style="padding: 0px">
+			<div class="col-md-6">
 				<select class="form-control" onchange="selectGroup()"></select>
 			</div>
 			<div class="col-md-6" style="padding: 0px">
 				<div class="pull-right" id="divBtn">
-					<button class="btn" onclick="result()">Result</button>
+					<button type="button" class="btn btn-default" onclick="result()">Result</button>
 				</div>
 			</div>
 		</div>
@@ -45,7 +57,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th style="width: 100px;">TeamName</th>
+						<th style="width: 120px;">TeamName</th>
 						<th>Game</th>
 						<th>Win</th>
 						<th>Draw</th>
@@ -70,7 +82,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4" id="tree-16">
 				<div>
-					<b>Round of 16</b>
+					<b>ROUND OF 16</b>
 				</div>
 			</div>
 			<div class="col-md-4"></div>
@@ -79,7 +91,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4" id="tree-8">
 				<div>
-					<b>Quarter-finals</b>
+					<b>QUARTER-FINALS</b>
 				</div>
 			</div>
 			<div class="col-md-4"></div>
@@ -88,7 +100,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4" id="tree-4">
 				<div>
-					<b>Semi-finals</b>
+					<b>SEMI-FINALS</b>
 				</div>
 			</div>
 			<div class="col-md-4"></div>
@@ -97,7 +109,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4" id="tree-2">
 				<div>
-					<b>Final</b>
+					<b>FINAL</b>
 				</div>
 			</div>
 			<div class="col-md-4"></div>
