@@ -59,6 +59,9 @@ function readAll(db) {
             var td = document.createElement('td');
             td.appendChild(document.createTextNode(cursor.value.runner));
             tr.appendChild(td);
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(cursor.value.thirth));
+            tr.appendChild(td);
             tbody.appendChild(tr);
 			cursor.continue();
 		} else {
