@@ -9,6 +9,8 @@ var treeTeams8 = [];
 var treeTeams4 = [];
 var treeTeams2 = [];
 var globalGroupId = 0;
+var year = 2000;
+var championId = 1;
 
 function init() {
 	var obj;
@@ -707,21 +709,25 @@ function treeView() {
 function db(champion) {
 	//prefixes of implementation that we want to test
 	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+	var openCopy = indexedDB && indexedDB.open;
+	var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
 
-	console.log(indexedDB);
-
-	// prefixes of window.IDB objects
-	// window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-	// window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+	if (IDBTransaction) {
+		IDBTransaction.READ_WRITE = IDBTransaction.READ_WRITE || 'readwrite';
+		IDBTransaction.READ_ONLY = IDBTransaction.READ_ONLY || 'readonly';
+	}
 
 	if (!indexedDB) {
 		window.alert("Your browser doesn't support a stable version of IndexedDB.")
 	}
 
 	const championData = [
-		{ id: "1", year: "2010", champion: "Spain" },
-		{ id: "2", year: "2014", champion: "Germany" },
+		// { id: "1", year: "2000", champion: "Spain" },
+		// { id: "2", year: "2001", champion: "Germany" },
 	];
+
+	// indexedDB.deleteDatabase('worldcup');
 	
 	var db;
 	var request = indexedDB.open("worldcup", 1);
@@ -733,29 +739,63 @@ function db(champion) {
 	request.onsuccess = function(event) {
 		db = request.result;
 		console.log("success: " + db);
+		addChampion(db, year, champion);
+		readAll(db);
 	};
 
 	request.onupgradeneeded = function(event) {
 		var db = event.target.result;
-        var objectStore = db.createObjectStore("champions", {keyPath: "id"});
+        var objectStore = db.createObjectStore("champions", {keyPath: "id", autoIncrement:true });
         for (var i in championData) {
             objectStore.add(championData[i]);      
         }
 	}
+}
 
-	readAll(db);
+function addChampion(db, year, champion) {
+	var transaction = db.transaction(["champions"],"readwrite");
+	transaction.oncomplete = function(event) {
+		// console.log("oncomplete");
+	};
+	
+	transaction.onerror = function(event) {
+		console.log("Error in adding ...", event);
+	};  
+	var objectStore = transaction.objectStore("champions");
+
+	var count = objectStore.count();
+	var lastYear = 1999;
+
+	count.onsuccess = function() {
+		// console.log(count.result);
+		var request = objectStore.get(count.result);
+		request.onerror = function(event) {
+			console.log(event);
+		};
+		request.onsuccess = function(event) {
+			// Get the old value that we want to update
+			var data = event.target.result;
+			if (data)  {
+				lastYear = data.year;
+				objectStore.add({year: ++lastYear, champion: champion });
+			} else {
+				objectStore.add({year: ++lastYear, champion: champion });
+			}
+		};
+	};
+	
 }
 
 function readAll(db) {
 	var objectStore = db.transaction("champions").objectStore("champions");
-
+	
 	objectStore.openCursor().onsuccess = function(event) {
 		var cursor = event.target.result;
 		if (cursor) {
-			alert("Name for id " + cursor.key + " is " + cursor.value.champion + ", year: " + cursor.value.year);
+			console.log("id:" + cursor.key + ", Year: " + cursor.value.year + ", Champion: " + cursor.value.champion);
 			cursor.continue();
 		} else {
-			alert("No more entries!");
+			console.log("No more entries!");
 		}
 	};     
 }
