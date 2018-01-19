@@ -697,16 +697,16 @@ function treeView() {
 		div01.appendChild(document.createTextNode(treeTeams2[treeTeams2.length - i - 1].name));
 		elem.appendChild(div01);
 		if (gA > gB) {
-			db(treeTeams2[i].name);
+			db(treeTeams2[i].name, treeTeams2[treeTeams2.length - i - 1].name);
 			window.alert(treeTeams2[i].name);
 		} else {
-			db(treeTeams2[treeTeams2.length - i - 1].name);
+			db(treeTeams2[treeTeams2.length - i - 1].name, treeTeams2[i].name);
 			window.alert(treeTeams2[treeTeams2.length - i - 1].name);
 		}
 	}
 }
 
-function db(champion) {
+function db(champion, runner) {
 	//prefixes of implementation that we want to test
 	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 	var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
@@ -739,7 +739,7 @@ function db(champion) {
 	request.onsuccess = function(event) {
 		db = request.result;
 		console.log("success: " + db);
-		addChampion(db, year, champion);
+		addChampion(db, year, champion, runner);
 		readAll(db);
 	};
 
@@ -752,7 +752,7 @@ function db(champion) {
 	}
 }
 
-function addChampion(db, year, champion) {
+function addChampion(db, year, champion, runner) {
 	var transaction = db.transaction(["champions"],"readwrite");
 	transaction.oncomplete = function(event) {
 		// console.log("oncomplete");
@@ -777,9 +777,9 @@ function addChampion(db, year, champion) {
 			var data = event.target.result;
 			if (data)  {
 				lastYear = data.year;
-				objectStore.add({year: ++lastYear, champion: champion });
+				objectStore.add({year: ++lastYear, champion: champion, runner: runner });
 			} else {
-				objectStore.add({year: ++lastYear, champion: champion });
+				objectStore.add({year: ++lastYear, champion: champion, runner: runner });
 			}
 		};
 	};
@@ -792,7 +792,7 @@ function readAll(db) {
 	objectStore.openCursor().onsuccess = function(event) {
 		var cursor = event.target.result;
 		if (cursor) {
-			console.log("id:" + cursor.key + ", Year: " + cursor.value.year + ", Champion: " + cursor.value.champion);
+			console.log("id:" + cursor.key + ", Year: " + cursor.value.year + ", Champion: " + cursor.value.champion + ", Runner: " + cursor.value.runner);
 			cursor.continue();
 		} else {
 			console.log("No more entries!");

@@ -165,8 +165,27 @@ public class Kata {
 	    return sum;
 	 }
 
+	public int sortDesc(final int num) {
+		String str = "" + num; 
+		char[] charArray = str.toCharArray();
+		for (int i = 0; i < charArray.length; i++) {
+			for (int j = i + 1; j < charArray.length; j++) {
+				if (charArray[i] > charArray[j]) {
+					char t = charArray[i];
+					charArray[i] = charArray[j];
+					charArray[j] = t;
+				}
+			}
+		}
+		int number = 0;
+		for (int i = charArray.length - 1; i >= 0; i--) {
+			number += (charArray[i] - '0') * Math.pow(10, i);
+		}
+		return number;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().sequence(new int[]{-2, 10, -13, 4, -11, 2, 1, -51, 44}));
+		System.out.println(new Kata().sortDesc(2465));
 	}
 }
 
