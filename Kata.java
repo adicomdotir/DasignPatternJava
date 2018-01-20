@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class Kata {
 	public static int[] sortArray(int[] array) {
@@ -184,8 +184,25 @@ public class Kata {
 		return number;
 	}
 
+	public boolean groupCheck(String s){
+		Stack stack = new Stack();
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') stack.push(s.charAt(i));
+			if (s.charAt(i) == ')') {
+				if(stack.empty() || (Character)stack.pop() != '(') return false;
+			}
+			if (s.charAt(i) == ']') {
+				if(stack.empty() || (Character)stack.pop() != '[') return false;
+			}
+			if (s.charAt(i) == '}') {
+				if(stack.empty() || (Character)stack.pop() != '{') return false;
+			}
+		}
+		return stack.empty();
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().sortDesc(2465));
+		System.out.println(new Kata().groupCheck("[[(]())]"));
 	}
 }
 
