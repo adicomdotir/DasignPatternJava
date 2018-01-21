@@ -186,6 +186,7 @@ public class Kata {
 
 	public static void main(String[] args) {
 		System.out.println(new Kata().sortDesc(2465));
+		System.out.println(Color.BLUE);
 	}
 }
 
