@@ -201,8 +201,34 @@ public class Kata {
 		return stack.empty();
 	}
 
+	public int dblLinear (int n) {
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i <= (n + 1) * 2; i++) {
+        	int y = i * 2 + 1;
+        	boolean isY = false;
+        	for (int j = 0; j < arr.size(); j++) {
+        		if (arr.get(j) == y) isY = true;
+        	}
+        	if (!isY) {
+        		arr.add(i * 2 + 1);
+        	}
+        	y = i * 3 + 1;
+        	isY = false;
+        	for (int j = 0; j < arr.size(); j++) {
+        		if (arr.get(j) == y) isY = true;
+        	}
+        	if (!isY) {
+        		arr.add(i * 3 + 1);
+        	}
+        }
+        Integer[] u = arr.toArray(new Integer[0]);
+        Arrays.sort(u);
+        System.out.println(Arrays.toString(u));
+        return u[n];
+    }
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().groupCheck("[[(]())]"));
+		System.out.println(new Kata().dblLinear(10));
 	}
 }
 
