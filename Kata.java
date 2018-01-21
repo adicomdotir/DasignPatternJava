@@ -23,8 +23,8 @@ public class Kata {
 		for (int i = 0; i < phrase.length(); i++) {
 			if (phrase.charAt(i) == ' ') {
 				phrase = phrase.substring(0, i + 1) + Character.toUpperCase(phrase.charAt(i + 1)) + phrase.substring(i + 2);
-			}		
-		}	
+			}
+		}
 		return phrase;
 	}
 
@@ -101,7 +101,7 @@ public class Kata {
 			}
 			if (i != 0 && i != 4 && i != 5 && i != 9 && !Character.isDigit(phoneNumber.charAt(i))) {
 				return false;
-			} 
+			}
 		}
 		return true;
 	}
@@ -111,7 +111,7 @@ public class Kata {
 		char first = array[0];
 		char miss = '\0';
 		for (int i = 1; i < len; i++) {
-			if (first + i != array[i]) { 
+			if (first + i != array[i]) {
 				miss = (char) (first + i);
 				break;
 			}
@@ -166,7 +166,7 @@ public class Kata {
 	 }
 
 	public int sortDesc(final int num) {
-		String str = "" + num; 
+		String str = "" + num;
 		char[] charArray = str.toCharArray();
 		for (int i = 0; i < charArray.length; i++) {
 			for (int j = i + 1; j < charArray.length; j++) {

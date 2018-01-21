@@ -70,7 +70,7 @@ function init() {
 	// team04 = new Team('SouthKorea', 73, 7);
 	// teams.push(team01, team02, team03, team04);
 
-	let team01 = new Team('Russia', 76, 0);
+	let team01 = new Team('Russia', 76, 0)
 	let team02 = new Team('SaudiArabia', 68, 0);
 	let team03 = new Team('Egypt', 67, 0);
 	let team04 = new Team('Uruguay', 80, 0);
@@ -649,7 +649,7 @@ function treeView() {
 			treeTeams2.push(treeTeams4[treeTeams4.length - i - 1]);
 			treeTeams2Playoff.push(treeTeams4[i]);
 		}
-	}	
+	}
 	for (let i = 0; i < treeTeams2Playoff.length / 2; i++) {
 		var elem = document.getElementById('tree-2-playoff');
 		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2Playoff.length - i - 1].overall;
@@ -774,7 +774,7 @@ function db(champion, runner) {
 	];
 
 	// indexedDB.deleteDatabase('worldcup');
-	
+
 	var db;
 	var request = indexedDB.open("worldcup", 1);
 
@@ -793,7 +793,7 @@ function db(champion, runner) {
 		var db = event.target.result;
         var objectStore = db.createObjectStore("champions", {keyPath: "id", autoIncrement:true });
         for (var i in championData) {
-            objectStore.add(championData[i]);      
+            objectStore.add(championData[i]);
         }
 	}
 }
@@ -803,10 +803,10 @@ function addChampion(db, year, champion, runner) {
 	transaction.oncomplete = function(event) {
 		// console.log("oncomplete");
 	};
-	
+
 	transaction.onerror = function(event) {
 		console.log("Error in adding ...", event);
-	};  
+	};
 	var objectStore = transaction.objectStore("champions");
 
 	var count = objectStore.count();
@@ -829,12 +829,12 @@ function addChampion(db, year, champion, runner) {
 			}
 		};
 	};
-	
+
 }
 
 function readAll(db) {
 	var objectStore = db.transaction("champions").objectStore("champions");
-	
+
 	objectStore.openCursor().onsuccess = function(event) {
 		var cursor = event.target.result;
 		if (cursor) {
@@ -843,6 +843,5 @@ function readAll(db) {
 		} else {
 			console.log("No more entries!");
 		}
-	};     
+	};
 }
-
