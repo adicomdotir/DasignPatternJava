@@ -227,6 +227,15 @@ public class Kata {
         return u[n];
     }
 
+	public int nbYear(int p0, double percent, int aug, int p) {
+		int index = 0;
+		while (p0 < p) {
+			p0 += p0 * percent / 100 + aug;
+			index++;
+		}
+		return index;
+    }
+
 	public static void main(String[] args) {
 		System.out.println(new Kata().dblLinear(10));
 	}
