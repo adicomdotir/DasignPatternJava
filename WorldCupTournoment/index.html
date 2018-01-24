@@ -31,6 +31,70 @@
 			text-align: center;
 		}
 
+		main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 200px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .round .spacer {
+            flex-grow: 1;
+        }
+
+        .round .spacer:first-child,
+        .round .spacer:last-child {
+            flex-grow: .5;
+        }
+
+        .round .game-spacer {
+            flex-grow: 1;
+        }
+
+        /*
+	*  General Styles
+	*/
+
+        body {
+            font-family: sans-serif;
+            font-size: small;
+            padding: 10px;
+            line-height: 1.4em;
+        }
+
+        li.game {
+            padding-left: 20px;
+        }
+
+        li.game.winner {
+            font-weight: bold;
+        }
+
+        li.game span {
+            float: right;
+            margin-right: 5px;
+        }
+
+        li.game-top {
+            border-bottom: 1px solid #aaa;
+        }
+
+        li.game-spacer {
+            border-right: 1px solid #aaa;
+            min-height: 40px;
+        }
+
+        li.game-bottom {
+            border-top: 1px solid #aaa;
+        }
+
 	</style>
 </head>
 
@@ -79,52 +143,31 @@
 			<div class="text-center col-md-6" id="figure02"></div>
 			<div class="text-center col-md-6" id="figure03"></div>
 		</div>
-		<hr size="30">
-		<div class="row text-center">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="tree-16">
-				<div>
-					<b>ROUND OF 16</b>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-		</div>
-		<div class="row text-center">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="tree-8">
-				<div>
-					<b>QUARTER-FINALS</b>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-		</div>
-		<div class="row text-center">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="tree-4">
-				<div>
-					<b>SEMI-FINALS</b>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-		</div>
-		<div class="row text-center">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="tree-2-playoff">
-				<div>
-					<b>THIRD PLACE PLAY-OFF</b>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-		</div>
-		<div class="row text-center">
-			<div class="col-md-4"></div>
-			<div class="col-md-4" id="tree-2">
-				<div>
-					<b>FINAL</b>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-		</div>
+		<hr size="5">
+		<main id="tournament">
+	        <ul class="round round-1">
+				<li style="text-align: -webkit-center"><b>ROUND OF 16</b></li>
+	        </ul>
+	        <ul class="round round-2">
+				<li style="text-align: -webkit-center"><b>QUARTER-FINALS</b></li>
+	        </ul>
+	        <ul class="round round-3">
+				<li style="text-align: -webkit-center"><b>SEMI-FINALS</b></li>
+	        </ul>
+	        <ul class="round round-4">
+				<li style="text-align: -webkit-center"><b>FINAL</b></li>
+	        </ul>
+	    </main>
+		<main id="tournament">
+	        <ul class="round round-1" id="tree-16">
+	        </ul>
+	        <ul class="round round-2" id="tree-8">
+	        </ul>
+	        <ul class="round round-3" id="tree-4">
+	        </ul>
+	        <ul class="round round-4" id="tree-2">
+	        </ul>
+	    </main>
 	</div>
 	<script src="jsFile.js"></script>
 </body>

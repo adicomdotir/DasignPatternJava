@@ -1,64 +1,181 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8"/>
-  <script type="application/javascript">
-    function draw() {
-      var canvas = document.getElementById('canvas');
-      if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
 
-        var i = 2;
-        ctx.fillStyle = 'rgb(0, 0, 0)';
-        ctx.fillRect(0, 0, 100, 50);
-        ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.fillRect(0 + i, 0 + i, 100 - i * 2, 50 - i * 2);
-        ctx.font = '15px Tahoma';
-        ctx.textAlign="center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = 'Red';
-        ctx.fillText('Red', 50, 25);
+<head>
+    <meta charset="utf-8" />
+    <style>
+        main {
+            display: flex;
+            flex-direction: row;
+        }
 
-        var x = 0;
-        var y = 60;
-        var w = 100;
-        var h = 50;
-        ctx.fillStyle = 'rgb(0, 0, 0)';
-        ctx.fillRect(x, y, w, h);
-        ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.fillRect(x + i, y + i, w - i * 2, h - i * 2);
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = 'Blue';
-        ctx.fillText('Blue', w / 2 + x, h / 2 + y);
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 200px;
+            list-style: none;
+            padding: 0;
+        }
 
-        ctx.fillStyle = 'Black';
-        ctx.lineWidth = 2;
-        ctx.moveTo(100, h / 2 + y);
-        ctx.lineTo(125, h / 2 + y);
-        ctx.moveTo(125, h / 2 + y);
-        ctx.lineTo(125, h / 2 + y - y / 2);
-        ctx.moveTo(125, h / 2 + y - y / 2);
-        ctx.lineTo(150, h / 2 + y - y / 2);
-        ctx.stroke();
+        .round .spacer {
+            flex-grow: 1;
+        }
 
-        var x = 150;
-        var y = 30;
-        var w = 100;
-        var h = 50;
-        ctx.fillStyle = 'rgb(0, 0, 0)';
-        ctx.fillRect(x, y, w, h);
-        ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.fillRect(x + i, y + i, w - i * 2, h - i * 2);
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = 'Green';
-        ctx.fillText('Green', w / 2 + x, h / 2 + y);
-      }
-    }
-  </script>
- </head>
- <body onload="draw();">
-   <canvas id="canvas" width="500" height="500"></canvas>
- </body>
+        .round .spacer:first-child,
+        .round .spacer:last-child {
+            flex-grow: .5;
+        }
+
+        .round .game-spacer {
+            flex-grow: 1;
+        }
+
+        /*
+	*  General Styles
+	*/
+
+        body {
+            font-family: sans-serif;
+            font-size: small;
+            padding: 10px;
+            line-height: 1.4em;
+        }
+
+        li.game {
+            padding-left: 20px;
+        }
+
+        li.game.winner {
+            font-weight: bold;
+        }
+
+        li.game span {
+            float: right;
+            margin-right: 5px;
+        }
+
+        li.game-top {
+            border-bottom: 1px solid #aaa;
+        }
+
+        li.game-spacer {
+            border-right: 1px solid #aaa;
+            min-height: 40px;
+        }
+
+        li.game-bottom {
+            border-top: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>2013 NCAA Tournament - Midwest Bracket</h1>
+    <main id="tournament">
+        <ul class="round round-1">
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Lousville <span>79</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">NC A&T <span>48</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Colo St <span>84</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Missouri <span>72</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top ">Oklahoma St <span>55</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom winner">Oregon <span>68</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Saint Louis <span>64</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">New Mexico St <span>44</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Memphis <span>54</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">St Mary's <span>52</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Mich St <span>65</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Valparaiso <span>54</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Creighton <span>67</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Cincinnati <span>63</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Duke <span>73</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Albany <span>61</span></li>
+
+            <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-2">
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Lousville <span>82</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Colo St <span>56</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Oregon <span>74</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Saint Louis <span>57</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top ">Memphis <span>48</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom winner">Mich St <span>70</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top ">Creighton <span>50</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom winner">Duke <span>66</span></li>
+
+            <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-3">
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Lousville <span>77</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Oregon <span>69</span></li>
+
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top ">Mich St <span>61</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom winner">Duke <span>71</span></li>
+
+            <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-4">
+            <li class="spacer">&nbsp;</li>
+
+            <li class="game game-top winner">Lousville <span>85</span></li>
+            <li class="game game-spacer">&nbsp;</li>
+            <li class="game game-bottom ">Duke <span>63</span></li>
+
+            <li class="spacer">&nbsp;</li>
+        </ul>
+    </main>
+</body>
+
 </html>

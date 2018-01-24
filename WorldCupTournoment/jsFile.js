@@ -530,19 +530,37 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		if (i == 0) {
+			var div01 = document.createElement('li');
+			div01.setAttribute('class', 'spacer');
+			div01.appendChild(document.createTextNode('\u00A0'));
+			elem.appendChild(div01);
+		}
+		var div01 = document.createElement('li');
+		var att = gB < gA ? "game game-top winner" : "game game-top";
+		div01.setAttribute('class', att);
 		addAttributeColor(gA, gB, div01);
 		div01.appendChild(document.createTextNode(treeTeams16[i].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gA));
+		div01.appendChild(span);
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'game game-spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		div01 = document.createElement('li');
+		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
+		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gB));
+		div01.appendChild(span);
+		elem.appendChild(div01);
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams8.push(treeTeams16[i]);
@@ -550,6 +568,7 @@ function treeView() {
 			treeTeams8.push(treeTeams16[treeTeams16.length - i - 1]);
 		}
 	}
+
 	for (let i = 0; i < treeTeams8.length / 2; i++) {
 		var elem = document.getElementById('tree-8');
 		var diff = treeTeams8[i].overall - treeTeams8[treeTeams8.length - i - 1].overall;
@@ -579,19 +598,37 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		if (i == 0) {
+			var div01 = document.createElement('li');
+			div01.setAttribute('class', 'spacer');
+			div01.appendChild(document.createTextNode('\u00A0'));
+			elem.appendChild(div01);
+		}
+		var div01 = document.createElement('li');
+		var att = gB < gA ? "game game-top winner" : "game game-top";
+		div01.setAttribute('class', att);
 		addAttributeColor(gA, gB, div01);
 		div01.appendChild(document.createTextNode(treeTeams8[i].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gA));
+		div01.appendChild(span);
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'game game-spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		div01 = document.createElement('li');
+		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
+		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams8[treeTeams8.length - i - 1].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gB));
+		div01.appendChild(span);
+		elem.appendChild(div01);
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams4.push(treeTeams8[i]);
@@ -628,19 +665,36 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		if (i == 0) {
+			var div01 = document.createElement('li');
+			div01.setAttribute('class', 'spacer');
+			div01.appendChild(document.createTextNode('\u00A0'));
+			elem.appendChild(div01);
+		}var div01 = document.createElement('li');
+		var att = gB < gA ? "game game-top winner" : "game game-top";
+		div01.setAttribute('class', att);
 		addAttributeColor(gA, gB, div01);
 		div01.appendChild(document.createTextNode(treeTeams4[i].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gA));
+		div01.appendChild(span);
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'game game-spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		div01 = document.createElement('li');
+		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
+		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams4[treeTeams4.length - i - 1].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gB));
+		div01.appendChild(span);
+		elem.appendChild(div01);
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams2.push(treeTeams4[i]);
@@ -679,20 +733,20 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		addAttributeColor(gA, gB, div01);
-		div01.appendChild(document.createTextNode(treeTeams2Playoff[i].name));
-		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(gA + '-' + gB));
-		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		addAttributeColor(gB, gA, div01);
-		div01.appendChild(document.createTextNode(treeTeams2Playoff[treeTeams2Playoff.length - i - 1].name));
-		elem.appendChild(div01);
+		// var div01 = document.createElement('div');
+		// div01.setAttribute('class', 'col-md-4');
+		// addAttributeColor(gA, gB, div01);
+		// div01.appendChild(document.createTextNode(treeTeams2Playoff[i].name));
+		// elem.appendChild(div01);
+		// div01 = document.createElement('div');
+		// div01.setAttribute('class', 'col-md-4');
+		// div01.appendChild(document.createTextNode(gA + '-' + gB));
+		// elem.appendChild(div01);
+		// div01 = document.createElement('div');
+		// div01.setAttribute('class', 'col-md-4');
+		// addAttributeColor(gB, gA, div01);
+		// div01.appendChild(document.createTextNode(treeTeams2Playoff[treeTeams2Playoff.length - i - 1].name));
+		// elem.appendChild(div01);
 		if (gA > gB) {
 			thirth = treeTeams2Playoff[i].name;
 		} else {
@@ -728,19 +782,36 @@ function treeView() {
 			gA += Math.floor(Math.random() * 2);
 			gB += Math.floor(Math.random() * 2);
 		}
-		var div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		if (i == 0) {
+			var div01 = document.createElement('li');
+			div01.setAttribute('class', 'spacer');
+			div01.appendChild(document.createTextNode('\u00A0'));
+			elem.appendChild(div01);
+		}var div01 = document.createElement('li');
+		var att = gB < gA ? "game game-top winner" : "game game-top";
+		div01.setAttribute('class', att);
 		addAttributeColor(gA, gB, div01);
 		div01.appendChild(document.createTextNode(treeTeams2[i].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gA));
+		div01.appendChild(span);
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
-		div01.appendChild(document.createTextNode(gA + '-' + gB));
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'game game-spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
-		div01 = document.createElement('div');
-		div01.setAttribute('class', 'col-md-4');
+		div01 = document.createElement('li');
+		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
+		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
 		div01.appendChild(document.createTextNode(treeTeams2[treeTeams2.length - i - 1].name));
+		var span = document.createElement('span');
+		span.appendChild(document.createTextNode(gB));
+		div01.appendChild(span);
+		elem.appendChild(div01);
+		div01 = document.createElement('li');
+		div01.setAttribute('class', 'spacer');
+		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
 		if (gA > gB) {
 			db(treeTeams2[i].name, treeTeams2[treeTeams2.length - i - 1].name);
