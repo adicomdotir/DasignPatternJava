@@ -236,8 +236,21 @@ public class Kata {
 		return index;
     }
 
+	public String toCamelCase(String s) {
+		for (int i = 1; i < s.length(); i++) {
+			if ((s.charAt(i) == '-' || s.charAt(i) == '_') && i + 1 < s.length()) {
+				if (s.charAt(i + 1) >= 'a' && s.charAt(i + 1) <= 'z') {
+					s = s.substring(0, i + 1) + Character.toUpperCase(s.charAt(i + 1)) + s.substring(i + 2);
+				}
+			}
+		}
+	    s = s.replace("-", "");
+	    s = s.replace("_", "");
+		return s;
+	}
+
 	public static void main(String[] args) {
-		System.out.println(new Kata().dblLinear(10));
+		System.out.println(new Kata().toCamelCase("the-stealth-warrior"));
 	}
 }
 

@@ -14,9 +14,9 @@
         ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.fillRect(0 + i, 0 + i, 100 - i * 2, 50 - i * 2);
         ctx.font = '15px Tahoma';
-        ctx.textAlign="center"; 
+        ctx.textAlign="center";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = 'Black';
+        ctx.fillStyle = 'Red';
         ctx.fillText('Red', 50, 25);
 
         var x = 0;
@@ -27,10 +27,9 @@
         ctx.fillRect(x, y, w, h);
         ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.fillRect(x + i, y + i, w - i * 2, h - i * 2);
-        ctx.font = '15px Tahoma';
-        ctx.textAlign = "center"; 
+        ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = 'Black';
+        ctx.fillStyle = 'Blue';
         ctx.fillText('Blue', w / 2 + x, h / 2 + y);
 
         ctx.fillStyle = 'Black';
@@ -42,11 +41,24 @@
         ctx.moveTo(125, h / 2 + y - y / 2);
         ctx.lineTo(150, h / 2 + y - y / 2);
         ctx.stroke();
+
+        var x = 150;
+        var y = 30;
+        var w = 100;
+        var h = 50;
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = 'rgb(255, 255, 255)';
+        ctx.fillRect(x + i, y + i, w - i * 2, h - i * 2);
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = 'Green';
+        ctx.fillText('Green', w / 2 + x, h / 2 + y);
       }
     }
   </script>
  </head>
  <body onload="draw();">
-   <canvas id="canvas" width="150" height="150"></canvas>
+   <canvas id="canvas" width="500" height="500"></canvas>
  </body>
 </html>
