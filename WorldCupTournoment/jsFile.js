@@ -499,11 +499,12 @@ function merge(arr, l, m, r) {
 function treeView() {
 	for (var gId = 0; gId < groupCount; gId++) {
 		var teamId = gId * 4;
-		treeTeams16.push(teams[teamId], teams[teamId + 1]);
+		treeTeams16.unshift(teams[teamId]);
+		treeTeams16.push(teams[teamId + 1]);
 	}
-	for (let i = 0; i < treeTeams16.length / 2; i++) {
+	for (let i = 0; i < treeTeams16.length - 1; i += 2) {
 		var elem = document.getElementById('tree-16');
-		var diff = treeTeams16[i].overall - treeTeams16[treeTeams16.length - i - 1].overall;
+		var diff = treeTeams16[i].overall - treeTeams16[i + 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (Math.abs(diff) > 10) {
@@ -553,7 +554,7 @@ function treeView() {
 		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
 		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
-		div01.appendChild(document.createTextNode(treeTeams16[treeTeams16.length - i - 1].name));
+		div01.appendChild(document.createTextNode(treeTeams16[i + 1].name));
 		var span = document.createElement('span');
 		span.appendChild(document.createTextNode(gB));
 		div01.appendChild(span);
@@ -565,13 +566,13 @@ function treeView() {
 		if (gA > gB) {
 			treeTeams8.push(treeTeams16[i]);
 		} else {
-			treeTeams8.push(treeTeams16[treeTeams16.length - i - 1]);
+			treeTeams8.push(treeTeams16[i + 1]);
 		}
 	}
 
-	for (let i = 0; i < treeTeams8.length / 2; i++) {
+	for (let i = 0; i < treeTeams8.length - 1; i += 2) {
 		var elem = document.getElementById('tree-8');
-		var diff = treeTeams8[i].overall - treeTeams8[treeTeams8.length - i - 1].overall;
+		var diff = treeTeams8[i].overall - treeTeams8[i + 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (Math.abs(diff) > 10) {
@@ -621,7 +622,7 @@ function treeView() {
 		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
 		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
-		div01.appendChild(document.createTextNode(treeTeams8[treeTeams8.length - i - 1].name));
+		div01.appendChild(document.createTextNode(treeTeams8[i + 1].name));
 		var span = document.createElement('span');
 		span.appendChild(document.createTextNode(gB));
 		div01.appendChild(span);
@@ -633,12 +634,12 @@ function treeView() {
 		if (gA > gB) {
 			treeTeams4.push(treeTeams8[i]);
 		} else {
-			treeTeams4.push(treeTeams8[treeTeams8.length - i - 1]);
+			treeTeams4.push(treeTeams8[i + 1]);
 		}
 	}
-	for (let i = 0; i < treeTeams4.length / 2; i++) {
+	for (let i = 0; i < treeTeams4.length - 1; i += 2) {
 		var elem = document.getElementById('tree-4');
-		var diff = treeTeams4[i].overall - treeTeams4[treeTeams4.length - i - 1].overall;
+		var diff = treeTeams4[i].overall - treeTeams4[i + 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (Math.abs(diff) > 10) {
@@ -687,7 +688,7 @@ function treeView() {
 		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
 		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
-		div01.appendChild(document.createTextNode(treeTeams4[treeTeams4.length - i - 1].name));
+		div01.appendChild(document.createTextNode(treeTeams4[i + 1].name));
 		var span = document.createElement('span');
 		span.appendChild(document.createTextNode(gB));
 		div01.appendChild(span);
@@ -698,15 +699,15 @@ function treeView() {
 		elem.appendChild(div01);
 		if (gA > gB) {
 			treeTeams2.push(treeTeams4[i]);
-			treeTeams2Playoff.push(treeTeams4[treeTeams4.length - i - 1]);
+			treeTeams2Playoff.push(treeTeams4[i + 1]);
 		} else {
-			treeTeams2.push(treeTeams4[treeTeams4.length - i - 1]);
+			treeTeams2.push(treeTeams4[i + 1]);
 			treeTeams2Playoff.push(treeTeams4[i]);
 		}
 	}
-	for (let i = 0; i < treeTeams2Playoff.length / 2; i++) {
+	for (let i = 0; i < treeTeams2Playoff.length - 1; i += 2) {
 		var elem = document.getElementById('tree-2-playoff');
-		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2Playoff.length - i - 1].overall;
+		var diff = treeTeams2Playoff[i].overall - treeTeams2Playoff[i + 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (Math.abs(diff) > 10) {
@@ -745,17 +746,17 @@ function treeView() {
 		// div01 = document.createElement('div');
 		// div01.setAttribute('class', 'col-md-4');
 		// addAttributeColor(gB, gA, div01);
-		// div01.appendChild(document.createTextNode(treeTeams2Playoff[treeTeams2Playoff.length - i - 1].name));
+		// div01.appendChild(document.createTextNode(treeTeams2Playoff[i + 1].name));
 		// elem.appendChild(div01);
 		if (gA > gB) {
 			thirth = treeTeams2Playoff[i].name;
 		} else {
-			thirth = treeTeams2Playoff[treeTeams2.length - i - 1].name;
+			thirth = treeTeams2Playoff[i + 1].name;
 		}
 	}
-	for (let i = 0; i < treeTeams2.length / 2; i++) {
+	for (let i = 0; i < treeTeams2.length - 1; i += 2) {
 		var elem = document.getElementById('tree-2');
-		var diff = treeTeams2[i].overall - treeTeams2[treeTeams2.length - i - 1].overall;
+		var diff = treeTeams2[i].overall - treeTeams2[i + 1].overall;
 		var mulA = 0,
 			mulB = 0;
 		if (Math.abs(diff) > 10) {
@@ -804,7 +805,7 @@ function treeView() {
 		var att = gB < gA ? "game game-bottom" : "game game-bottom winner";
 		div01.setAttribute('class', att);
 		addAttributeColor(gB, gA, div01);
-		div01.appendChild(document.createTextNode(treeTeams2[treeTeams2.length - i - 1].name));
+		div01.appendChild(document.createTextNode(treeTeams2[i + 1].name));
 		var span = document.createElement('span');
 		span.appendChild(document.createTextNode(gB));
 		div01.appendChild(span);
@@ -814,11 +815,11 @@ function treeView() {
 		div01.appendChild(document.createTextNode('\u00A0'));
 		elem.appendChild(div01);
 		if (gA > gB) {
-			db(treeTeams2[i].name, treeTeams2[treeTeams2.length - i - 1].name);
+			db(treeTeams2[i].name, treeTeams2[i + 1].name);
 			window.alert(treeTeams2[i].name);
 		} else {
-			db(treeTeams2[treeTeams2.length - i - 1].name, treeTeams2[i].name);
-			window.alert(treeTeams2[treeTeams2.length - i - 1].name);
+			db(treeTeams2[i + 1].name, treeTeams2[i].name);
+			window.alert(treeTeams2[i + 1].name);
 		}
 	}
 }
