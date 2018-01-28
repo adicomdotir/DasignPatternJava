@@ -248,9 +248,27 @@ public class Kata {
 	    s = s.replace("_", "");
 		return s;
 	}
+	
+	public List<Long> sumDigPow(long a, long b) {
+		List<Long> list = new ArrayList<>();
+        for (long i = a; i < b; i++) {
+        	long powNum = 0;
+        	int index = 1;
+        	String s = String.valueOf(i);
+        	for (int j = 0; j < s.length(); j++) {
+        		int x = s.charAt(j) - '0';
+        		powNum += (int) Math.pow(x, index);
+        		index++;
+        	}
+        	if (powNum == i) {
+        		list.add(powNum);
+        	}
+        }
+        return list;
+    }
 
 	public static void main(String[] args) {
-		System.out.println(new Kata().toCamelCase("the-stealth-warrior"));
+		System.out.println("" + new Kata().sumDigPow(50, 150).size());
 	}
 }
 
