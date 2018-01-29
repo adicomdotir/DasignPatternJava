@@ -267,8 +267,24 @@ public class Kata {
         return list;
     }
 
+    public int josephusSurvivor(final int n, final int k) {
+    	int x = k - 1;
+    	List<Integer> list = new ArrayList<>();
+    	for (int i = 1; i <= n; i++) {
+    		list.add(i);
+    	}
+    	while (list.size() > 1) {
+    		while (list.size() <= x) {
+    			x -= list.size();
+    		}
+    		list.remove(x);
+    		x += k - 1;
+    	}
+    	return list.get(0);
+	}  
+
 	public static void main(String[] args) {
-		System.out.println("" + new Kata().sumDigPow(50, 150).size());
+		System.out.println("" + new Kata().josephusSurvivor(7, 3));
 	}
 }
 
