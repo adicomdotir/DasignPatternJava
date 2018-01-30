@@ -36,7 +36,6 @@ var close10 = function(a, b){
 	return 0;
 }
 
-<<<<<<< HEAD
 var stringE = function(str) {
 	var count = 0;
 	for (var i = 0; i < str.length; i++) {
@@ -45,10 +44,4 @@ var stringE = function(str) {
 		}
 	}
 	return count >= 1 && count <= 3;
-=======
-var stringE = function(str){
-	if (str.charAt(1) == 'e' || str.charAt(2) == 'e' || str.charAt(3) == 'e')
-		return true;
-	return false;
->>>>>>> 82b1a5c776f777af6985c07488e4430339df8fd4
 }
