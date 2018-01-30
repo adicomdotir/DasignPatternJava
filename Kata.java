@@ -281,7 +281,34 @@ public class Kata {
     		x += k - 1;
     	}
     	return list.get(0);
-	}  
+	}
+
+	public static String Tickets(int[] peopleInLine) {
+	    int money25 = 0;
+	    int money50 = 0;
+	    int money100 = 0;
+	    for (int i = 0; i < peopleInLine.length; i++) {
+			switch (peopleInLine[i]) {
+				case 25: money25++;
+				break;
+				case 50: {	
+					money50++;
+					if (money25 > 0) money25--;
+					else return "NO";
+				}
+				break;
+				case 100: {	
+					money100++;
+					if (money50 > 0 && money25 > 0) {
+						money25--;
+						money50--;
+					} else return "NO";
+				}
+				break;
+			}
+	    }
+	    return "YES";
+	}
 
 	public static void main(String[] args) {
 		System.out.println("" + new Kata().josephusSurvivor(7, 3));
