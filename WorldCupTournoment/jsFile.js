@@ -70,16 +70,16 @@ function init() {
 	// team04 = new Team('SouthKorea', 73, 7);
 	// teams.push(team01, team02, team03, team04);
 
-	let team01 = new Team('Russia', Math.round(1736 / 24), 0)
-	let team02 = new Team('SaudiArabia', Math.round(1490 / 24), 0);
-	let team03 = new Team('Egypt', Math.round(1678 / 24), 0);
-	let team04 = new Team('Uruguay', Math.round(1871 / 24), 0);
+	let team01 = new Team('Russia', Math.round(1736 / 24), 0, '#87003c', '#FFF');
+	let team02 = new Team('SaudiArabia', Math.round(1490 / 24), 0, '#00753A', '#FFF');
+	let team03 = new Team('Egypt', Math.round(1678 / 24), 0, '#DC0000', '#000');
+	let team04 = new Team('Uruguay', Math.round(1871 / 24), 0, '#5899C7', '#000');
 	teams.push(team01, team02, team03, team04);
 
-	team01 = new Team('Morocco', Math.round(1651 / 24), 1);
-	team02 = new Team('Iran', Math.round(1645 / 24), 1);
-	team03 = new Team('Portugal', Math.round(1779 / 24), 1);
-	team04 = new Team('Spain', Math.round(1935 / 24), 1);
+	team01 = new Team('Morocco', Math.round(1651 / 24), 1, '#2aa72d', '#FF0000');
+	team02 = new Team('Iran', Math.round(1645 / 24), 1, '#FFFFFF', '#2aa72d');
+	team03 = new Team('Portugal', Math.round(1779 / 24), 1, '#FF0000', '#2aa72d');
+	team04 = new Team('Spain', Math.round(1935 / 24), 1, '#FF0000', '#4500EF');
 	teams.push(team01, team02, team03, team04);
 
 	team01 = new Team('France', Math.round(1779 / 24), 2);
@@ -132,6 +132,8 @@ function Team(name, overall, group, bg, color) {
 	this.name = name;
 	this.overall = overall;
 	this.group = group;
+    this.bg = bg;
+    this.color = color;
 	this.table = {
 		game: 0,
 		win: 0,
@@ -178,6 +180,7 @@ function insertTeamToTable(tbody, groupId, index) {
 	td.appendChild(document.createTextNode('' + (index + 1)));
 	tr.appendChild(td);
 	var td = document.createElement('td');
+    td.setAttribute("style", "color: " + teams[teamId].color + ";background: linear-gradient(to right, " + teams[teamId].color + " , " + teams[teamId].bg + ")");
 	td.appendChild(document.createTextNode(teams[teamId].name + '[' + teams[teamId].overall + ']'));
 	tr.appendChild(td);
 	var td = document.createElement('td');

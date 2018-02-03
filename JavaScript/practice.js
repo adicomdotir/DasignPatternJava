@@ -35,3 +35,29 @@ var addTen = makeNum(10);
 addOne(3);		// 4  <-- 1 + 3
 addOne(41);		// 42 <-- 1 + 41
 addTen(13);		// 23 <-- 10 + 13
+
+// Closure Example
+function sayHello(name) {
+	var text = 'Hello ' + name;
+	var say = function() { console.log(text); }
+	say();
+}
+sayHello('Adicom');
+
+function sayHello2(name) {
+	var text = 'Hello ' + name; // Local variable
+	var say = function() { console.log(text); }
+	return say;
+}
+var say2 = sayHello2('Adicom');
+say2(); // logs "Hello Adicom"
+
+function say667() {
+	// Local variable that ends up within closure
+	var num = 42;
+	var say = function() { console.log(num); }
+	num++;
+	return say;
+}
+var sayNumber = say667();
+sayNumber(); // logs 43
