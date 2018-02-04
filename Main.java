@@ -85,6 +85,27 @@ public class Main {
 		// names.forEach(System.out::println);
 	}
 
+	public void weightedMean() {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] xArray = new int[n];
+		int[] wArray = new int[n];
+		for (int i = 0; i < n; i++) {
+			xArray[i] = sc.nextInt();
+		}
+		for (int i = 0; i < n; i++) {
+			wArray[i] = sc.nextInt();
+		}
+
+		float result = 0;
+		int w = 0;
+		for (int i = 0; i < n; i++) {
+			result += xArray[i] * wArray[i];
+			w += wArray[i];
+		}
+		System.out.println(result / w + "");
+	}
+
 	/*
 	Given an array of ints, compute recursively the number of times that the
 	value 11 appears in the array. We'll use the convention of considering
