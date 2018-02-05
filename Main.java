@@ -106,6 +106,46 @@ public class Main {
 		System.out.println(result / w + "");
 	}
 
+	public void interquartileRange() {
+		Scanner sc = new Scanner();
+        int n = sc.nextInt();
+        int[] el = new int[n];
+        int[] fr = new int[n];
+        for (int i = 0; i < n; i++) {
+            el[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            fr[i] = sc.nextInt();
+        }
+        int size = 0;
+        for (int i = 0; i < n; i++) {
+            size += fr[i];
+        }
+        int[] arr = new int[size];
+        int j = 0;
+        for(int i = 0; i < n; i++) {
+            for (int k = 0; k < fr[i]; k++) {
+                arr[j] = el[i];
+                j++;
+            }
+        }
+        Arrays.sort(arr);
+        int mid = size / 2;
+        int q1 = 0;
+        if (mid % 2 == 0) {
+            q1 = arr[mid / 2] + arr[mid / 2 - 1] / 2;
+        } else {
+            q1 = arr[mid / 2];
+        }
+        int q3 = 0;
+        if (mid % 2 == 0) {
+            q3 = arr[size - mid / 2] + arr[size - mid / 2 - 1] / 2;
+        } else {
+            q3 = arr[size - mid / 2 - 1];
+        }
+        System.out.println("" + q3 - q1);
+	}
+
 	/*
 	Given an array of ints, compute recursively the number of times that the
 	value 11 appears in the array. We'll use the convention of considering
