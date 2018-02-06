@@ -107,7 +107,7 @@ public class Main {
 	}
 
 	public void interquartileRange() {
-		Scanner sc = new Scanner();
+		Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] el = new int[n];
         int[] fr = new int[n];
@@ -143,7 +143,7 @@ public class Main {
         } else {
             q3 = arr[size - mid / 2 - 1];
         }
-        System.out.println("" + q3 - q1);
+        System.out.println("" + (q3 - q1));
 	}
 
 	/*
