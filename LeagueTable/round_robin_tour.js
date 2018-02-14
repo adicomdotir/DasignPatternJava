@@ -82,16 +82,13 @@ $(document).ready(function() {
 				teamsInfo[teams[size - j - 1]].ga += gA;
 			}
 			var div1 = document.createElement("div");
-			div1.setAttribute('class', 'col-md-4');
 			addAttributeColor(gA, gB, div1);
-			div1.appendChild(document.createTextNode(teamsInfo[teams[j]].name));
+			$(div1).append(teamsInfo[teams[j]].name).addClass('col-md-4');
 			var div2 = document.createElement("div");
-			div2.setAttribute('class', 'col-md-4');
-			div2.appendChild(document.createTextNode(gA + '-' + gB));
+			$(div2).append(gA + '-' + gB).addClass('col-md-4');
 			var div3 = document.createElement("div");
-			div3.setAttribute('class', 'col-md-4');
 			addAttributeColor(gB, gA, div3);
-			div3.appendChild(document.createTextNode(teamsInfo[teams[size - j - 1]].name));
+			$(div3).append(teamsInfo[teams[size - j - 1]].name).addClass('col-md-4');
 			if (col === 0) {
 				$('#figure3').append(div1);
 				$('#figure3').append(div2);
@@ -270,10 +267,10 @@ function numberToText(num) {
 
 function addAttributeColor(gObj, gOther, obj) {
 	if (gObj > gOther) {
-		obj.setAttribute('style', 'color: #2CC990;');
+		$(obj).css("color", "#2CC990");
 	} else if (gObj < gOther) {
-		obj.setAttribute('style', 'color: #E3000E;');
+		$(obj).css("color", "#E3000E");
 	} else {
-		obj.setAttribute('style', 'color: #FEC606;');
+		$(obj).css("color", "#FEC606");
 	}
 }
