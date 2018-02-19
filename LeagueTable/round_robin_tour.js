@@ -9,21 +9,21 @@ $(document).ready(function() {
 	var chelsea = new Team('Chelsea', 83);
 	var inter = new Team('Inter', 81);
 	var milan = new Team('Milan', 79);
-	var t1 = new Team('SL Benfica', 79);
-	var t2 = new Team('FC Porto', 79);
-	var t3 = new Team('SC Braga', 75);
-	var t4 = new Team('Sporting CP', 78);
-	teamsInfo.push(barca, rm, psg, chelsea, inter, milan, t1, t2, t3, t4);
+	// var t1 = new Team('SL Benfica', 79);
+	// var t2 = new Team('FC Porto', 79);
+	// var t3 = new Team('SC Braga', 75);
+	// var t4 = new Team('Sporting CP', 78);
+	teamsInfo.push(barca, rm, psg, chelsea, inter, milan);
 
 	size = teamsInfo.length;
 	for (var i = 0; i < size; i++) {
 		teams[i] = i;
 	}
-
 	var col = 0;
 	for (var i = 1; i < size * 2 - 1; i++) {
 		var str = '';
 		var header = document.createElement("div");
+		// var header = $("div");
 		$(header).append('<b>' + "Week " + numberToText(i) + '</b>');
 		if (col === 0) {
 			$('#figure3').append(header);
@@ -115,10 +115,8 @@ $(document).ready(function() {
 	// console.log(teamsInfo);
 	for (var i = 0; i < size; i++) {
 		var row = document.createElement("tr");
-		var col = document.createElement("td");
 		$(row).append('<td>' + (i + 1) + '</td>');
 		for (var key in teamsInfo[i]) {
-			var col = document.createElement("td");
 			if (key === 'gd') {
 				$(row).append('<td>' + (teamsInfo[i]['gf'] - teamsInfo[i]['ga']) + '</td>');
 			} else if (key !== 'overall') {
