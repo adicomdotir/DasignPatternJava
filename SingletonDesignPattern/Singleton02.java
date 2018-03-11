@@ -5,7 +5,7 @@ class Singleton02 {
 		// Constructor
 	}
 
-	public Singleton02 getInstance() {
+	public static Singleton02 getInstance() {
 		if (sInstance == null) {
 			sInstance = new Singleton02();
 		}

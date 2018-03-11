@@ -5,7 +5,7 @@ class Singleton01 {
 		// Constructor
 	}
 
-	public Singleton01 getInstance() {
+	public static Singleton01 getInstance() {
 		return this.INSTANCE;
 	}
 }
