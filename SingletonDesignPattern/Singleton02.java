@@ -1,12 +1,14 @@
 class Singleton02 {
-	public static Singleton02 instance;
+	private static Singleton02 sInstance;
 
-	private Singleton02() {}
+	private Singleton02() {
+		// Constructor
+	}
 
 	public Singleton02 getInstance() {
-		if (instance == null) {
-			instance = new Singleton02();
+		if (sInstance == null) {
+			sInstance = new Singleton02();
 		}
-		return this.instance;
+		return this.sInstance;
 	}
 }
