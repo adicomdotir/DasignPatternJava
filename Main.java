@@ -2,6 +2,14 @@ import java.util.stream.*;
 import java.util.*;
 
 public class Main {
+
+	// Code Convention For Java
+	public static final int MAX = 100;
+	public static int count = 0;
+	private static int sInner = 0;
+	private int mMin = 0;
+	protected int mMax = 0;
+
 	@Override
 	public void finalize(){
 		System.out.println("object is garbage collected");
