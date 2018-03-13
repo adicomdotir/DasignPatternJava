@@ -6,6 +6,6 @@ class Singleton01 {
 	}
 
 	public static Singleton01 getInstance() {
-		return this.INSTANCE;
+		return INSTANCE;
 	}
 }
