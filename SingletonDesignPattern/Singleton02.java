@@ -9,6 +9,6 @@ class Singleton02 {
 		if (sInstance == null) {
 			sInstance = new Singleton02();
 		}
-		return this.sInstance;
+		return sInstance;
 	}
 }
