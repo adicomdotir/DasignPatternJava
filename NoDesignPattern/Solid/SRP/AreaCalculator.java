@@ -2,7 +2,7 @@ import java.util.List;
 
 public class AreaCalculator {
 
-    protected Shape[] shapes;
+    public Shape[] shapes;
 
     public AreaCalculator(Shape[] shapes) {
         this.shapes = shapes;
@@ -17,11 +17,5 @@ public class AreaCalculator {
             return (float) (Math.pow(s.length, 2));
         }
 
-    }
-
-    public void output() {
-        for (Shape sh : shapes) {
-            System.out.println("Sum of the areas of provided shapes: " + sum(sh));
-        }
     }
 }
