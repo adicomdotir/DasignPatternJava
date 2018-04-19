@@ -29,7 +29,7 @@ class Association {
 		Bank bank = new Bank("Melli");
 		Employee emp = new Employee("Adicom");
 
-		System.out.println(emp.getEmployeeName() + 
+		System.out.println(emp.getEmployeeName() +
 			" is employee of " + bank.getBankName());
 	}
 }
