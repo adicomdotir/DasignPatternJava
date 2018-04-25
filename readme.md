@@ -7,7 +7,11 @@ This repository is for design patterns with **Java**
 
 **Creational Design Patterns**
 
+[Factory Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Factory%20Design%20Pattern)
+
 [Builder Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Builder%20Design%20Pattern)
+
+[Singleton Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Singleton%20Design%20Pattern)
 
 **Structural Design Patterns**
 
