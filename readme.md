@@ -7,7 +7,11 @@ This repository is for design patterns with **Java**
 
 [Creational Design Patterns](https://github.com/adicomdotir/DasignPatternJava/tree/master/Creational%20Design%20Patterns)
 
-**Structural Design Patterns**
+[Structural Design Patterns](https://github.com/adicomdotir/DasignPatternJava/tree/master/Structural%20Design%20Patterns)
+
+[Behavioral Design Patterns](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns)
+
+** Design Patterns**
 
 [Adapter Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Adapter%20Design%20Pattern)
 
@@ -23,7 +27,7 @@ This repository is for design patterns with **Java**
 
 [Decorator Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Decorator%20Design%20Pattern)
 
-**Behavioral Design Patterns**
+** Design Patterns**
 
 [Template Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Template%20Design%20Pattern)
 
