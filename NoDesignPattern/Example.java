@@ -18,6 +18,9 @@ public class Example {
         String[] names = new String[] {"A", "Bb", "Ccc", "Dddd", "Eeeee"};
         Stream<String> stream = Arrays.stream(names);
         stream.filter(x -> x.length() > 2).forEach(System.out::println);
+        Integer[] arr = new Integer[] { 1, 2, 3, 4 };
+        Stream<Integer> intStream = Arrays.stream(arr);
+        intStream.map(x -> x * 3).forEach(System.out::println);
     }
 
     public static void methodReferenceJava8() {
