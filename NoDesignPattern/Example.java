@@ -20,7 +20,7 @@ public class Example {
         stream.filter(x -> x.length() > 2).forEach(System.out::println);
         Integer[] arr = new Integer[] { 1, 2, 3, 4 };
         Stream<Integer> intStream = Arrays.stream(arr);
-        intStream.map(x -> x * 3).forEach(System.out::println);
+        intStream.map(x -> x * 3).forEach(System.out::println); // with method reference
     }
 
     public static void methodReferenceJava8() {
@@ -30,6 +30,21 @@ public class Example {
 
     public static void printFullName() {
         System.out.println("adicomdotir");
+    }
+
+    public static void lamdaExample() {
+    	
+        // without lambda
+        Sayable say01 = new Sayable() {
+        	@Override
+        	public void say() {
+        		System.out.println("Hello World, without lambda");
+        	}
+        };
+        say01.say();
+        // with lambda
+        Sayable say02 = () -> System.out.println("Hello World, with lambda");
+        say02.say();
     }
 }
 
