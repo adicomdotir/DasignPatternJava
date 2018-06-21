@@ -37,20 +37,29 @@ public class Example {
         // without lambda
         Sayable say01 = new Sayable() {
         	@Override
-        	public void say() {
+        	public void say(String name) {
         		System.out.println("Hello World, without lambda");
                 printHello();
         	}
         };
         say01.say();
         // with lambda
-        Sayable say02 = () -> System.out.println("Hello World, with lambda");
+        Sayable say02 = (String name) -> System.out.println("Hello World, with lambda");
+        // Sayable say02 = (name) -> System.out.println("Hello World, with lambda");
         say02.say();
+        // another style
+        Sayable say03 = (String name) -> {
+            System.out.println("Hello World, with lambda");
+        }
+        // Sayable say03 = (name) -> {
+        //     System.out.println("Hello World, with lambda");
+        // }
+        say03.say();
     }
 }
 
 interface Sayable {
-    void say();
+    void say(String name);
     default void printHello() {
         System.out.println("Hello by default method");
     }
