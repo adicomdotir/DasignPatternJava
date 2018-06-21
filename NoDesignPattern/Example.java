@@ -33,7 +33,6 @@ public class Example {
     }
 
     public static void lamdaExample() {
-    	
         // without lambda
         Sayable say01 = new Sayable() {
         	@Override
