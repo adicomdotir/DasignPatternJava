@@ -3,7 +3,8 @@ import java.util.stream.Stream;
 
 public class Example {
     public static void main(String[] args) {
-        streamExample();
+        // streamExample();
+        lamdaExample();
     }
 
     public static void stringExample() {
@@ -38,6 +39,7 @@ public class Example {
         	@Override
         	public void say() {
         		System.out.println("Hello World, without lambda");
+                printHello();
         	}
         };
         say01.say();
@@ -49,4 +51,7 @@ public class Example {
 
 interface Sayable {
     void say();
+    default void printHello() {
+        System.out.println("Hello by default method");
+    }
 }
