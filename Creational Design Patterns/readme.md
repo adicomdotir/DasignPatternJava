@@ -6,4 +6,4 @@
 
 [Factory Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Creational%20Design%20Patterns/Abstract%20%Factory%20Design%20Pattern)
 
-[Factory Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Creational%20Design%20Patterns/Prototype%20Design%20Pattern)
+[Prototype Design Pattern](https://github.com/adicomdotir/DesignPatternJava/tree/master/Creational%20Design%20Patterns/Protorype%20Design%20Pattern)
