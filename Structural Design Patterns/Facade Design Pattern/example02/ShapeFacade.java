@@ -11,7 +11,7 @@ public class ShapeFacade {
 		square.draw();
 	}
 
-	public vodi drawRectangle() {
+	public void drawRectangle() {
 		rectangle.draw();
 	}
 }
