@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="45.3125" y="234.0">ir.adicom.dp.state.sample2.StatePause</node>
+    <node x="64.0" y="78.0">ir.adicom.dp.state.sample2.State</node>
+    <node x="0.0" y="156.0">ir.adicom.dp.state.sample2.StatePlay</node>
+    <node x="60.0" y="0.0">ir.adicom.dp.state.sample2.Player</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ir.adicom.dp.state.sample2.StatePlay" target="ir.adicom.dp.state.sample2.StatePause">
+      <point x="29.5" y="14.0" />
+      <point x="88.5" y="209.0" />
+      <point x="92.5625" y="209.0" />
+      <point x="-15.75" y="-14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.State" target="ir.adicom.dp.state.sample2.Player">
+      <point x="-28.66666666666667" y="-14.0" />
+      <point x="78.33333333333333" y="53.0" />
+      <point x="88.19999999999999" y="53.0" />
+      <point x="-18.80000000000001" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.StatePlay" target="ir.adicom.dp.state.sample2.Player">
+      <point x="-29.5" y="-14.0" />
+      <point x="29.5" y="53.0" />
+      <point x="69.4" y="53.0" />
+      <point x="-37.599999999999994" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.Player" target="ir.adicom.dp.state.sample2.State">
+      <point x="0.0" y="14.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.StatePause" target="ir.adicom.dp.state.sample2.State">
+      <point x="15.75" y="-14.0" />
+      <point x="124.0625" y="209.0" />
+      <point x="128.5" y="209.0" />
+      <point x="21.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.StatePlay" target="ir.adicom.dp.state.sample2.State">
+      <point x="29.5" y="-14.0" />
+      <point x="88.5" y="131.0" />
+      <point x="85.5" y="131.0" />
+      <point x="-21.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.StatePause" target="ir.adicom.dp.state.sample2.StatePlay">
+      <point x="-47.25" y="-14.0" />
+      <point x="61.0625" y="209.0" />
+      <point x="29.5" y="209.0" />
+      <point x="-29.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample2.StatePause" target="ir.adicom.dp.state.sample2.Player">
+      <point x="47.25" y="-14.0" />
+      <point x="155.5625" y="209.0" />
+      <point x="160.5" y="209.0" />
+      <point x="160.5" y="53.0" />
+      <point x="144.59999999999997" y="53.0" />
+      <point x="37.599999999999966" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="86.0" y="131.0" />
+  <SelectedNodes>
+    <node>ir.adicom.dp.state.sample2.StatePlay</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="156.0">ir.adicom.dp.state.sample1.ConcreteStateA</node>
+    <node x="62.08125" y="234.0">ir.adicom.dp.state.sample1.ConcreteClassB</node>
+    <node x="104.0" y="78.0">ir.adicom.dp.state.sample1.State</node>
+    <node x="96.0" y="0.0">ir.adicom.dp.state.sample1.Context</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteStateA" target="ir.adicom.dp.state.sample1.Context">
+      <point x="-39.5" y="-14.0" />
+      <point x="39.5" y="53.0" />
+      <point x="106.2" y="53.0" />
+      <point x="-40.8" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.Context" target="ir.adicom.dp.state.sample1.State">
+      <point x="0.0" y="14.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.State" target="ir.adicom.dp.state.sample1.Context">
+      <point x="-28.66666666666667" y="-14.0" />
+      <point x="118.33333333333333" y="53.0" />
+      <point x="126.6" y="53.0" />
+      <point x="-20.400000000000006" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteClassB" target="ir.adicom.dp.state.sample1.ConcreteStateA">
+      <point x="-59.25" y="-14.0" />
+      <point x="81.83125" y="209.0" />
+      <point x="39.5" y="209.0" />
+      <point x="-39.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteStateA" target="ir.adicom.dp.state.sample1.ConcreteClassB">
+      <point x="39.5" y="14.0" />
+      <point x="118.5" y="209.0" />
+      <point x="121.33125" y="209.0" />
+      <point x="-19.75" y="-14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteClassB" target="ir.adicom.dp.state.sample1.State">
+      <point x="19.75" y="-14.0" />
+      <point x="160.83125" y="209.0" />
+      <point x="168.5" y="209.0" />
+      <point x="21.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteStateA" target="ir.adicom.dp.state.sample1.State">
+      <point x="39.5" y="-14.0" />
+      <point x="118.5" y="131.0" />
+      <point x="125.5" y="131.0" />
+      <point x="-21.5" y="14.0" />
+    </edge>
+    <edge source="ir.adicom.dp.state.sample1.ConcreteClassB" target="ir.adicom.dp.state.sample1.Context">
+      <point x="59.25" y="-14.0" />
+      <point x="200.5" y="53.0" />
+      <point x="187.8" y="53.0" />
+      <point x="40.80000000000001" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="111.0" y="131.0" />
+  <SelectedNodes>
+    <node>ir.adicom.dp.state.sample1.Context</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
