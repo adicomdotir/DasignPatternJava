@@ -15,10 +15,10 @@ Behavioral Design Pattern
 
 [State Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/State%20Design%20Pattern)
 
-[Visitor Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/VisitorDesignPattern)
+[Visitor Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/Visitor%20Design%20Pattern)
 
-[Interpreter Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/InterpreterDesignPattern)
+[Interpreter Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/Interpreter%20Design%20Pattern)
 
-[Iterator Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/IteratorDesignPattern)
+[Iterator Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/Iterator%20Design%20Pattern)
 
-[Memento Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/MementoDesignPattern)
+[Memento Design Pattern](https://github.com/adicomdotir/DasignPatternJava/tree/master/Behavioral%20Design%20Patterns/Memento%20Design%20Pattern)
